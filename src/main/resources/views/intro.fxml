@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.*?>
+
+<fx:root id="centerPane" fx:id="introContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.intro.IntroController">
+   <content>
+      <VBox alignment="CENTER" fillWidth="false" style="-fx-background-color: black;" prefHeight="950">
+         <children>
+            <AnchorPane>
+               <children>
+                  <MediaView fx:id="introVideo" fitHeight="700.0" preserveRatio="true">
+                     <mediaPlayer>
+                        <MediaPlayer autoPlay="true">
+                           <media>
+                              <Media source="@../videos/fp.mp4" />
+                           </media>
+                        </MediaPlayer>
+                     </mediaPlayer>
+                  </MediaView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </content>
+</fx:root>

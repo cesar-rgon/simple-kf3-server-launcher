@@ -1,0 +1,45 @@
+.scroll-pane .viewport {
+    -fx-background-image: url("../images/background.jpg");
+    -fx-background-size: cover;
+}
+
+.label {
+    -fx-font-family: "KillingFont";
+    -fx-text-fill: #e8e8e8;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+.titled-pane > .title {
+    -fx-font-family: "KillingFont";
+    -fx-font-size: 13;
+}
+
+.titled-pane > .title > .text {
+    -fx-text-fill: #ab0d0e;
+    -fx-font-weight: bold;
+}
+
+.titled-pane .title .arrow-button {
+    -fx-text-fill: #ab0d0e;
+}
+
+.titled-pane > .content {
+    -fx-background-color: rgba(91, 91, 91, 0.7);;
+}
+
+
+#menuHome:hover, #menuWebAdmin:hover, #menuInstall:hover, #menuConsole:hover, #menuHelp:hover {
+    -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
+}
+
+
+
+.split-pane-divider {
+    -fx-background-color: black ;
+}
+
+.combo-box, .combo-box-popup .list-view .list-cell {
+    -fx-background-color: #e8e8e8;
+}
+
