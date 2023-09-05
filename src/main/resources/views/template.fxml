@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
-<SplitPane dividerPositions="0.07534246575342465" minHeight="700.0" minWidth="1024.0" style="-fx-background-color: black;" stylesheets="@../css/custom.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.07534246575342465" minHeight="700.0" minWidth="1024.0" style="-fx-background-color: black;" stylesheets="@../css/custom.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.template.TemplateController">
     <items>
         <VBox maxWidth="74.0" spacing="10.0" style="-fx-background-color: #575757;" SplitPane.resizableWithParent="false">
             <children>

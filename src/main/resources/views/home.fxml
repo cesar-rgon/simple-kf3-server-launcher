@@ -5,21 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.media.*?>
 
-<fx:root id="centerPane" fx:id="mainContent" prefHeight="943.0" prefWidth="939.0" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="centerPane" fx:id="mainContent" prefHeight="943.0" prefWidth="939.0" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.home.HomeController">
    <content>
       <VBox alignment="CENTER" fillWidth="false">
          <children>
             <AnchorPane prefHeight="700.0">
                <children>
-                   <MediaView fx:id="Music" fitHeight="700.0" fitWidth="916.0" preserveRatio="false" visible="false">
-                       <mediaPlayer>
-                           <MediaPlayer autoPlay="true">
-                               <media>
-                                   <Media source="@../music/kf3-theme.mp4" />
-                               </media>
-                           </MediaPlayer>
-                       </mediaPlayer>
-                   </MediaView>
                   <ImageView fitHeight="80.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="30.0">
                      <image>
                         <Image url="@../images/logo.png" />
@@ -51,7 +42,7 @@
                         <ComboBox prefHeight="25.0" prefWidth="200.0" />
                      </graphic>
                   </Label>
-                  <Accordion expandedPane="$basic" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="170.0">
+                  <Accordion AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="170.0">
                     <panes>
                       <TitledPane fx:id="basic" animated="true" text="Basic Parameters">
                         <graphic>
@@ -135,15 +126,15 @@
                                     </Label>
                                     <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="23.6" layoutY="249.6" prefHeight="43.0" prefWidth="314.0" text="Your Clan" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="220.0">
                                         <graphic>
-                                            <ComboBox prefHeight="25.0" prefWidth="200.0" />
+                                            <TextField prefHeight="25.0" prefWidth="200.0" />
                                         </graphic></Label>
                                     <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="14.6" layoutY="284.6" prefHeight="43.0" prefWidth="315.0" text="Your Web Link" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="220.0">
                                         <graphic>
-                                            <ComboBox prefHeight="25.0" prefWidth="200.0" />
+                                            <TextField prefHeight="25.0" prefWidth="200.0" />
                                         </graphic></Label>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="46.0" layoutY="298.0" text="Welcome Message" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="280.0">
+                                    <Label alignment="CENTER_RIGHT" contentDisplay="BOTTOM" graphicTextGap="10.0" layoutX="47.6" layoutY="319.6" prefHeight="126.0" prefWidth="708.0" text="Welcome Message" AnchorPane.leftAnchor="-50.0" AnchorPane.topAnchor="310.0">
                                        <graphic>
-                                            <TextArea fx:id="welcomeMessage" prefHeight="126.0" prefWidth="500.0" />
+                                            <TextArea fx:id="welcomeMessage" prefHeight="81.0" prefWidth="379.0" />
                                        </graphic></Label>
                                 </children>
                             </AnchorPane>

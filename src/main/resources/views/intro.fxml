@@ -13,7 +13,7 @@
                <children>
                   <MediaView fx:id="introVideo" fitHeight="700.0" preserveRatio="true">
                      <mediaPlayer>
-                        <MediaPlayer autoPlay="true">
+                        <MediaPlayer>
                            <media>
                               <Media source="@../videos/fp.mp4" />
                            </media>
