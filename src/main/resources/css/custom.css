@@ -29,17 +29,21 @@
 }
 
 
-#menuHome:hover, #menuWebAdmin:hover, #menuInstall:hover, #menuConsole:hover, #menuHelp:hover {
+#menuHome:hover, #menuWebAdmin:hover, #menuInstall:hover, #menuConsole:hover, #menuHelp:hover, #menuMaps:hover, #run:hover, #join:hover, #setupMaps:hover, #setupGameTypes:hover, #setupDifficulties:hover, #setupLengths:hover {
     -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
 }
 
-
-
-.split-pane-divider {
-    -fx-background-color: black ;
+#menuHome:disabled, #menuWebAdmin:disabled, #menuInstall:disabled, #menuConsole:disabled, #menuHelp:disabled, #menuMaps:disabled, #run:disabled, #join:disabled, #setupMaps:disabled, #setupGameTypes:disabled, #setupDifficulties:disabled, #setupLengths:disabled {
+    -fx-effect: dropshadow(three-pass-box, red, 20, 0, 0, 0);
 }
 
-.combo-box, .combo-box-popup .list-view .list-cell {
-    -fx-background-color: #e8e8e8;
+.split-pane-divider, .combo-box, .combo-box-popup .list-view .list-cell {
+    -fx-background-color: #e8e8e8 ;
 }
 
+.button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}

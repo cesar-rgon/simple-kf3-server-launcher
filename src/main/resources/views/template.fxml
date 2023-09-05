@@ -1,74 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+
 <SplitPane dividerPositions="0.07534246575342465" minHeight="700.0" minWidth="1024.0" style="-fx-background-color: black;" stylesheets="@../css/custom.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.template.TemplateController">
     <items>
         <VBox maxWidth="74.0" spacing="10.0" style="-fx-background-color: #575757;" SplitPane.resizableWithParent="false">
             <children>
-                <ImageView fx:id="menuHome" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/home.png" />
-                    </image>
-                    <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                    </VBox.margin>
+                <Button fx:id="menuHome" disable="true" onMouseClicked="#menuHomeonMouseClicked">
+                    <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                   <VBox.margin>
+                      <Insets top="5.0" />
+                   </VBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
-                </ImageView>
+                </Button>
 
-                <ImageView fx:id="menuWebAdmin" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/web-admin.png" />
-                    </image>
+                <Button fx:id="menuWebAdmin" onMouseClicked="#menuWebAdminonMouseClicked">
+                    <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/web-admin.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                     <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets top="5.0" />
                     </VBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
-                </ImageView>
+                </Button>
 
-                <ImageView fx:id="menuMaps" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/maps.png" />
-                    </image>
+                <Button fx:id="menuMaps" onMouseClicked="#menuMapsonMouseClicked">
+                    <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/maps.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                     <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets top="5.0" />
                     </VBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
-                </ImageView>
+                </Button>
 
-                <ImageView fx:id="menuInstall" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/install.png" />
-                    </image>
+                <Button fx:id="menuInstall" onMouseClicked="#menuInstallonMouseClicked">
+                    <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/install.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                     <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets top="5.0" />
                     </VBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
-                </ImageView>
+                </Button>
 
-                <ImageView fx:id="menuHelp" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/help.png" />
-                    </image>
+                <Button fx:id="menuHelp" onMouseClicked="#menuHelponMouseClicked">
+                    <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/help.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                     <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets top="5.0" />
                     </VBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
-                </ImageView>
+                </Button>
             </children>
         </VBox>
 
