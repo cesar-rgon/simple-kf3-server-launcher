@@ -48,6 +48,7 @@ public class IntroController implements Initializable {
 
     private void loadHomeContent() {
         try {
+            introVideo.getMediaPlayer().dispose();
             VBox templateContent = (VBox)((ScrollPane)MainApplication.getTemplate().getNamespace().get("content")).getContent();
             templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource("/views/home.fxml"));
@@ -57,5 +58,11 @@ public class IntroController implements Initializable {
             logger.error(e.getMessage(), e);
             Utils.errorDialog(e.getMessage(), e);
         }
+    }
+
+    @FXML
+    private void onMouseClickedStopPlaying() {
+        introVideo.getMediaPlayer().stop();
+        loadHomeContent();
     }
 }

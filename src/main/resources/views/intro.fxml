@@ -11,7 +11,7 @@
          <children>
             <AnchorPane>
                <children>
-                  <MediaView fx:id="introVideo" fitHeight="700.0" preserveRatio="true">
+                  <MediaView fx:id="introVideo" fitHeight="700.0" preserveRatio="true" onMouseClicked="#onMouseClickedStopPlaying">
                      <mediaPlayer>
                         <MediaPlayer>
                            <media>

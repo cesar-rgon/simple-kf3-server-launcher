@@ -5,6 +5,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +20,23 @@ public class MainApplication extends Application {
     private static final Logger logger = LogManager.getLogger(MainApplication.class);
     private static FXMLLoader template;
     private static Stage primaryStage;
+    private static MediaPlayer mediaPlayer;
+
+    public MainApplication() {
+        super();
+        try {
+            PropertyService propertyService = new PropertyServiceImpl();
+            boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
+            if (playMusicOnStartup) {
+                mediaPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("music/kf3-theme.mp4").toExternalForm()));
+                mediaPlayer.setOnEndOfMedia(this::disposeMediaPlayer);
+                mediaPlayer.setOnError(this::disposeMediaPlayer);
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            Utils.errorDialog(e.getMessage(), e);
+        }
+    }
 
     public void start(Stage primaryStage) throws Exception {
 
@@ -72,5 +91,13 @@ public class MainApplication extends Application {
 
     public static FXMLLoader getTemplate() {
         return template;
+    }
+
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
+    private void disposeMediaPlayer() {
+        mediaPlayer.dispose();
     }
 }
