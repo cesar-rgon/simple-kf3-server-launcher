@@ -5,9 +5,9 @@
 
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <content>
-        <VBox alignment="CENTER" fillWidth="false" prefHeight="950">
+        <VBox alignment="CENTER" fillWidth="false" prefHeight="950" style="-fx-background-color: black;">
             <children>
-                <AnchorPane style="-fx-background-color: black; -fx-opacity:0.8;">
+                <AnchorPane>
                     <children>
                         <ImageView fitHeight="256.0" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
                             <image>

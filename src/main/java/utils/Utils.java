@@ -1,5 +1,6 @@
 package utils;
 
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +9,14 @@ import services.PropertyServiceImpl;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Utils {
 
@@ -43,4 +52,56 @@ public class Utils {
         alert.showAndWait();
     }
 
+    public static void setNodeBackground(Node node) throws Exception {
+        PropertyService propertyService = new PropertyServiceImpl();
+        boolean chooseRandomBackgroundImage = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.chooseRandomBackgroundImage"));
+        if (chooseRandomBackgroundImage) {
+            node.setStyle("-fx-background-image: url('" + chooseRandomBackgroundFileUrl() + "'); -fx-background-size: cover;");
+        } else {
+            String noRandomBackgroundImage = propertyService.getProperty("properties/config.properties", "prop.config.noRandomBackgroundImage");
+            node.setStyle("-fx-background-image: url('" + Objects.requireNonNull(Utils.class.getClassLoader().getResource(noRandomBackgroundImage)).toExternalForm() + "'); -fx-background-size: cover;");
+        }
+    }
+
+    private static String chooseRandomBackgroundFileUrl() throws Exception {
+        String backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+        List<String> backgroundPathList = Files.walk(Paths.get(backgroundsFolderPath))
+                .filter(Files::isRegularFile)
+                .map(Path::toString)
+                .toList();
+
+        int upperbound = backgroundPathList.size();
+        Random rand = new Random();
+        int int_random = rand.nextInt(upperbound);
+        return "file:" + backgroundPathList.get(int_random).replace("\\","/");
+    }
+
+    public static void setNextNodeBackground(Node node) throws Exception {
+        String urlActualBackground = node.getStyle().split("'")[1];
+
+        String backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+        List<String> backgroundPathList = Files.walk(Paths.get(backgroundsFolderPath))
+                .filter(Files::isRegularFile)
+                .map(Path::toString)
+                .toList();
+
+        Optional<String> pathActualBackgroundOptional = backgroundPathList.stream()
+                .filter(strPath -> {
+                    String url = "file:" + strPath.replace("\\","/");
+                    return url.equals(urlActualBackground);
+                })
+                .findFirst();
+
+        int indexActualBackground = 0;
+        if (pathActualBackgroundOptional.isPresent()) {
+            indexActualBackground = backgroundPathList.indexOf(pathActualBackgroundOptional.get());
+            if (indexActualBackground < backgroundPathList.size()-1) {
+                indexActualBackground++;
+            } else {
+                indexActualBackground = 0;
+            }
+        }
+
+        node.setStyle("-fx-background-image: url('file:" + backgroundPathList.get(indexActualBackground).replace("\\","/") + "'); -fx-background-size: cover;");
+    }
 }

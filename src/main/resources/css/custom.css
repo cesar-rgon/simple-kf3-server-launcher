@@ -1,8 +1,3 @@
-.scroll-pane .viewport {
-    -fx-background-image: url("../images/background.jpg");
-    -fx-background-size: cover;
-}
-
 .label {
     -fx-font-family: "KillingFont";
     -fx-text-fill: #e8e8e8;
@@ -46,4 +41,8 @@
     -fx-border-width: 0;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
+}
+
+#console .content {
+    -fx-background-color: black;
 }
