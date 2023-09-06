@@ -20,18 +20,26 @@ public class MainApplication extends Application {
     private static final Logger logger = LogManager.getLogger(MainApplication.class);
     private static FXMLLoader template;
     private static Stage primaryStage;
-    private static MediaPlayer mediaPlayer;
+    private static MediaPlayer musicPlayer;
+    private static MediaPlayer videoPlayer;
 
     public MainApplication() {
         super();
         try {
             PropertyService propertyService = new PropertyServiceImpl();
+
+            boolean playVideoOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playVideoOnStartup"));
+            if (playVideoOnStartup) {
+                videoPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("videos/fp.mp4").toExternalForm()));
+            }
+
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
             if (playMusicOnStartup) {
-                mediaPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("music/kf3-theme.mp4").toExternalForm()));
-                mediaPlayer.setOnEndOfMedia(this::disposeMediaPlayer);
-                mediaPlayer.setOnError(this::disposeMediaPlayer);
+                musicPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("music/kf3-theme.mp4").toExternalForm()));
+                musicPlayer.setOnEndOfMedia(this::disposeMediaPlayer);
+                musicPlayer.setOnError(this::disposeMediaPlayer);
             }
+
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             Utils.errorDialog(e.getMessage(), e);
@@ -93,11 +101,15 @@ public class MainApplication extends Application {
         return template;
     }
 
-    public static MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
+    public static MediaPlayer getMusicPlayer() {
+        return musicPlayer;
     }
 
     private void disposeMediaPlayer() {
-        mediaPlayer.dispose();
+        musicPlayer.dispose();
+    }
+
+    public static MediaPlayer getVideoPlayer() {
+        return videoPlayer;
     }
 }

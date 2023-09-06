@@ -10,7 +10,7 @@
     <items>
         <VBox maxWidth="74.0" spacing="10.0" style="-fx-background-color: #575757;" SplitPane.resizableWithParent="false">
             <children>
-                <Button fx:id="menuHome" disable="true" onMouseClicked="#menuHomeonMouseClicked">
+                <Button fx:id="menuHome" onMouseClicked="#menuHomeonMouseClicked">
                     <graphic>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                             <image>

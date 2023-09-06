@@ -1,19 +1,51 @@
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <content>
-        <VBox alignment="CENTER" fillWidth="false" prefHeight="950" style="-fx-background-color: black;">
+        <VBox alignment="CENTER" minHeight="950.0" style="-fx-background-color: black;">
             <children>
-                <AnchorPane>
+                <AnchorPane minHeight="679.0" minWidth="940.0">
                     <children>
-                        <ImageView fitHeight="256.0" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
-                            <image>
-                                <Image url="@../images/work-in-progress.png" />
-                            </image>
-                        </ImageView>
+                        <Accordion layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                            <panes>
+                                <TitledPane fx:id="steam" animated="true" minHeight="679.0" minWidth="920.0" text="Steam Maps">
+                                <graphic>
+                                    <ImageView fitHeight="32.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <image>
+                                            <Image url="@../images/steam.png" />
+                                        </image>
+                                        <cursor>
+                                            <Cursor fx:constant="HAND" />
+                                        </cursor>
+                                    </ImageView>
+                                </graphic>
+                                <content>
+                                    <FlowPane />
+                                </content>
+                                </TitledPane>
+
+                                <TitledPane fx:id="epic" animated="true" minHeight="679.0" minWidth="920.0" text="Epic Games Maps">
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/steam.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane />
+                                    </content>
+                                </TitledPane>
+                            </panes>
+                        </Accordion>
                     </children>
                 </AnchorPane>
             </children>

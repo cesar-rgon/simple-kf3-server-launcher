@@ -7,8 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import services.PropertyService;
+import services.PropertyServiceImpl;
 import start.MainApplication;
 import utils.Utils;
 
@@ -86,6 +90,11 @@ public class TemplateController implements Initializable {
 
     private void loadContent(String fxmlPath) {
         try {
+            PropertyService propertyService = new PropertyServiceImpl();
+            boolean playVideoOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playVideoOnStartup"));
+            if (playVideoOnStartup && MainApplication.getVideoPlayer().isAutoPlay()) {
+                MainApplication.getVideoPlayer().dispose();
+            }
             VBox templateContent = (VBox)((ScrollPane) MainApplication.getTemplate().getNamespace().get("content")).getContent();
             templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource(fxmlPath));

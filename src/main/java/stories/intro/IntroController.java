@@ -3,6 +3,7 @@ package stories.intro;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaPlayer;
@@ -33,10 +34,10 @@ public class IntroController implements Initializable {
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playVideoOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playVideoOnStartup"));
             if (playVideoOnStartup) {
-                MediaPlayer videoPlayer = introVideo.getMediaPlayer();
-                videoPlayer.setOnEndOfMedia(this::loadHomeContent);
-                videoPlayer.setOnError(this::loadHomeContent);
-                videoPlayer.play();
+                introVideo.setMediaPlayer(MainApplication.getVideoPlayer());
+                MainApplication.getVideoPlayer().setOnEndOfMedia(this::loadHomeContent);
+                MainApplication.getVideoPlayer().setOnError(this::loadHomeContent);
+                MainApplication.getVideoPlayer().setAutoPlay(true);
             } else {
                 loadHomeContent();
             }
@@ -48,8 +49,8 @@ public class IntroController implements Initializable {
 
     private void loadHomeContent() {
         try {
-            introVideo.getMediaPlayer().dispose();
             VBox templateContent = (VBox)((ScrollPane)MainApplication.getTemplate().getNamespace().get("content")).getContent();
+            ((Button) MainApplication.getTemplate().getNamespace().get("menuHome")).setDisable(true);
             templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource("/views/home.fxml"));
             content.setRoot(MainApplication.getTemplate().getNamespace().get("content"));
@@ -62,7 +63,8 @@ public class IntroController implements Initializable {
 
     @FXML
     private void onMouseClickedStopPlaying() {
-        introVideo.getMediaPlayer().stop();
+        MainApplication.getVideoPlayer().stop();
+        MainApplication.getVideoPlayer().dispose();
         loadHomeContent();
     }
 }
