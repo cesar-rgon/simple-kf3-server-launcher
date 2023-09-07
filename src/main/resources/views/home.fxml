@@ -45,7 +45,7 @@
                            </cursor></ComboBox>
                      </graphic>
                      <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="CROSSHAIR" />
                      </cursor></Label>
                   <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="50.0" layoutY="23.0" prefHeight="28.0" prefWidth="280.0" text="Platform" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="65.0">
                      <graphic>
@@ -55,7 +55,7 @@
                            </cursor></ComboBox>
                      </graphic>
                      <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="CROSSHAIR" />
                      </cursor>
                   </Label>
                   <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="52.0" layoutY="96.0" prefHeight="28.0" prefWidth="280.0" text="Profile" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0">
@@ -66,7 +66,7 @@
                            </cursor></ComboBox>
                      </graphic>
                      <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="CROSSHAIR" />
                      </cursor>
                   </Label>
                   <Accordion fx:id="accordion" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="170.0">
@@ -85,15 +85,20 @@
                         <content>
                             <AnchorPane prefHeight="340.0" prefWidth="810.0">
                                 <children>
-                                    <ImageView fx:id="setupMaps" fitHeight="32.0" layoutX="616.0" layoutY="99.0" preserveRatio="true" AnchorPane.leftAnchor="605.0" AnchorPane.topAnchor="90.0">
-                                        <image>
-                                            <Image url="@../images/setup.png" />
-                                        </image>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </ImageView>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="94.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="599.0" text="Selected Map" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="84.0">
+                                    <Button fx:id="setupMaps" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="90.0" onMouseClicked="#setupMapsOnMouseClicked">
+                                        <graphic>
+                                            <ImageView fitHeight="32.0" layoutX="616.0" layoutY="99.0" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@../images/setup.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                        <cursor>
+                                            <Cursor fx:constant="HAND" />
+                                        </cursor>
+                                    </Button>
+
+                                    <Label fx:id="selectedMapLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="60.6" layoutY="34.6" nodeOrientation="LEFT_TO_RIGHT" prefHeight="213.0" prefWidth="599.0" text="Selected Map" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="2.0">
                                         <graphic>
                                             <ComboBox id="selectedMap" fx:id="selectedMap" prefHeight="200" prefWidth="400">
                                              <cursor>
@@ -104,15 +109,19 @@
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Label>
-                                    <ImageView fx:id="setupGameTypes" fitHeight="32.0" layoutX="325.0" layoutY="235.0" preserveRatio="true">
-                                        <image>
-                                            <Image url="@../images/setup.png" />
-                                        </image>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </ImageView>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="23.6" layoutY="249.6" prefHeight="43.0" prefWidth="314.0" text="Game Type" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="220.0">
+                                    <Button fx:id="setupGameTypes" AnchorPane.leftAnchor="311.0" AnchorPane.topAnchor="222.0">
+                                        <graphic>
+                                            <ImageView fitHeight="32.0" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@../images/setup.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                        <cursor>
+                                            <Cursor fx:constant="HAND" />
+                                        </cursor>
+                                    </Button>
+                                    <Label fx:id="gameTypeLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="23.6" layoutY="249.6" prefHeight="43.0" prefWidth="314.0" text="Game Type" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="220.0">
                                         <graphic>
                                             <ComboBox prefHeight="25.0" prefWidth="200.0">
                                              <cursor>
@@ -122,7 +131,7 @@
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor></Label>
-                                    <ImageView fx:id="setupDifficulties" fitHeight="32.0" layoutX="325.0" layoutY="280.0" preserveRatio="true">
+                                    <ImageView fx:id="setupDifficulties" fitHeight="32.0" layoutX="325.0" layoutY="280.0" preserveRatio="true" AnchorPane.leftAnchor="318.0">
                                         <image>
                                             <Image url="@../images/setup.png" />
                                         </image>
@@ -130,7 +139,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </ImageView>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="14.6" layoutY="284.6" prefHeight="43.0" prefWidth="315.0" text="Difficulty" AnchorPane.leftAnchor="-6.0" AnchorPane.topAnchor="265.0">
+                                    <Label fx:id="difficultyLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="14.6" layoutY="284.6" prefHeight="43.0" prefWidth="315.0" text="Difficulty" AnchorPane.leftAnchor="-6.0" AnchorPane.topAnchor="265.0">
                                         <graphic>
                                             <ComboBox prefHeight="25.0" prefWidth="200.0">
                                              <cursor>
@@ -148,7 +157,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </ImageView>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="17.6" layoutY="329.6" prefHeight="43.0" prefWidth="312.0" text="Length" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="310.0">
+                                    <Label fx:id="lengthLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="17.6" layoutY="329.6" prefHeight="43.0" prefWidth="312.0" text="Length" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="310.0">
                                         <graphic>
                                             <ComboBox prefHeight="25.0" prefWidth="200.0">
                                              <cursor>
@@ -158,7 +167,7 @@
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor></Label>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Name" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="220.0">
+                                    <Label fx:id="serverNameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Name" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="220.0">
                                         <graphic>
                                             <TextField fx:id="serverName" prefWidth="200.0">
                                              <cursor>
@@ -168,7 +177,7 @@
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor></Label>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Password" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="265.0">
+                                    <Label fx:id="serverPasswordLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Password" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="265.0">
                                         <graphic>
                                             <PasswordField fx:id="serverPassword" prefWidth="200.0">
                                              <cursor>

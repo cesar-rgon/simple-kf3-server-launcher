@@ -2,7 +2,11 @@ package utils;
 
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import org.apache.commons.lang3.StringUtils;
 import services.PropertyService;
 import services.PropertyServiceImpl;
@@ -103,5 +107,16 @@ public class Utils {
         }
 
         node.setStyle("-fx-background-image: url('file:" + backgroundPathList.get(indexActualBackground).replace("\\","/") + "'); -fx-background-size: cover;");
+    }
+
+    public static void loadTooltip(Node node, String text) throws Exception {
+        PropertyService propertyService = new PropertyServiceImpl();
+        double tooltipDuration = Double.parseDouble(
+                propertyService.getProperty("properties/config.properties", "prop.config.tooltipDuration")
+        );
+        Tooltip tooltip = new Tooltip(text);
+        tooltip.setShowDelay(Duration.seconds(0.5));
+        tooltip.setShowDuration(Duration.seconds(tooltipDuration));
+        Tooltip.install(node, tooltip);
     }
 }

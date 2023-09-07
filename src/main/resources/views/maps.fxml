@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.maps.MapsController">
     <content>
-        <VBox alignment="CENTER" minHeight="950.0" style="-fx-background-color: black;">
+        <VBox fx:id="mapsVbox" alignment="CENTER" minHeight="950.0" onMouseClicked="#mapsVboxOnMouseClicked" style="-fx-background-color: black;">
             <children>
-                <AnchorPane minHeight="679.0" minWidth="940.0">
+                <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
-                        <Accordion layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <Accordion fx:id="accordion" layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                             <panes>
                                 <TitledPane fx:id="steam" animated="true" minHeight="679.0" minWidth="920.0" text="Steam Maps">
                                 <graphic>
-                                    <ImageView fitHeight="32.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                         <image>
                                             <Image url="@../images/steam.png" />
                                         </image>
@@ -25,15 +26,22 @@
                                     </ImageView>
                                 </graphic>
                                 <content>
-                                    <FlowPane />
+                                    <FlowPane>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                    </FlowPane>
                                 </content>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                                 </TitledPane>
 
                                 <TitledPane fx:id="epic" animated="true" minHeight="679.0" minWidth="920.0" text="Epic Games Maps">
                                     <graphic>
-                                        <ImageView fitHeight="32.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/steam.png" />
+                                                <Image url="@../images/epic-games.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -41,14 +49,32 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane />
+                                        <FlowPane>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor></FlowPane>
                                     </content>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                                 </TitledPane>
                             </panes>
+                     <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                     </cursor>
                         </Accordion>
                     </children>
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </AnchorPane>
             </children>
+         <cursor>
+            <Cursor fx:constant="CROSSHAIR" />
+         </cursor>
         </VBox>
     </content>
 </fx:root>
