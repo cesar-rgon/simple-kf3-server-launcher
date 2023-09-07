@@ -34,6 +34,9 @@ public class IntroController implements Initializable {
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playVideoOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playVideoOnStartup"));
             if (playVideoOnStartup) {
+                String[] actualResolution = propertyService.getProperty("properties/config.properties", "prop.config.applicationResolution.lastModified").split("x");
+                double actualResolutionWidth = Double.parseDouble(actualResolution[0]);
+                introVideo.setFitWidth(actualResolutionWidth);
                 introVideo.setMediaPlayer(MainApplication.getVideoPlayer());
                 MainApplication.getVideoPlayer().setOnEndOfMedia(this::loadHomeContent);
                 MainApplication.getVideoPlayer().setOnError(this::loadHomeContent);

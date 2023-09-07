@@ -11,7 +11,7 @@
          <children>
             <AnchorPane>
                <children>
-                  <MediaView fx:id="introVideo" fitHeight="700.0" onMouseClicked="#onMouseClickedStopPlaying" preserveRatio="true">
+                  <MediaView fx:id="introVideo" onMouseClicked="#onMouseClickedStopPlaying" preserveRatio="true">
                      <cursor>
                         <Cursor fx:constant="CROSSHAIR" />
                      </cursor>
