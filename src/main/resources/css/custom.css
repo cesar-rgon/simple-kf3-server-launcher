@@ -24,11 +24,11 @@
 }
 
 
-#menuHome:hover, #menuWebAdmin:hover, #menuInstall:hover, #menuConsole:hover, #menuHelp:hover, #menuMaps:hover, #run:hover, #join:hover, #setupMaps:hover, #setupGameTypes:hover, #setupDifficulties:hover, #setupLengths:hover {
+#menuHome:hover, #menuWebAdmin:hover, #menuInstall:hover, #menuSetup:hover, #menuConsole:hover, #menuHelp:hover, #menuMaps:hover, #run:hover, #join:hover, #setupMapsButton:hover, #setupGameTypesButton:hover, #setupDifficultiesButton:hover, #setupLengthsButton:hover {
     -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
 }
 
-#menuHome:disabled, #menuWebAdmin:disabled, #menuInstall:disabled, #menuConsole:disabled, #menuHelp:disabled, #menuMaps:disabled, #run:disabled, #join:disabled, #setupMaps:disabled, #setupGameTypes:disabled, #setupDifficulties:disabled, #setupLengths:disabled {
+#menuHome:disabled, #menuWebAdmin:disabled, #menuInstall:disabled, #menuSetup:disabled, #menuConsole:disabled, #menuHelp:disabled, #menuMaps:disabled, #run:disabled, #join:disabled, #setupMapsButton:disabled, #setupGameTypesButton:disabled, #setupDifficultiesButton:disabled, #setupLengthsButton:disabled {
     -fx-effect: dropshadow(three-pass-box, red, 20, 0, 0, 0);
 }
 

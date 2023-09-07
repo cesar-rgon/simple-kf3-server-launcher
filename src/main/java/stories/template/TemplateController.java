@@ -27,6 +27,7 @@ public class TemplateController implements Initializable {
     @FXML private Button menuWebAdmin;
     @FXML private Button menuMaps;
     @FXML private Button menuInstall;
+    @FXML private Button menuSetup;
     @FXML private Button menuHelp;
 
     public TemplateController() {
@@ -44,6 +45,7 @@ public class TemplateController implements Initializable {
         menuWebAdmin.setDisable(false);
         menuMaps.setDisable(false);
         menuInstall.setDisable(false);
+        menuSetup.setDisable(false);
         menuHelp.setDisable(false);
         loadContent("/views/home.fxml");
     }
@@ -54,6 +56,7 @@ public class TemplateController implements Initializable {
         menuHome.setDisable(false);
         menuMaps.setDisable(false);
         menuInstall.setDisable(false);
+        menuSetup.setDisable(false);
         menuHelp.setDisable(false);
         loadContent("/views/webadmin.fxml");
     }
@@ -64,6 +67,7 @@ public class TemplateController implements Initializable {
         menuHome.setDisable(false);
         menuWebAdmin.setDisable(false);
         menuInstall.setDisable(false);
+        menuSetup.setDisable(false);
         menuHelp.setDisable(false);
         loadContent("/views/maps.fxml");
     }
@@ -71,6 +75,7 @@ public class TemplateController implements Initializable {
     @FXML
     private void menuInstallonMouseClicked() {
         menuInstall.setDisable(true);
+        menuSetup.setDisable(false);
         menuMaps.setDisable(false);
         menuHome.setDisable(false);
         menuWebAdmin.setDisable(false);
@@ -79,9 +84,21 @@ public class TemplateController implements Initializable {
     }
 
     @FXML
+    private void menuSetupOnMouseClicked() {
+        menuSetup.setDisable(true);
+        menuInstall.setDisable(false);
+        menuMaps.setDisable(false);
+        menuHome.setDisable(false);
+        menuWebAdmin.setDisable(false);
+        menuHelp.setDisable(false);
+        loadContent("/views/setup.fxml");
+    }
+
+    @FXML
     private void menuHelponMouseClicked() {
         menuHelp.setDisable(true);
         menuInstall.setDisable(false);
+        menuSetup.setDisable(false);
         menuMaps.setDisable(false);
         menuHome.setDisable(false);
         menuWebAdmin.setDisable(false);

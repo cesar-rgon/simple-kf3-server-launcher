@@ -7,19 +7,19 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.FlowPane?>
-<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.install.InstallController">
+<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.setup.SetupController">
     <content>
-        <VBox fx:id="installVbox" alignment="CENTER" minHeight="950.0" onMouseClicked="#installVboxOnMouseClicked" style="-fx-background-color: black;">
+        <VBox fx:id="setupVbox" alignment="CENTER" minHeight="950.0" onMouseClicked="#setupVboxOnMouseClicked" style="-fx-background-color: black;">
             <children>
                 <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
                         <Accordion fx:id="accordion" layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
-                                <TitledPane fx:id="steam" animated="true" minHeight="679.0" minWidth="920.0" text="Install on Steam Platform">
+                                <TitledPane fx:id="setupGameTypes" animated="true" minHeight="679.0" minWidth="920.0" text="Setup Game Types">
                                     <graphic>
                                         <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/steam.png" />
+                                                <Image url="@../images/setup.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -38,11 +38,33 @@
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="epic" animated="true" minHeight="679.0" minWidth="920.0" text="Install on Epic Games Platform">
+                                <TitledPane fx:id="setupDifficulties" animated="true" minHeight="679.0" minWidth="920.0" text="Setup Difficulties">
                                     <graphic>
                                         <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/epic-games.png" />
+                                                <Image url="@../images/setup.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor></FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+
+                                <TitledPane fx:id="setupLengths" animated="true" minHeight="679.0" minWidth="920.0" text="Setup Lengths">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/setup.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />

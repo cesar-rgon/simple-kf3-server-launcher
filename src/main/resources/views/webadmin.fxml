@@ -1,20 +1,21 @@
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+
+<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.webadmin.WebAdminController">
     <content>
-        <VBox alignment="CENTER" fillWidth="false" prefHeight="950" style="-fx-background-color: black;">
+        <VBox alignment="CENTER" fillWidth="false" minHeight="700.0" minWidth="950.0" style="-fx-background-color: black;">
             <children>
-                <AnchorPane>
+                <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
-                        <ImageView fitHeight="256.0" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
-                            <image>
-                                <Image url="@../images/work-in-progress.png" />
-                            </image>
-                        </ImageView>
+                          <WebView fx:id="webAdmin" maxHeight="-1.0" maxWidth="-1.0" minHeight="700.0" minWidth="950.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                     </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
                 </AnchorPane>
             </children>
         </VBox>

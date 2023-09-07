@@ -14,7 +14,6 @@ import services.PropertyService;
 import services.PropertyServiceImpl;
 import start.MainApplication;
 import utils.Utils;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,6 +32,8 @@ public class HomeController implements Initializable {
     @FXML private Label selectedMapLabel;
     @FXML private Button setupMaps;
     @FXML private Button setupGameTypes;
+    @FXML private Button setupDifficulties;
+    @FXML private Button setupLengths;
 
     public HomeController() {
         super();
@@ -53,6 +54,8 @@ public class HomeController implements Initializable {
             Utils.loadTooltip(serverPasswordLabel, "Server password text");
             Utils.loadTooltip(setupMaps, "Manage maps text");
             Utils.loadTooltip(setupGameTypes, "Manage game types text");
+            Utils.loadTooltip(setupDifficulties, "Manage difficulties text");
+            Utils.loadTooltip(setupLengths, "Manage lengths text");
 
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
@@ -75,6 +78,30 @@ public class HomeController implements Initializable {
         Button menuMaps = (Button) MainApplication.getTemplate().getNamespace().get("menuMaps");
         Event.fireEvent(menuMaps, new MouseEvent(MouseEvent.MOUSE_CLICKED,
                 menuMaps.getLayoutX(), menuMaps.getLayoutY(), menuMaps.getLayoutX(), menuMaps.getLayoutY(), MouseButton.PRIMARY, 1,
+                true, true, true, true, true, true, true, true, true, true, null));
+    }
+
+    @FXML
+    private void setupGameTypesOnMouseClicked() {
+        Button menuSetup = (Button) MainApplication.getTemplate().getNamespace().get("menuSetup");
+        Event.fireEvent(menuSetup, new MouseEvent(MouseEvent.MOUSE_CLICKED,
+                menuSetup.getLayoutX(), menuSetup.getLayoutY(), menuSetup.getLayoutX(), menuSetup.getLayoutY(), MouseButton.PRIMARY, 1,
+                true, true, true, true, true, true, true, true, true, true, null));
+    }
+
+    @FXML
+    private void setupDifficultiesOnMouseClicked() {
+        Button menuSetup = (Button) MainApplication.getTemplate().getNamespace().get("menuSetup");
+        Event.fireEvent(menuSetup, new MouseEvent(MouseEvent.MOUSE_CLICKED,
+                menuSetup.getLayoutX(), menuSetup.getLayoutY(), menuSetup.getLayoutX(), menuSetup.getLayoutY(), MouseButton.PRIMARY, 1,
+                true, true, true, true, true, true, true, true, true, true, null));
+    }
+
+    @FXML
+    private void setupLengthsOnMouseClicked() {
+        Button menuSetup = (Button) MainApplication.getTemplate().getNamespace().get("menuSetup");
+        Event.fireEvent(menuSetup, new MouseEvent(MouseEvent.MOUSE_CLICKED,
+                menuSetup.getLayoutX(), menuSetup.getLayoutY(), menuSetup.getLayoutX(), menuSetup.getLayoutY(), MouseButton.PRIMARY, 1,
                 true, true, true, true, true, true, true, true, true, true, null));
     }
 

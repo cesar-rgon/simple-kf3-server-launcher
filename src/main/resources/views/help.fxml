@@ -3,20 +3,165 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.FlowPane?>
+<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.help.HelpController">
     <content>
-        <VBox alignment="CENTER" fillWidth="false" prefHeight="950" style="-fx-background-color: black;">
+        <VBox fx:id="helpVbox" alignment="CENTER" minHeight="950.0" onMouseClicked="#helpVboxOnMouseClicked" style="-fx-background-color: black;">
             <children>
-                <AnchorPane>
+                <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
-                        <ImageView fitHeight="256.0" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
-                            <image>
-                                <Image url="@../images/work-in-progress.png" />
-                            </image>
-                        </ImageView>
+                        <Accordion fx:id="accordion" layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                            <panes>
+                                <TitledPane fx:id="github" animated="true" minHeight="679.0" minWidth="920.0" text="Github Project">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/help.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor>
+                                        </FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+
+                                <TitledPane fx:id="documentation" animated="true" minHeight="679.0" minWidth="920.0" text="Documentation">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/help.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor></FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+
+                                <TitledPane fx:id="releases" animated="true" minHeight="679.0" minWidth="920.0" text="Published Releases">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/help.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor></FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+
+                                <TitledPane fx:id="updates" animated="true" minHeight="679.0" minWidth="920.0" text="Check for Updates">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/help.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor></FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+
+                                <TitledPane fx:id="about" animated="true" minHeight="679.0" minWidth="920.0" text="About">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/help.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor></FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+
+                                <TitledPane fx:id="donation" animated="true" minHeight="679.0" minWidth="920.0" text="Donation">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/help.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor></FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+                            </panes>
+                            <cursor>
+                                <Cursor fx:constant="CROSSHAIR" />
+                            </cursor>
+                        </Accordion>
+
                     </children>
+                    <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                    </cursor>
                 </AnchorPane>
             </children>
+            <cursor>
+                <Cursor fx:constant="CROSSHAIR" />
+            </cursor>
         </VBox>
     </content>
 </fx:root>

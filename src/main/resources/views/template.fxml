@@ -74,6 +74,22 @@
                     </cursor>
                 </Button>
 
+                <Button fx:id="menuSetup" onMouseClicked="#menuSetupOnMouseClicked">
+                    <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/setup.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="5.0" />
+                    </VBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+
                 <Button fx:id="menuHelp" onMouseClicked="#menuHelponMouseClicked">
                     <graphic>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">

@@ -12,7 +12,7 @@
             <children>
                 <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
-                        <Accordion fx:id="accordion" layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <Accordion fx:id="accordion" layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
                                 <TitledPane fx:id="steam" animated="true" minHeight="679.0" minWidth="920.0" text="Steam Maps">
                                 <graphic>
@@ -67,9 +67,6 @@
                <cursor>
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                 </AnchorPane>
             </children>
          <cursor>
