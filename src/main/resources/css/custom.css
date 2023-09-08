@@ -20,7 +20,7 @@
 }
 
 .titled-pane > .content {
-    -fx-background-color: rgba(91, 91, 91, 0.7);;
+    -fx-background-color: rgba(91, 91, 91, 0.7);
 }
 
 
@@ -53,4 +53,11 @@
     -fx-font-style: italic;
     -fx-font-weight: bold;
     -fx-opacity:0.9;
+}
+
+.gridPane {
+    -fx-background-color: rgba(91, 91, 91, 0.7);
+    -fx-border-color: #e8e8e8;
+    -fx-border-width:3px;
+    -fx-border-radius: 10px;
 }

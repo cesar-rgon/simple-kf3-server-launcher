@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,6 +35,7 @@ public class HomeController implements Initializable {
     @FXML private Button setupGameTypes;
     @FXML private Button setupDifficulties;
     @FXML private Button setupLengths;
+    @FXML private GridPane gridPane;
 
     public HomeController() {
         super();
@@ -44,6 +46,7 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             Utils.setNodeBackground(homeVbox);
+            gridPane.getStyleClass().add("gridPane");
             accordion.setExpandedPane(basic);
 
             Utils.loadTooltip(selectedMapLabel, "Selected map text");
