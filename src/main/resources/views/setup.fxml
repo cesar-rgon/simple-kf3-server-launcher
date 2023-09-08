@@ -1,21 +1,19 @@
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Accordion?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.setup.SetupController">
     <content>
-        <VBox fx:id="setupVbox" alignment="CENTER" minHeight="950.0" onMouseClicked="#setupVboxOnMouseClicked" style="-fx-background-color: black;">
+        <VBox fx:id="setupVbox" alignment="CENTER" minHeight="700.0" onMouseClicked="#setupVboxOnMouseClicked" style="-fx-background-color: black;">
             <children>
-                <AnchorPane VBox.vgrow="ALWAYS">
+                <AnchorPane minHeight="700.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Accordion fx:id="accordion" layoutX="10.0" layoutY="38.0" minHeight="60.0" minWidth="900.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0">
                             <panes>
-                                <TitledPane fx:id="setupGameTypes" animated="true" minHeight="679.0" minWidth="920.0" text="Setup Game Types">
+                                <TitledPane fx:id="setupGameTypes" animated="true" text="Setup Game Types">
                                     <graphic>
                                         <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
@@ -27,7 +25,7 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane>
+                                        <FlowPane minHeight="200.0">
                                             <cursor>
                                                 <Cursor fx:constant="DEFAULT" />
                                             </cursor>
@@ -38,7 +36,7 @@
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="setupDifficulties" animated="true" minHeight="679.0" minWidth="920.0" text="Setup Difficulties">
+                                <TitledPane fx:id="setupDifficulties" animated="true" text="Setup Difficulties">
                                     <graphic>
                                         <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
@@ -50,7 +48,7 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane>
+                                        <FlowPane minHeight="200.0">
                                             <cursor>
                                                 <Cursor fx:constant="DEFAULT" />
                                             </cursor></FlowPane>
@@ -60,7 +58,7 @@
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="setupLengths" animated="true" minHeight="679.0" minWidth="920.0" text="Setup Lengths">
+                                <TitledPane fx:id="setupLengths" animated="true" text="Setup Lengths">
                                     <graphic>
                                         <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
@@ -72,7 +70,7 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane>
+                                        <FlowPane minHeight="200.0">
                                             <cursor>
                                                 <Cursor fx:constant="DEFAULT" />
                                             </cursor></FlowPane>
