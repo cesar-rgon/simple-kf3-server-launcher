@@ -24,7 +24,7 @@
 }
 
 
-#menuHome:hover, #menuWebAdmin:hover, #menuInstall:hover, #menuSetup:hover, #menuConsole:hover, #menuHelp:hover, #menuMaps:hover, #run:hover, #join:hover, #setupMapsButton:hover, #setupGameTypesButton:hover, #setupDifficultiesButton:hover, #setupLengthsButton:hover {
+.menu:hover, #menuHome:hover, .menu-item:hover .label, #menuWebAdmin:hover, #menuInstall:hover, #menuSetup:hover, #menuConsole:hover, #menuHelp:hover, #menuMaps:hover, #run:hover, #join:hover, #setupProfilesButton:hover, #setupLengths:hover, #setupMapsButton:hover, #setupGameTypesButton:hover, #setupDifficultiesButton:hover, #setupLengthsButton:hover {
     -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
 }
 
@@ -60,4 +60,21 @@
     -fx-border-color: #e8e8e8;
     -fx-border-width:3px;
     -fx-border-radius: 10px;
+}
+
+.menu-bar, .menu {
+    -fx-background-color: transparent;
+}
+
+.menu-item {
+    -fx-background-color: #575757;
+    -fx-cursor: hand;
+}
+
+.slider .track {
+    -fx-control-inner-background: #575757;
+}
+
+.slider .thumb{
+    -fx-background-color: #575757;
 }

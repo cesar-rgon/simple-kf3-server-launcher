@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -11,18 +12,88 @@
             <children>
                 <AnchorPane minHeight="700.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
-                                <TitledPane fx:id="steam" animated="true" text="Steam Maps">
+                                <TitledPane fx:id="steam" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0" text="Steam Maps">
                                 <graphic>
-                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                        <image>
-                                            <Image url="@../images/steam.png" />
-                                        </image>
-                                        <cursor>
-                                            <Cursor fx:constant="HAND" />
-                                        </cursor>
-                                    </ImageView>
+                                    <HBox spacing="50.0">
+                                        <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="302.0">
+                                            <menus>
+                                                <Menu fx:id="steamAddMenu" mnemonicParsing="false">
+                                                    <graphic>
+                                                        <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <image>
+                                                                <Image url="@../images/add.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                        </ImageView>
+                                                    </graphic>
+                                                    <items>
+                                                        <MenuItem fx:id="steamIdUrl" mnemonicParsing="false" text="By ID/URL" />
+                                                        <MenuItem fx:id="steamWorkshop" mnemonicParsing="false" text="By Steam's Workshop" />
+                                                    </items>
+                                                </Menu>
+                                                <Menu fx:id="steamEditMenu" mnemonicParsing="false">
+                                                    <graphic>
+                                                        <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <image>
+                                                                <Image url="@../images/edit.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Menu>
+                                                <Menu fx:id="steamDeleteMenu" mnemonicParsing="false">
+                                                    <graphic>
+                                                        <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <image>
+                                                                <Image url="@../images/delete.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Menu>
+                                                <Menu fx:id="steamImportMenu" mnemonicParsing="false">
+                                                    <graphic>
+                                                        <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <image>
+                                                                <Image url="@../images/import.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Menu>
+                                                <Menu fx:id="steamOrderMenu" mnemonicParsing="false">
+                                                    <graphic>
+                                                        <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <image>
+                                                                <Image url="@../images/order.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Menu>
+                                            </menus>
+                                        </MenuBar>
+                                         <Slider blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" prefHeight="40.0" prefWidth="150.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0">
+                                            <cursor>
+                                               <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <HBox.margin>
+                                               <Insets top="10.0" />
+                                            </HBox.margin>
+                                         </Slider>
+                                    </HBox>
                                 </graphic>
                                 <content>
                                     <FlowPane minHeight="200.0">
@@ -36,16 +107,86 @@
                            </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="epic" animated="true" text="Epic Games Maps">
+                                <TitledPane fx:id="epic" animated="true" contentDisplay="RIGHT" graphicTextGap="19.0" text="Epic Games Maps">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/epic-games.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
+                                        <HBox spacing="50.0">
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="302.0">
+                                                <menus>
+                                                    <Menu fx:id="epicAddMenu" mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/add.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                        <items>
+                                                            <MenuItem fx:id="epicIdUrl" mnemonicParsing="false" text="By ID/URL" />
+                                                            <MenuItem fx:id="epicWorkshop" mnemonicParsing="false" text="By Steam's Workshop" />
+                                                        </items>
+                                                    </Menu>
+                                                    <Menu fx:id="epicEditMenu" mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/edit.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu fx:id="epicDeleteMenu" mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/delete.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu fx:id="epicImportMenu" mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/import.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu fx:id="epicOrderMenu" mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/order.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                </menus>
+                                            </MenuBar>
+                                            <Slider blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" prefHeight="40.0" prefWidth="150.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                                <HBox.margin>
+                                                    <Insets top="10.0" />
+                                                </HBox.margin>
+                                            </Slider>
+                                        </HBox>
                                     </graphic>
                                     <content>
                                         <FlowPane minHeight="200.0">
