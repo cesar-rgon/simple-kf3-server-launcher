@@ -1,9 +1,11 @@
 package stories.home;
 
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -11,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
 import start.MainApplication;
@@ -35,7 +38,8 @@ public class HomeController implements Initializable {
     @FXML private Button setupGameTypes;
     @FXML private Button setupDifficulties;
     @FXML private Button setupLengths;
-    @FXML private GridPane gridPane;
+    @FXML private GridPane logoGridPane;
+    @FXML private GridPane combosGridPane;
 
     public HomeController() {
         super();
@@ -46,7 +50,8 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             Utils.setNodeBackground(homeVbox);
-            gridPane.getStyleClass().add("gridPane");
+            logoGridPane.getStyleClass().add("gridPane");
+            combosGridPane.getStyleClass().add("gridPane");
             accordion.setExpandedPane(basic);
 
             Utils.loadTooltip(selectedMapLabel, "Selected map text");
@@ -62,8 +67,8 @@ public class HomeController implements Initializable {
 
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
-            if (playMusicOnStartup && !MainApplication.getMusicPlayer().isAutoPlay()) {
-                MainApplication.getMusicPlayer().setAutoPlay(true);
+            if (playMusicOnStartup && !Session.getInstance().getMusicPlayer().isAutoPlay()) {
+                Session.getInstance().getMusicPlayer().setAutoPlay(true);
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -73,20 +78,33 @@ public class HomeController implements Initializable {
 
     @FXML
     private void homeVboxOnMouseClicked() throws Exception {
-        Utils.setNextNodeBackground(homeVbox);
+        if (!combosGridPane.isHover() && !logoGridPane.isHover()) {
+            Utils.setNextNodeBackground(homeVbox);
+        }
     }
 
     @FXML
     private void setupMapsOnMouseClicked() {
-        Button menuMaps = (Button) MainApplication.getTemplate().getNamespace().get("menuMaps");
+        Button menuMaps = (Button) Session.getInstance().getTemplate().getNamespace().get("menuMaps");
         Event.fireEvent(menuMaps, new MouseEvent(MouseEvent.MOUSE_CLICKED,
                 menuMaps.getLayoutX(), menuMaps.getLayoutY(), menuMaps.getLayoutX(), menuMaps.getLayoutY(), MouseButton.PRIMARY, 1,
                 true, true, true, true, true, true, true, true, true, true, null));
     }
 
+
+    @FXML
+    private void setupProfilesOnMouseClicked() {
+        Session.getInstance().setSetupType("profiles");
+        Button menuSetup = (Button) Session.getInstance().getTemplate().getNamespace().get("menuSetup");
+        Event.fireEvent(menuSetup, new MouseEvent(MouseEvent.MOUSE_CLICKED,
+                menuSetup.getLayoutX(), menuSetup.getLayoutY(), menuSetup.getLayoutX(), menuSetup.getLayoutY(), MouseButton.PRIMARY, 1,
+                true, true, true, true, true, true, true, true, true, true, null));
+    }
+
     @FXML
     private void setupGameTypesOnMouseClicked() {
-        Button menuSetup = (Button) MainApplication.getTemplate().getNamespace().get("menuSetup");
+        Session.getInstance().setSetupType("gameTypes");
+        Button menuSetup = (Button) Session.getInstance().getTemplate().getNamespace().get("menuSetup");
         Event.fireEvent(menuSetup, new MouseEvent(MouseEvent.MOUSE_CLICKED,
                 menuSetup.getLayoutX(), menuSetup.getLayoutY(), menuSetup.getLayoutX(), menuSetup.getLayoutY(), MouseButton.PRIMARY, 1,
                 true, true, true, true, true, true, true, true, true, true, null));
@@ -94,7 +112,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private void setupDifficultiesOnMouseClicked() {
-        Button menuSetup = (Button) MainApplication.getTemplate().getNamespace().get("menuSetup");
+        Session.getInstance().setSetupType("difficulties");
+        Button menuSetup = (Button) Session.getInstance().getTemplate().getNamespace().get("menuSetup");
         Event.fireEvent(menuSetup, new MouseEvent(MouseEvent.MOUSE_CLICKED,
                 menuSetup.getLayoutX(), menuSetup.getLayoutY(), menuSetup.getLayoutX(), menuSetup.getLayoutY(), MouseButton.PRIMARY, 1,
                 true, true, true, true, true, true, true, true, true, true, null));
@@ -102,7 +121,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private void setupLengthsOnMouseClicked() {
-        Button menuSetup = (Button) MainApplication.getTemplate().getNamespace().get("menuSetup");
+        Session.getInstance().setSetupType("lengths");
+        Button menuSetup = (Button) Session.getInstance().getTemplate().getNamespace().get("menuSetup");
         Event.fireEvent(menuSetup, new MouseEvent(MouseEvent.MOUSE_CLICKED,
                 menuSetup.getLayoutX(), menuSetup.getLayoutY(), menuSetup.getLayoutX(), menuSetup.getLayoutY(), MouseButton.PRIMARY, 1,
                 true, true, true, true, true, true, true, true, true, true, null));
@@ -112,13 +132,13 @@ public class HomeController implements Initializable {
         try {
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playVideoOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playVideoOnStartup"));
-            if (playVideoOnStartup && MainApplication.getVideoPlayer().isAutoPlay()) {
-                MainApplication.getVideoPlayer().dispose();
+            if (playVideoOnStartup && Session.getInstance().getVideoPlayer().isAutoPlay()) {
+                Session.getInstance().getVideoPlayer().dispose();
             }
-            VBox templateContent = (VBox)((ScrollPane) MainApplication.getTemplate().getNamespace().get("content")).getContent();
+            VBox templateContent = (VBox)((ScrollPane) Session.getInstance().getTemplate().getNamespace().get("content")).getContent();
             templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource(fxmlPath));
-            content.setRoot(MainApplication.getTemplate().getNamespace().get("content"));
+            content.setRoot(Session.getInstance().getTemplate().getNamespace().get("content"));
             content.load();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);

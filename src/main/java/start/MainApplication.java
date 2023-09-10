@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
 import utils.Utils;
@@ -18,10 +19,6 @@ import utils.Utils;
 public class MainApplication extends Application {
 
     private static final Logger logger = LogManager.getLogger(MainApplication.class);
-    private static FXMLLoader template;
-    private static Stage primaryStage;
-    private static MediaPlayer musicPlayer;
-    private static MediaPlayer videoPlayer;
 
     public MainApplication() {
         super();
@@ -30,14 +27,15 @@ public class MainApplication extends Application {
 
             boolean playVideoOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playVideoOnStartup"));
             if (playVideoOnStartup) {
-                videoPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("videos/fp.mp4").toExternalForm()));
+                Session.getInstance().setVideoPlayer(new MediaPlayer(new Media(getClass().getClassLoader().getResource("videos/fp.mp4").toExternalForm())));
             }
 
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
             if (playMusicOnStartup) {
-                musicPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("music/kf3-theme.mp4").toExternalForm()));
+                MediaPlayer musicPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("music/kf3-theme.mp4").toExternalForm()));
                 musicPlayer.setOnEndOfMedia(this::disposeMediaPlayer);
                 musicPlayer.setOnError(this::disposeMediaPlayer);
+                Session.getInstance().setMusicPlayer(musicPlayer);
             }
 
         } catch (Exception e) {
@@ -49,7 +47,7 @@ public class MainApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Font.loadFont(getClass().getClassLoader().getResource("fonts/KillingFont.otf").toExternalForm(), 13);
-        template = new FXMLLoader(getClass().getResource("/views/template.fxml"));
+        FXMLLoader template = new FXMLLoader(getClass().getResource("/views/template.fxml"));
         Scene scene = new Scene(template.load());
         FXMLLoader intro = new FXMLLoader(getClass().getResource("/views/intro.fxml"));
         intro.setRoot(template.getNamespace().get("content"));
@@ -70,7 +68,8 @@ public class MainApplication extends Application {
         primaryStage.setMaximized(applicationMaximized);
         primaryStage.setScene(scene);
         primaryStage.show();
-        MainApplication.primaryStage = primaryStage;
+        Session.getInstance().setTemplate(template);
+        Session.getInstance().setPrimaryStage(primaryStage);
 
         primaryStage.maximizedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -90,26 +89,14 @@ public class MainApplication extends Application {
     @Override
     public void stop() throws Exception {
         PropertyService propertyService = new PropertyServiceImpl();
-        propertyService.setProperty("properties/config.properties", "prop.config.applicationResolution.lastModified", primaryStage.getWidth() + "x" + primaryStage.getHeight());
+        propertyService.setProperty("properties/config.properties", "prop.config.applicationResolution.lastModified", Session.getInstance().getPrimaryStage().getWidth() + "x" + Session.getInstance().getPrimaryStage().getHeight());
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-
-    public static FXMLLoader getTemplate() {
-        return template;
-    }
-
-    public static MediaPlayer getMusicPlayer() {
-        return musicPlayer;
-    }
-
     private void disposeMediaPlayer() {
-        musicPlayer.dispose();
+        Session.getInstance().getMusicPlayer().dispose();
     }
 
-    public static MediaPlayer getVideoPlayer() {
-        return videoPlayer;
-    }
 }

@@ -10,6 +10,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
 import start.MainApplication;
@@ -37,10 +38,10 @@ public class IntroController implements Initializable {
                 String[] actualResolution = propertyService.getProperty("properties/config.properties", "prop.config.applicationResolution.lastModified").split("x");
                 double actualResolutionWidth = Double.parseDouble(actualResolution[0]);
                 introVideo.setFitWidth(actualResolutionWidth);
-                introVideo.setMediaPlayer(MainApplication.getVideoPlayer());
-                MainApplication.getVideoPlayer().setOnEndOfMedia(this::loadHomeContent);
-                MainApplication.getVideoPlayer().setOnError(this::loadHomeContent);
-                MainApplication.getVideoPlayer().setAutoPlay(true);
+                introVideo.setMediaPlayer(Session.getInstance().getVideoPlayer());
+                Session.getInstance().getVideoPlayer().setOnEndOfMedia(this::loadHomeContent);
+                Session.getInstance().getVideoPlayer().setOnError(this::loadHomeContent);
+                Session.getInstance().getVideoPlayer().setAutoPlay(true);
             } else {
                 loadHomeContent();
             }
@@ -52,11 +53,11 @@ public class IntroController implements Initializable {
 
     private void loadHomeContent() {
         try {
-            VBox templateContent = (VBox)((ScrollPane)MainApplication.getTemplate().getNamespace().get("content")).getContent();
-            ((Button) MainApplication.getTemplate().getNamespace().get("menuHome")).setDisable(true);
+            VBox templateContent = (VBox)((ScrollPane)Session.getInstance().getTemplate().getNamespace().get("content")).getContent();
+            ((Button) Session.getInstance().getTemplate().getNamespace().get("menuHome")).setDisable(true);
             templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource("/views/home.fxml"));
-            content.setRoot(MainApplication.getTemplate().getNamespace().get("content"));
+            content.setRoot(Session.getInstance().getTemplate().getNamespace().get("content"));
             content.load();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -66,8 +67,8 @@ public class IntroController implements Initializable {
 
     @FXML
     private void onMouseClickedStopPlaying() {
-        MainApplication.getVideoPlayer().stop();
-        MainApplication.getVideoPlayer().dispose();
+        Session.getInstance().getVideoPlayer().stop();
+        Session.getInstance().getVideoPlayer().dispose();
         loadHomeContent();
     }
 }

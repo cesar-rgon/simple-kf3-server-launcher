@@ -13,6 +13,29 @@
                     <children>
                         <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0">
                             <panes>
+                                <TitledPane fx:id="setupProfiles" animated="true" text="Setup Profiles">
+                                    <graphic>
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/setup.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ImageView>
+                                    </graphic>
+                                    <content>
+                                        <FlowPane minHeight="200.0">
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor>
+                                        </FlowPane>
+                                    </content>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </TitledPane>
+
                                 <TitledPane fx:id="setupGameTypes" animated="true" text="Setup Game Types">
                                     <graphic>
                                         <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">

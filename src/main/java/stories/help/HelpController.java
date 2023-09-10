@@ -7,6 +7,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
 import start.MainApplication;
@@ -32,8 +33,8 @@ public class HelpController implements Initializable {
 
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
-            if (playMusicOnStartup && !MainApplication.getMusicPlayer().isAutoPlay()) {
-                MainApplication.getMusicPlayer().setAutoPlay(true);
+            if (playMusicOnStartup && !Session.getInstance().getMusicPlayer().isAutoPlay()) {
+                Session.getInstance().getMusicPlayer().setAutoPlay(true);
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);

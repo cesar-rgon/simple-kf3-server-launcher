@@ -11,6 +11,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
 import start.MainApplication;
@@ -109,13 +110,13 @@ public class TemplateController implements Initializable {
         try {
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playVideoOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playVideoOnStartup"));
-            if (playVideoOnStartup && MainApplication.getVideoPlayer().isAutoPlay()) {
-                MainApplication.getVideoPlayer().dispose();
+            if (playVideoOnStartup && Session.getInstance().getVideoPlayer().isAutoPlay()) {
+                Session.getInstance().getVideoPlayer().dispose();
             }
-            VBox templateContent = (VBox)((ScrollPane) MainApplication.getTemplate().getNamespace().get("content")).getContent();
+            VBox templateContent = (VBox)((ScrollPane) Session.getInstance().getTemplate().getNamespace().get("content")).getContent();
             templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource(fxmlPath));
-            content.setRoot(MainApplication.getTemplate().getNamespace().get("content"));
+            content.setRoot(Session.getInstance().getTemplate().getNamespace().get("content"));
             content.load();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
