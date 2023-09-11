@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,12 +24,20 @@ public class MapsController implements Initializable {
     @FXML private Accordion accordion;
     @FXML private TitledPane steam;
     @FXML private VBox mapsVbox;
+    @FXML private FlowPane steamCustomMaps;
+    @FXML private FlowPane steamOfficialMaps;
+    @FXML private FlowPane epicCustomMaps;
+    @FXML private FlowPane epicOfficialMaps;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             Utils.setNodeBackground(mapsVbox);
             accordion.setExpandedPane(steam);
+            steamCustomMaps.getStyleClass().add("flowPane");
+            steamOfficialMaps.getStyleClass().add("flowPane");
+            epicCustomMaps.getStyleClass().add("flowPane");
+            epicOfficialMaps.getStyleClass().add("flowPane");
 
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));

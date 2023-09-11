@@ -5,6 +5,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.maps.MapsController">
     <content>
@@ -82,6 +84,13 @@
                                                             </cursor>
                                                         </ImageView>
                                                     </graphic>
+                                                    <items>
+                                                        <MenuItem fx:id="orderSteamMapsByAlias" mnemonicParsing="false" text="Order maps by alias" />
+                                                        <MenuItem fx:id="orderSteamMapsByName" mnemonicParsing="false" text="Order maps by name" />
+                                                        <MenuItem fx:id="orderSteamMapsByReleaseDate" mnemonicParsing="false" text="Order maps by release date" />
+                                                        <MenuItem fx:id="orderSteamMapsByImportedDate" mnemonicParsing="false" text="Order maps by imported date" />
+                                                        <MenuItem fx:id="orderSteamMapsByDownload" mnemonicParsing="false" text="Order maps by download" />
+                                                    </items>
                                                 </Menu>
                                             </menus>
                                         </MenuBar>
@@ -96,11 +105,38 @@
                                     </HBox>
                                 </graphic>
                                 <content>
-                                    <FlowPane minHeight="200.0">
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                                    </FlowPane>
+                                    <VBox spacing="10.0">
+                                        <Label contentDisplay="RIGHT" graphicTextGap="10.0" prefHeight="35.0" prefWidth="200.0" text="Custom Maps">
+                                            <graphic>
+                                                <StackPane>
+                                                    <Circle fill="#57965c" radius="14" />
+                                                    <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="6" textAlignment="CENTER" wrappingWidth="23.0" />
+                                                </StackPane>
+                                            </graphic>
+                                        </Label>
+                                        <FlowPane fx:id="steamCustomMaps" minHeight="200.0">
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor>
+                                    <VBox.margin>
+                                       <Insets bottom="20.0" />
+                                    </VBox.margin>
+                                        </FlowPane>
+                                        <Label contentDisplay="RIGHT" graphicTextGap="10.0" prefHeight="30.0" prefWidth="200.0" text="Official Maps">
+                                            <graphic>
+                                                <StackPane>
+                                                    <Circle fill="#c94f4f" radius="14" />
+                                                    <Text fx:id="steamOfficialMapsCounter" fill="#e8e8e8" text="20" textAlignment="CENTER" wrappingWidth="23.0" />
+                                                </StackPane>
+                                            </graphic>
+                                        </Label>
+
+                                        <FlowPane fx:id="steamOfficialMaps" minHeight="200.0">
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor>
+                                        </FlowPane>
+                                    </VBox>
                                 </content>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -175,6 +211,13 @@
                                                                 </cursor>
                                                             </ImageView>
                                                         </graphic>
+                                                        <items>
+                                                            <MenuItem fx:id="orderEpicMapsByAlias" mnemonicParsing="false" text="Order maps by alias" />
+                                                            <MenuItem fx:id="orderEpicMapsByName" mnemonicParsing="false" text="Order maps by name" />
+                                                            <MenuItem fx:id="orderEpicMapsByReleaseDate" mnemonicParsing="false" text="Order maps by release date" />
+                                                            <MenuItem fx:id="orderEpicMapsByImportedDate" mnemonicParsing="false" text="Order maps by imported date" />
+                                                            <MenuItem fx:id="orderEpicMapsByDownload" mnemonicParsing="false" text="Order maps by download" />
+                                                        </items>
                                                     </Menu>
                                                 </menus>
                                             </MenuBar>
@@ -189,10 +232,41 @@
                                         </HBox>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor></FlowPane>
+                                        <VBox spacing="10.0">
+                                            <Label contentDisplay="RIGHT" graphicTextGap="10.0" prefHeight="35.0" prefWidth="200.0" text="Custom Maps">
+                                                <graphic>
+                                                    <StackPane>
+                                                        <Circle fill="#57965c" radius="14" />
+                                                        <Text fx:id="epicCustomMapsCounter" fill="#e8e8e8" text="6" textAlignment="CENTER" wrappingWidth="23.0" />
+                                                    </StackPane>
+                                                </graphic>
+                                            </Label>
+                                            <FlowPane fx:id="epicCustomMaps" minHeight="200.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="DEFAULT" />
+                                                </cursor>
+                                                <VBox.margin>
+                                                    <Insets bottom="20.0" />
+                                                </VBox.margin>
+                                            </FlowPane>
+                                            <Label contentDisplay="RIGHT" graphicTextGap="10.0" prefHeight="30.0" prefWidth="200.0" text="Official Maps">
+                                                <graphic>
+                                                    <StackPane>
+                                                        <Circle fill="#c94f4f" radius="14" />
+                                                        <Text fx:id="epicOfficialMapsCounter" fill="#e8e8e8" text="20" textAlignment="CENTER" wrappingWidth="23.0" />
+                                                    </StackPane>
+                                                </graphic>
+                                            </Label>
+
+                                            <FlowPane fx:id="epicOfficialMaps" minHeight="200.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="DEFAULT" />
+                                                </cursor>
+                                            </FlowPane>
+                                            <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                            </VBox.margin>
+                                        </VBox>
                                     </content>
                            <cursor>
                               <Cursor fx:constant="HAND" />
