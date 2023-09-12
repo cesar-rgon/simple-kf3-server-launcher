@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -11,92 +12,355 @@
             <children>
                 <AnchorPane minHeight="700.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
-                                <TitledPane fx:id="setupProfiles" animated="true" text="Setup Profiles">
+                                <TitledPane fx:id="setupProfiles" animated="true">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/setup.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
+                                        <HBox alignment="CENTER" spacing="50.0">
+                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                <image>
+                                                    <Image url="@../images/setup.png" />
+                                                </image>
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                            </ImageView>
+
+                                            <Label text="Setup Profiles">
+                                                <HBox.margin>
+                                                    <Insets left="-46.0" />
+                                                </HBox.margin></Label>
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="302.0">
+                                                <menus>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/add.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/clone.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/edit.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/delete.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/import.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/export.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/reset.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                </menus>
+                                            </MenuBar>
+                                        </HBox>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor>
-                                        </FlowPane>
+                                        <TableView fx:id="profilesTable" editable="false">
+                                            <columns>
+                                                <TableColumn fx:id="profileNameColumn" prefWidth="166.0" resizable="false">
+                                                    <graphic>
+                                                        <Label fx:id="profileNameLabel" prefHeight="19.0" prefWidth="300.0" text="Profile Name" />
+                                                    </graphic>
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="setupGameTypes" animated="true" text="Setup Game Types">
+                                <TitledPane fx:id="setupGameTypes" animated="true">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/setup.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
+                                        <HBox alignment="CENTER" spacing="50.0">
+                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                <image>
+                                                    <Image url="@../images/setup.png" />
+                                                </image>
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                            </ImageView>
+
+                                            <Label text="Setup Game Types">
+                                                <HBox.margin>
+                                                    <Insets left="-46.0" />
+                                                </HBox.margin></Label>
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="302.0">
+                                                <menus>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/add.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/delete.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/reset.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                </menus>
+                                    <HBox.margin>
+                                       <Insets left="-31.0" />
+                                    </HBox.margin>
+                                            </MenuBar>
+                                        </HBox>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor>
-                                        </FlowPane>
+                                        <TableView editable="false">
+                                            <columns>
+                                                <TableColumn prefWidth="166.0" resizable="false">
+                                                    <graphic>
+                                                        <Label prefHeight="19.0" prefWidth="300.0" text="Game Type" />
+                                                    </graphic>
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="setupDifficulties" animated="true" text="Setup Difficulties">
+                                <TitledPane fx:id="setupDifficulties" animated="true">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/setup.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
+                                        <HBox alignment="CENTER" spacing="50.0">
+                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                <image>
+                                                    <Image url="@../images/setup.png" />
+                                                </image>
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                            </ImageView>
+
+                                            <Label text="Setup Difficulties">
+                                                <HBox.margin>
+                                                    <Insets left="-46.0" />
+                                                </HBox.margin></Label>
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="302.0">
+                                                <menus>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/add.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/delete.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/reset.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                </menus>
+                                                <HBox.margin>
+                                                    <Insets left="-21.0" />
+                                                </HBox.margin>
+                                            </MenuBar>
+                                        </HBox>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <TableView editable="false">
+                                            <columns>
+                                                <TableColumn prefWidth="166.0" resizable="false">
+                                                    <graphic>
+                                                        <Label prefHeight="19.0" prefWidth="300.0" text="Difficulty" />
+                                                    </graphic>
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="setupLengths" animated="true" text="Setup Lengths">
+                                <TitledPane animated="true">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/setup.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
+                                        <HBox alignment="CENTER" spacing="50.0">
+                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                <image>
+                                                    <Image url="@../images/setup.png" />
+                                                </image>
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                            </ImageView>
+
+                                            <Label text="Setup Lengths">
+                                                <HBox.margin>
+                                                    <Insets left="-46.0" />
+                                                </HBox.margin></Label>
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="302.0">
+                                                <menus>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/add.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/delete.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                    <Menu mnemonicParsing="false">
+                                                        <graphic>
+                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                                <image>
+                                                                    <Image url="@../images/reset.png" />
+                                                                </image>
+                                                                <cursor>
+                                                                    <Cursor fx:constant="HAND" />
+                                                                </cursor>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Menu>
+                                                </menus>
+                                                <HBox.margin>
+                                                    <Insets />
+                                                </HBox.margin>
+                                            </MenuBar>
+                                        </HBox>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <TableView editable="false">
+                                            <columns>
+                                                <TableColumn prefWidth="166.0" resizable="false">
+                                                    <graphic>
+                                                        <Label prefHeight="19.0" prefWidth="300.0" text="Length" />
+                                                    </graphic>
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />

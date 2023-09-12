@@ -121,3 +121,12 @@
 .slider .thumb{
     -fx-background-color: #575757;
 }
+
+.table-view {
+    -fx-background-color: #575757;
+    -fx-opacity: 0.8;
+}
+
+.table-view .label {
+    -fx-text-fill: #575757;
+}
