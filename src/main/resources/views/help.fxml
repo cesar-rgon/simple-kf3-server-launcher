@@ -15,7 +15,7 @@
                             <panes>
                                 <TitledPane fx:id="github" animated="true" text="Github Project">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/help.png" />
                                             </image>
@@ -38,7 +38,7 @@
 
                                 <TitledPane fx:id="documentation" animated="true" text="Documentation">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/help.png" />
                                             </image>
@@ -60,7 +60,7 @@
 
                                 <TitledPane fx:id="releases" animated="true" text="Published Releases">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/help.png" />
                                             </image>
@@ -82,7 +82,7 @@
 
                                 <TitledPane fx:id="updates" animated="true" text="Check for Updates">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/help.png" />
                                             </image>
@@ -104,7 +104,7 @@
 
                                 <TitledPane fx:id="about" animated="true" text="About">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/help.png" />
                                             </image>
@@ -126,7 +126,7 @@
 
                                 <TitledPane fx:id="donation" animated="true" text="Donation">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/help.png" />
                                             </image>

@@ -32,7 +32,7 @@ public class MainApplication extends Application {
 
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
             if (playMusicOnStartup) {
-                MediaPlayer musicPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("music/kf3-theme.mp4").toExternalForm()));
+                MediaPlayer musicPlayer = new MediaPlayer(new Media(getClass().getClassLoader().getResource("music/kf3-theme.mp3").toExternalForm()));
                 musicPlayer.setOnEndOfMedia(this::disposeMediaPlayer);
                 musicPlayer.setOnError(this::disposeMediaPlayer);
                 Session.getInstance().setMusicPlayer(musicPlayer);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -11,11 +12,11 @@
             <children>
                 <AnchorPane minHeight="700.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
                                 <TitledPane fx:id="steam" animated="true" text="Install on Steam Platform">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/steam.png" />
                                             </image>
@@ -25,11 +26,45 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor>
-                                        </FlowPane>
+                                        <VBox alignment="CENTER" spacing="20.0">
+                                            <Label contentDisplay="RIGHT" graphicTextGap="10.0" text="Installation folder">
+                                                <graphic>
+                                                    <HBox>
+                                                        <TextField fx:id="steamPathTextField" prefWidth="300" />
+                                                        <Button fx:id="exploreSteam" text="Explore" onMouseClicked="#exploreSteamPathOnMouseClicked">
+                                                            <HBox.margin>
+                                                                <Insets left="20.0" top="-2.0" />
+                                                            </HBox.margin></Button>
+                                                    </HBox>
+                                                </graphic>
+                                                <padding>
+                                                    <Insets top="20.0" />
+                                                </padding>
+                                            </Label>
+                                            <Label contentDisplay="RIGHT" graphicTextGap="10.0" text="Validate files?">
+                                                <graphic>
+                                                    <CheckBox />
+                                                </graphic>
+                                            </Label>
+                                            <Label contentDisplay="RIGHT" graphicTextGap="10.0" text="Update to beta?">
+                                                <graphic>
+                                                    <CheckBox />
+                                                </graphic>
+                                            </Label>
+                                            <Label contentDisplay="RIGHT" graphicTextGap="10.0" text="Beta brunch">
+                                                <graphic>
+                                                     <TextField prefWidth="300" />
+                                                </graphic>
+                                    <VBox.margin>
+                                       <Insets left="-83.0" />
+                                    </VBox.margin>
+                                            </Label>
+                                            <Button fx:id="installUpdateSteam" text="Install / Update">
+                                    <VBox.margin>
+                                       <Insets bottom="20.0" top="20.0" />
+                                    </VBox.margin></Button>
+
+                                        </VBox>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -38,7 +73,7 @@
 
                                 <TitledPane fx:id="epic" animated="true" text="Install on Epic Games Platform">
                                     <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/epic-games.png" />
                                             </image>
@@ -48,10 +83,27 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <VBox alignment="CENTER" spacing="20.0">
+                                            <Label contentDisplay="RIGHT" graphicTextGap="10.0" text="Installation folder">
+                                                <graphic>
+                                                    <HBox>
+                                                        <TextField fx:id="epicPathTextField" prefWidth="300" />
+                                                        <Button fx:id="exploreEpic" text="Explore" onMouseClicked="#exploreEpicPathOnMouseClicked">
+                                                            <HBox.margin>
+                                                                <Insets left="20.0" top="-2.0" />
+                                                            </HBox.margin></Button>
+                                                    </HBox>
+                                                </graphic>
+                                                <padding>
+                                                    <Insets top="20.0" />
+                                                </padding>
+                                            </Label>
+                                            <Button fx:id="installUpdateEpic" text="Install / Update">
+                                                <VBox.margin>
+                                                    <Insets bottom="20.0" top="20.0" />
+                                                </VBox.margin></Button>
+
+                                        </VBox>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
