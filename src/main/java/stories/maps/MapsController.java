@@ -22,7 +22,7 @@ public class MapsController implements Initializable {
     private static final Logger logger = LogManager.getLogger(MapsController.class);
 
     @FXML private Accordion accordion;
-    @FXML private TitledPane steam;
+    @FXML private TitledPane steamCustomMapsTitledPane;
     @FXML private VBox mapsVbox;
     @FXML private FlowPane steamCustomMaps;
     @FXML private FlowPane steamOfficialMaps;
@@ -33,7 +33,7 @@ public class MapsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             Utils.setNodeBackground(mapsVbox);
-            accordion.setExpandedPane(steam);
+            accordion.setExpandedPane(steamCustomMapsTitledPane);
             steamCustomMaps.getStyleClass().add("flowPane");
             steamOfficialMaps.getStyleClass().add("flowPane");
             epicCustomMaps.getStyleClass().add("flowPane");
