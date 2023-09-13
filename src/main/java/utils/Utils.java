@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import services.PropertyService;
 import services.PropertyServiceImpl;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.file.Files;
@@ -68,11 +69,18 @@ public class Utils {
     }
 
     private static String chooseRandomBackgroundFileUrl() throws Exception {
-        String backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+
+        File file = new File(System.getProperty("user.dir") + "/images/backgrounds/");
+        String backgroundsFolderPath = StringUtils.EMPTY;
+        if (file.exists()) {
+            backgroundsFolderPath = System.getProperty("user.dir") + "/images/backgrounds/";
+        } else {
+            backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+        }
         List<String> backgroundPathList = Files.walk(Paths.get(backgroundsFolderPath))
                 .filter(Files::isRegularFile)
                 .map(Path::toString)
-                .toList();
+                .collect(Collectors.toList());
 
         int upperbound = backgroundPathList.size();
         Random rand = new Random();
@@ -83,11 +91,18 @@ public class Utils {
     public static void setNextNodeBackground(Node node) throws Exception {
         String urlActualBackground = node.getStyle().split("'")[1];
 
-        String backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+        File file = new File(System.getProperty("user.dir") + "/images/backgrounds/");
+        String backgroundsFolderPath = StringUtils.EMPTY;
+        if (file.exists()) {
+            backgroundsFolderPath = System.getProperty("user.dir") + "/images/backgrounds/";
+        } else {
+            backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+        }
+
         List<String> backgroundPathList = Files.walk(Paths.get(backgroundsFolderPath))
                 .filter(Files::isRegularFile)
                 .map(Path::toString)
-                .toList();
+                .collect(Collectors.toList());
 
         Optional<String> pathActualBackgroundOptional = backgroundPathList.stream()
                 .filter(strPath -> {
