@@ -14,6 +14,7 @@ import services.PropertyServiceImpl;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -71,57 +72,51 @@ public class Utils {
     private static String chooseRandomBackgroundFileUrl() throws Exception {
 
         File file = new File(System.getProperty("user.dir") + "/images/backgrounds/");
-        String backgroundsFolderPath = StringUtils.EMPTY;
-        if (file.exists()) {
-            backgroundsFolderPath = System.getProperty("user.dir") + "/images/backgrounds/";
-        } else {
-            backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+        if (!file.exists()) {
+            file = new File(Utils.class.getClassLoader().getResource("images/backgrounds").getPath());
         }
-        List<String> backgroundPathList = Files.walk(Paths.get(backgroundsFolderPath))
+
+        List<URI> backgroundUriList = Files.walk(file.toPath())
                 .filter(Files::isRegularFile)
-                .map(Path::toString)
+                .map(Path::toUri)
                 .collect(Collectors.toList());
 
-        int upperbound = backgroundPathList.size();
+        int upperbound = backgroundUriList.size();
         Random rand = new Random();
         int int_random = rand.nextInt(upperbound);
-        return "file:" + backgroundPathList.get(int_random).replace("\\","/");
+        return backgroundUriList.get(int_random).toString();
     }
 
     public static void setNextNodeBackground(Node node) throws Exception {
         String urlActualBackground = node.getStyle().split("'")[1];
 
         File file = new File(System.getProperty("user.dir") + "/images/backgrounds/");
-        String backgroundsFolderPath = StringUtils.EMPTY;
-        if (file.exists()) {
-            backgroundsFolderPath = System.getProperty("user.dir") + "/images/backgrounds/";
-        } else {
-            backgroundsFolderPath = Objects.requireNonNull(Utils.class.getClassLoader().getResource("images/backgrounds")).getPath().split(":")[1];
+        if (!file.exists()) {
+            file = new File(Utils.class.getClassLoader().getResource("images/backgrounds").getPath());
         }
 
-        List<String> backgroundPathList = Files.walk(Paths.get(backgroundsFolderPath))
+        List<URI> backgroundUriList = Files.walk(file.toPath())
                 .filter(Files::isRegularFile)
-                .map(Path::toString)
+                .map(Path::toUri)
                 .collect(Collectors.toList());
 
-        Optional<String> pathActualBackgroundOptional = backgroundPathList.stream()
-                .filter(strPath -> {
-                    String url = "file:" + strPath.replace("\\","/");
-                    return url.equals(urlActualBackground);
+        Optional<URI> uriActualBackgroundOptional = backgroundUriList.stream()
+                .filter(uri -> {
+                    return uri.toString().equals(urlActualBackground);
                 })
                 .findFirst();
 
         int indexActualBackground = 0;
-        if (pathActualBackgroundOptional.isPresent()) {
-            indexActualBackground = backgroundPathList.indexOf(pathActualBackgroundOptional.get());
-            if (indexActualBackground < backgroundPathList.size()-1) {
+        if (uriActualBackgroundOptional.isPresent()) {
+            indexActualBackground = backgroundUriList.indexOf(uriActualBackgroundOptional.get());
+            if (indexActualBackground < backgroundUriList.size()-1) {
                 indexActualBackground++;
             } else {
                 indexActualBackground = 0;
             }
         }
 
-        node.setStyle("-fx-background-image: url('file:" + backgroundPathList.get(indexActualBackground).replace("\\","/") + "'); -fx-background-size: cover;");
+        node.setStyle("-fx-background-image: url('" + backgroundUriList.get(indexActualBackground) + "'); -fx-background-size: cover;");
     }
 
     public static void loadTooltip(Node node, String text) throws Exception {
