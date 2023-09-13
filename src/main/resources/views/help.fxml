@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.help.HelpController">
     <content>
-        <VBox fx:id="helpVbox" alignment="CENTER" minHeight="700.0" onMouseClicked="#helpVboxOnMouseClicked" style="-fx-background-color: black;">
+        <VBox fx:id="helpVbox" alignment="CENTER" onMouseClicked="#helpVboxOnMouseClicked" style="-fx-background-color: black;">
             <children>
-                <AnchorPane minHeight="700.0" VBox.vgrow="ALWAYS">
+                <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
-                        <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <Accordion fx:id="accordion" layoutY="27.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
                                 <TitledPane fx:id="github" animated="true" text="Github Project">
                                     <graphic>
@@ -25,11 +27,14 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor>
-                                        </FlowPane>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="githubWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </AnchorPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -48,10 +53,14 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="documentationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </AnchorPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -70,10 +79,14 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="releasesWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </AnchorPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -92,10 +105,7 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <Label prefHeight="100.0" text="No updates available at this moment" textAlignment="CENTER" wrapText="true" />
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -114,10 +124,25 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <VBox alignment="TOP_CENTER" prefHeight="122.0" prefWidth="902.0" VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <ImageView fitHeight="100.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                    <image>
+                                                        <Image url="@../images/logo.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label minHeight="71.0" prefHeight="71.0" prefWidth="888.0" text="Draft application for the future game Killing Floor 3 to easily customize and launch a Killing Floor 3 Server through a visual interface instead of editing batch files or server's config files. It is under development and will be downloable only for testing purpose." wrapText="true" />
+                                                <Label fx:id="versionLabel" minHeight="28.0" prefHeight="28.0" prefWidth="271.0" text="Application version: " textAlignment="CENTER" wrapText="true" />
+                                                <Label contentDisplay="RIGHT" graphicTextGap="3.0" minHeight="28.0" prefHeight="28.0" prefWidth="182.0" text="Developed by " textAlignment="CENTER" wrapText="true">
+                                                    <graphic>
+                                                        <Hyperlink fx:id="aboutLink" text="cesar-rgon">https://www.google.es</Hyperlink>
+                                                    </graphic>
+                                                </Label>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </VBox>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -136,10 +161,14 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <FlowPane minHeight="200.0">
-                                            <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                            </cursor></FlowPane>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="donationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </AnchorPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
