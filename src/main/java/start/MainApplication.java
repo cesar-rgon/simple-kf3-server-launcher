@@ -5,6 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
@@ -48,6 +49,7 @@ public class MainApplication extends Application {
 
         Font.loadFont(getClass().getClassLoader().getResource("fonts/KillingFont.otf").toExternalForm(), 13);
         FXMLLoader template = new FXMLLoader(getClass().getResource("/views/template.fxml"));
+        Session.getInstance().setTemplate(template);
         Scene scene = new Scene(template.load());
         FXMLLoader intro = new FXMLLoader(getClass().getResource("/views/intro.fxml"));
         intro.setRoot(template.getNamespace().get("content"));
@@ -60,6 +62,7 @@ public class MainApplication extends Application {
         String[] actualResolution = propertyService.getProperty("properties/config.properties", "prop.config.applicationResolution.lastModified").split("x");
         boolean applicationMaximized = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.applicationMaximized"));
 
+        primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("images/icon.png")));
         primaryStage.setTitle(applicationTitle + " " + applicationVersion);
         primaryStage.setMinWidth(Double.parseDouble(minimumResolution[0]));
         primaryStage.setMinHeight(Double.parseDouble(minimumResolution[1]));
@@ -68,7 +71,6 @@ public class MainApplication extends Application {
         primaryStage.setMaximized(applicationMaximized);
         primaryStage.setScene(scene);
         primaryStage.show();
-        Session.getInstance().setTemplate(template);
         Session.getInstance().setPrimaryStage(primaryStage);
 
         primaryStage.maximizedProperty().addListener(new ChangeListener<Boolean>() {

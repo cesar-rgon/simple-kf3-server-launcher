@@ -19,7 +19,7 @@
                                     <graphic>
                                         <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/help.png" />
+                                                <Image url="@../images/github.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -45,7 +45,7 @@
                                     <graphic>
                                         <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/help.png" />
+                                                <Image url="@../images/documentation.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -71,7 +71,7 @@
                                     <graphic>
                                         <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/help.png" />
+                                                <Image url="@../images/package.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -97,7 +97,7 @@
                                     <graphic>
                                         <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/help.png" />
+                                                <Image url="@../images/updates.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -116,7 +116,7 @@
                                     <graphic>
                                         <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/help.png" />
+                                                <Image url="@../images/about.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -153,7 +153,7 @@
                                     <graphic>
                                         <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
-                                                <Image url="@../images/help.png" />
+                                                <Image url="@../images/donation.png" />
                                             </image>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
