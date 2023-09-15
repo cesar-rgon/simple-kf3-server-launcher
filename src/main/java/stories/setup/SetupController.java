@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,12 +26,12 @@ public class SetupController implements Initializable {
     @FXML private TitledPane setupGameTypes;
     @FXML private TitledPane setupDifficulties;
     @FXML private TitledPane setupLengths;
-    @FXML private VBox setupVbox;
+    @FXML private StackPane setupStackPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Utils.setNodeBackground(setupVbox);
+            Utils.setNodeBackground(setupStackPane);
             if (Session.getInstance().getSetupType() != null) {
                 switch (Session.getInstance().getSetupType()) {
                     case "gameTypes":
@@ -60,7 +61,7 @@ public class SetupController implements Initializable {
     }
 
     @FXML
-    private void setupVboxOnMouseClicked() throws Exception {
-        Utils.setNextNodeBackground(setupVbox);
+    private void setupStackPaneOnMouseClicked() throws Exception {
+        Utils.setNextNodeBackground(setupStackPane);
     }
 }

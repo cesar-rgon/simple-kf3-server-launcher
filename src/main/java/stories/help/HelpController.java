@@ -1,18 +1,20 @@
 package stories.help;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Accordion;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
-import javafx.scene.control.TitledPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.w3c.dom.Document;
 import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
@@ -30,18 +32,22 @@ public class HelpController implements Initializable {
 
     @FXML private Accordion accordion;
     @FXML private TitledPane github;
-    @FXML private VBox helpVbox;
+    @FXML private StackPane helpStackPane;
+    @FXML private Label versionLabel;
+    @FXML private Hyperlink aboutLink;
     @FXML private WebView githubWebPage;
     @FXML private WebView documentationWebPage;
     @FXML private WebView releasesWebPage;
     @FXML private WebView donationWebPage;
-    @FXML private Label versionLabel;
-    @FXML private Hyperlink aboutLink;
+    @FXML private ProgressIndicator progressIndicatorGithub;
+    @FXML private ProgressIndicator progressIndicatorDocumentation;
+    @FXML private ProgressIndicator progressIndicatorReleases;
+    @FXML private ProgressIndicator progressIndicatorDonation;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Utils.setNodeBackground(helpVbox);
+            Utils.setNodeBackground(helpStackPane);
             accordion.setExpandedPane(github);
 
             PropertyService propertyService = new PropertyServiceImpl();
@@ -78,6 +84,42 @@ public class HelpController implements Initializable {
                 }
             });
 
+            githubWebPage.getEngine().documentProperty().addListener(new ChangeListener<Document>() {
+                @Override
+                public void changed(ObservableValue<? extends Document> observableValue, Document oldDoc, Document doc) {
+                    if (doc != null) {
+                        progressIndicatorGithub.setVisible(false);
+                    }
+                }
+            });
+
+            documentationWebPage.getEngine().documentProperty().addListener(new ChangeListener<Document>() {
+                @Override
+                public void changed(ObservableValue<? extends Document> observableValue, Document oldDoc, Document doc) {
+                    if (doc != null) {
+                        progressIndicatorDocumentation.setVisible(false);
+                    }
+                }
+            });
+
+            releasesWebPage.getEngine().documentProperty().addListener(new ChangeListener<Document>() {
+                @Override
+                public void changed(ObservableValue<? extends Document> observableValue, Document oldDoc, Document doc) {
+                    if (doc != null) {
+                        progressIndicatorReleases.setVisible(false);
+                    }
+                }
+            });
+
+            donationWebPage.getEngine().documentProperty().addListener(new ChangeListener<Document>() {
+                @Override
+                public void changed(ObservableValue<? extends Document> observableValue, Document oldDoc, Document doc) {
+                    if (doc != null) {
+                        progressIndicatorDonation.setVisible(false);
+                    }
+                }
+            });
+
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             Utils.errorDialog(e.getMessage(), e);
@@ -85,8 +127,8 @@ public class HelpController implements Initializable {
     }
 
     @FXML
-    private void helpVboxOnMouseClicked() throws Exception {
-        Utils.setNextNodeBackground(helpVbox);
+    private void helpStackPaneOnMouseClicked() throws Exception {
+        Utils.setNextNodeBackground(helpStackPane);
     }
 
     private void putBlackBackgroundColor(WebEngine webEngine) throws Exception {

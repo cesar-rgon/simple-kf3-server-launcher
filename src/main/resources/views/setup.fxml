@@ -8,16 +8,16 @@
 
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.setup.SetupController">
     <content>
-        <VBox fx:id="setupVbox" alignment="CENTER" minHeight="700.0" onMouseClicked="#setupVboxOnMouseClicked" style="-fx-background-color: black;">
+        <StackPane fx:id="setupStackPane" alignment="CENTER" minHeight="700.0" onMouseClicked="#setupStackPaneOnMouseClicked" style="-fx-background-color: black;">
             <children>
-                <AnchorPane minHeight="700.0" VBox.vgrow="ALWAYS">
+                <AnchorPane minHeight="700.0">
                     <children>
                         <Accordion fx:id="accordion" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
                                 <TitledPane fx:id="setupProfiles" animated="true">
                                     <graphic>
                                         <HBox alignment="CENTER" spacing="50.0">
-                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                 <image>
                                                     <Image url="@../images/setup.png" />
                                                 </image>
@@ -34,7 +34,7 @@
                                                 <menus>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/add.png" />
                                                                 </image>
@@ -46,7 +46,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/clone.png" />
                                                                 </image>
@@ -58,7 +58,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/edit.png" />
                                                                 </image>
@@ -70,7 +70,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/delete.png" />
                                                                 </image>
@@ -82,7 +82,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/import.png" />
                                                                 </image>
@@ -94,7 +94,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/export.png" />
                                                                 </image>
@@ -106,7 +106,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/reset.png" />
                                                                 </image>
@@ -139,7 +139,7 @@
                                 <TitledPane fx:id="setupGameTypes" animated="true">
                                     <graphic>
                                         <HBox alignment="CENTER" spacing="50.0">
-                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                 <image>
                                                     <Image url="@../images/setup.png" />
                                                 </image>
@@ -156,7 +156,7 @@
                                                 <menus>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/add.png" />
                                                                 </image>
@@ -168,7 +168,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/delete.png" />
                                                                 </image>
@@ -180,7 +180,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/reset.png" />
                                                                 </image>
@@ -216,7 +216,7 @@
                                 <TitledPane fx:id="setupDifficulties" animated="true">
                                     <graphic>
                                         <HBox alignment="CENTER" spacing="50.0">
-                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                 <image>
                                                     <Image url="@../images/setup.png" />
                                                 </image>
@@ -233,7 +233,7 @@
                                                 <menus>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/add.png" />
                                                                 </image>
@@ -245,7 +245,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/delete.png" />
                                                                 </image>
@@ -257,7 +257,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/reset.png" />
                                                                 </image>
@@ -293,7 +293,7 @@
                                 <TitledPane animated="true">
                                     <graphic>
                                         <HBox alignment="CENTER" spacing="50.0">
-                                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                 <image>
                                                     <Image url="@../images/setup.png" />
                                                 </image>
@@ -310,7 +310,7 @@
                                                 <menus>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/add.png" />
                                                                 </image>
@@ -322,7 +322,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/delete.png" />
                                                                 </image>
@@ -334,7 +334,7 @@
                                                     </Menu>
                                                     <Menu mnemonicParsing="false">
                                                         <graphic>
-                                                            <ImageView fitHeight="38.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                                                 <image>
                                                                     <Image url="@../images/reset.png" />
                                                                 </image>
@@ -380,6 +380,6 @@
             <cursor>
                 <Cursor fx:constant="CROSSHAIR" />
             </cursor>
-        </VBox>
+        </StackPane>
     </content>
 </fx:root>

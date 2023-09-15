@@ -1,23 +1,22 @@
 package stories.home;
 
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
-import start.MainApplication;
 import utils.Utils;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,7 +26,7 @@ public class HomeController implements Initializable {
 
     @FXML private Accordion accordion;
     @FXML private TitledPane basic;
-    @FXML private VBox homeVbox;
+    @FXML private StackPane homeStackPane;
     @FXML private Label gameTypeLabel;
     @FXML private Label difficultyLabel;
     @FXML private Label lengthLabel;
@@ -49,7 +48,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Utils.setNodeBackground(homeVbox);
+            Utils.setNodeBackground(homeStackPane);
             logoGridPane.getStyleClass().add("gridPane");
             combosGridPane.getStyleClass().add("gridPane");
             accordion.setExpandedPane(basic);
@@ -77,9 +76,9 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void homeVboxOnMouseClicked() throws Exception {
+    private void homeStackPaneOnMouseClicked() throws Exception {
         if (!combosGridPane.isHover() && !logoGridPane.isHover()) {
-            Utils.setNextNodeBackground(homeVbox);
+            Utils.setNextNodeBackground(homeStackPane);
         }
     }
 

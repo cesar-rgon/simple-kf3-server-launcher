@@ -113,8 +113,6 @@ public class TemplateController implements Initializable {
             if (playVideoOnStartup && Session.getInstance().getVideoPlayer().isAutoPlay()) {
                 Session.getInstance().getVideoPlayer().dispose();
             }
-            VBox templateContent = (VBox)((ScrollPane) Session.getInstance().getTemplate().getNamespace().get("content")).getContent();
-            templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource(fxmlPath));
             content.setRoot(Session.getInstance().getTemplate().getNamespace().get("content"));
             content.load();

@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +24,7 @@ public class MapsController implements Initializable {
 
     @FXML private Accordion accordion;
     @FXML private TitledPane steamCustomMapsTitledPane;
-    @FXML private VBox mapsVbox;
+    @FXML private StackPane mapsStackPane;
     @FXML private FlowPane steamCustomMaps;
     @FXML private FlowPane steamOfficialMaps;
     @FXML private FlowPane epicCustomMaps;
@@ -32,7 +33,7 @@ public class MapsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Utils.setNodeBackground(mapsVbox);
+            Utils.setNodeBackground(mapsStackPane);
             accordion.setExpandedPane(steamCustomMapsTitledPane);
             steamCustomMaps.getStyleClass().add("flowPane");
             steamOfficialMaps.getStyleClass().add("flowPane");
@@ -51,7 +52,7 @@ public class MapsController implements Initializable {
     }
 
     @FXML
-    private void mapsVboxOnMouseClicked() throws Exception {
-        Utils.setNextNodeBackground(mapsVbox);
+    private void mapsStackPaneOnMouseClicked() throws Exception {
+        Utils.setNextNodeBackground(mapsStackPane);
     }
 }

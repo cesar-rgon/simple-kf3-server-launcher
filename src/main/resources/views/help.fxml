@@ -9,15 +9,15 @@
 
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.help.HelpController">
     <content>
-        <VBox fx:id="helpVbox" alignment="CENTER" onMouseClicked="#helpVboxOnMouseClicked" style="-fx-background-color: black;">
+        <StackPane fx:id="helpStackPane" alignment="CENTER" onMouseClicked="#helpStackPaneOnMouseClicked" style="-fx-background-color: black;">
             <children>
-                <AnchorPane VBox.vgrow="ALWAYS">
+                <AnchorPane>
                     <children>
                         <Accordion fx:id="accordion" layoutY="27.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                             <panes>
-                                <TitledPane fx:id="github" animated="true" text="Github Project">
+                                <TitledPane fx:id="github" animated="false" text="Github Project">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/github.png" />
                                             </image>
@@ -27,23 +27,28 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                        <StackPane minHeight="700.0">
                                             <children>
-                                                <WebView fx:id="githubWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                <AnchorPane VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <WebView fx:id="githubWebPage" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </AnchorPane>
+                                                <ProgressIndicator fx:id="progressIndicatorGithub" minHeight="150.0" minWidth="150.0" />
                                             </children>
-                                            <VBox.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </VBox.margin>
-                                        </AnchorPane>
+                                        </StackPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="documentation" animated="true" text="Documentation">
+                                <TitledPane fx:id="documentation" animated="false" text="Documentation">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/documentation.png" />
                                             </image>
@@ -53,23 +58,28 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                        <StackPane minHeight="700.0">
                                             <children>
-                                                <WebView fx:id="documentationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                <AnchorPane VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <WebView fx:id="documentationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </AnchorPane>
+                                                <ProgressIndicator fx:id="progressIndicatorDocumentation" minHeight="150.0" minWidth="150.0" />
                                             </children>
-                                            <VBox.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </VBox.margin>
-                                        </AnchorPane>
+                                        </StackPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="releases" animated="true" text="Published Releases">
+                                <TitledPane fx:id="releases" animated="false" text="Published Releases">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/package.png" />
                                             </image>
@@ -79,14 +89,19 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                        <StackPane minHeight="700.0">
                                             <children>
-                                                <WebView fx:id="releasesWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                <AnchorPane VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <WebView fx:id="releasesWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </AnchorPane>
+                                                <ProgressIndicator fx:id="progressIndicatorReleases" minHeight="150.0" minWidth="150.0" />
                                             </children>
-                                            <VBox.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </VBox.margin>
-                                        </AnchorPane>
+                                        </StackPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -95,7 +110,7 @@
 
                                 <TitledPane fx:id="updates" animated="true" text="Check for Updates">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/updates.png" />
                                             </image>
@@ -114,7 +129,7 @@
 
                                 <TitledPane fx:id="about" animated="true" text="About">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/about.png" />
                                             </image>
@@ -149,9 +164,9 @@
                                     </cursor>
                                 </TitledPane>
 
-                                <TitledPane fx:id="donation" animated="true" text="Donation">
+                                <TitledPane fx:id="donation" animated="false" text="Donation">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/donation.png" />
                                             </image>
@@ -161,14 +176,19 @@
                                         </ImageView>
                                     </graphic>
                                     <content>
-                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                        <StackPane minHeight="700.0">
                                             <children>
-                                                <WebView fx:id="donationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                <AnchorPane VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <WebView fx:id="donationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </AnchorPane>
+                                                <ProgressIndicator fx:id="progressIndicatorDonation" minHeight="150.0" minWidth="150.0" />
                                             </children>
-                                            <VBox.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </VBox.margin>
-                                        </AnchorPane>
+                                        </StackPane>
                                     </content>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -189,6 +209,6 @@
             <cursor>
                 <Cursor fx:constant="CROSSHAIR" />
             </cursor>
-        </VBox>
+        </StackPane>
     </content>
 </fx:root>

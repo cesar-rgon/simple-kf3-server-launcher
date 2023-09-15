@@ -8,15 +8,15 @@
 
 <fx:root id="centerPane" fx:id="mainContent" prefHeight="943.0" prefWidth="939.0" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.home.HomeController">
    <content>
-      <VBox fx:id="homeVbox" alignment="CENTER" fillWidth="false" onMouseClicked="#homeVboxOnMouseClicked">
+      <StackPane fx:id="homeStackPane" onMouseClicked="#homeStackPaneOnMouseClicked">
          <children>
-            <AnchorPane prefHeight="700.0" prefWidth="936.0">
+            <AnchorPane maxHeight="943.0" maxWidth="936.0" minHeight="943.0" minWidth="936.0" StackPane.alignment="CENTER">
                <children>
-                  <Accordion fx:id="accordion" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="170.0">
+                  <Accordion fx:id="accordion" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="190.0">
                     <panes>
                       <TitledPane fx:id="basic" animated="true" text="Basic Parameters">
                         <graphic>
-                            <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                 <image>
                                     <Image url="@../images/parameters.png" />
                                 </image>
@@ -147,7 +147,7 @@
                       </TitledPane>
                       <TitledPane fx:id="welcome" animated="true" text="Welcome Message">
                           <graphic>
-                              <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                              <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                   <image>
                                       <Image url="@../images/message.png" />
                                   </image>
@@ -210,7 +210,7 @@
                       </TitledPane>
                         <TitledPane fx:id="advanced" animated="true" text="Advanced Parameters">
                             <graphic>
-                                <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                     <image>
                                         <Image url="@../images/parameters.png" />
                                     </image>
@@ -245,7 +245,7 @@
                         </TitledPane>
                         <TitledPane fx:id="aditional" animated="true" text="Aditional Parameters">
                             <graphic>
-                                <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                     <image>
                                         <Image url="@../images/parameters.png" />
                                     </image>
@@ -271,7 +271,7 @@
                         </TitledPane>
                         <TitledPane fx:id="consoleCommands" animated="true" text="Console Commands">
                             <graphic>
-                                <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                     <image>
                                         <Image url="@../images/console.png" />
                                     </image>
@@ -293,7 +293,7 @@
                         </TitledPane>
                     </panes>
                   </Accordion>
-                  <GridPane fx:id="logoGridPane" hgap="50.0" layoutX="510.0" layoutY="35.0" vgap="10.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="0.0">
+                  <GridPane fx:id="logoGridPane" hgap="50.0" layoutX="510.0" layoutY="35.0" vgap="10.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="20.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="190.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="190.0" />
@@ -336,7 +336,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </GridPane>
-                  <GridPane fx:id="combosGridPane" hgap="10.0" layoutX="230.0" layoutY="16.0" prefHeight="138.0" prefWidth="344.0" vgap="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="16.0">
+                  <GridPane fx:id="combosGridPane" hgap="10.0" layoutX="230.0" layoutY="16.0" prefHeight="138.0" prefWidth="344.0" vgap="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="36.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="290.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
@@ -422,6 +422,6 @@
          <cursor>
             <Cursor fx:constant="CROSSHAIR" />
          </cursor>
-      </VBox>
+      </StackPane>
    </content>
 </fx:root>

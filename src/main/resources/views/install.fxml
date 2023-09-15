@@ -8,7 +8,7 @@
 
 <fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.install.InstallController">
     <content>
-        <VBox fx:id="installVbox" alignment="CENTER" minHeight="700.0" onMouseClicked="#installVboxOnMouseClicked" style="-fx-background-color: black;">
+        <StackPane fx:id="installStackPane" alignment="CENTER" minHeight="700.0" onMouseClicked="#installStackPaneOnMouseClicked" style="-fx-background-color: black;">
             <children>
                 <AnchorPane minHeight="700.0" VBox.vgrow="ALWAYS">
                     <children>
@@ -16,7 +16,7 @@
                             <panes>
                                 <TitledPane fx:id="steam" animated="true" text="Install on Steam Platform">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/steam.png" />
                                             </image>
@@ -73,7 +73,7 @@
 
                                 <TitledPane fx:id="epic" animated="true" text="Install on Epic Games Platform">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                             <image>
                                                 <Image url="@../images/epic-games.png" />
                                             </image>
@@ -123,6 +123,6 @@
             <cursor>
                 <Cursor fx:constant="CROSSHAIR" />
             </cursor>
-        </VBox>
+        </StackPane>
     </content>
 </fx:root>

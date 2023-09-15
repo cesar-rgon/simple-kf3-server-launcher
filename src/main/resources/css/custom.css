@@ -130,3 +130,7 @@
 .table-view .label {
     -fx-text-fill: #575757;
 }
+
+.progress-indicator {
+    -fx-progress-color: #c94f4f;
+}
