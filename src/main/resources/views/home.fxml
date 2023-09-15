@@ -149,7 +149,7 @@
                           <graphic>
                               <ImageView fitHeight="40.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
                                   <image>
-                                      <Image url="@../images/parameters.png" />
+                                      <Image url="@../images/message.png" />
                                   </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
