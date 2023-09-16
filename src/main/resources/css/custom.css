@@ -134,3 +134,58 @@
 .progress-indicator {
     -fx-progress-color: #c94f4f;
 }
+
+#mapVbox .label, #mapVbox .text-area, #mapVbox .check-box {
+    -fx-font-family: "HeyComic";
+    -fx-text-fill: #e8e8e8;
+    -fx-font-size: 12;
+}
+
+#mapVbox {
+    -fx-border-color: #e8e8e8;
+    -fx-border-width:3px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, #0d0d0d, 10, 0.3, 5, 5);
+    -fx-padding: 5 5 5 5;
+}
+
+#mapVbox:hover {
+    -fx-cursor: hand;
+    -fx-border-color: gold;
+}
+
+#mapVbox:hover .label {
+    -fx-text-fill: #cdca9c;
+}
+
+#mapVbox .label {
+    -fx-font-weight: normal;
+    -fx-alignment: center;
+}
+
+#mapVbox #mapName {
+    -fx-padding: 10 0 10 0;
+}
+
+#mapVbox #mapImportedDate {
+    -fx-padding: 0 0 10 0;
+}
+
+#mapName .text {
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+#mapVbox .text-area {
+    -fx-background-color: transparent;
+}
+
+#mapVbox .label, #mapVbox .text-area .content {
+    -fx-background-color: #37603a;
+    -fx-border-radius: 10px;
+}
+
+#mapVbox .text-area .content {
+    -fx-background-color: #242323;
+}
+

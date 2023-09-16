@@ -21,7 +21,7 @@
                                     <HBox alignment="CENTER" spacing="75.0">
                                         <StackPane>
                                             <Circle fill="#57965c" radius="14" />
-                                            <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="6" textAlignment="CENTER" wrappingWidth="23.0" />
+                                            <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0"/>
                                         </StackPane>
                                         <Label alignment="CENTER" prefHeight="63.0" prefWidth="88.0" text="Steam Custom Maps Mods" textAlignment="CENTER" wrapText="true">
                                     <HBox.margin>
@@ -44,30 +44,6 @@
                                                         <MenuItem fx:id="steamCustomMapsIdUrl" mnemonicParsing="false" text="By ID/URL" />
                                                         <MenuItem fx:id="steamCustomMapsWorkshop" mnemonicParsing="false" text="By Steam's Workshop" />
                                                     </items>
-                                                </Menu>
-                                                <Menu fx:id="steamCustomMapsEditMenu" mnemonicParsing="false">
-                                                    <graphic>
-                                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                                            <image>
-                                                                <Image url="@../images/edit.png" />
-                                                            </image>
-                                                            <cursor>
-                                                                <Cursor fx:constant="HAND" />
-                                                            </cursor>
-                                                        </ImageView>
-                                                    </graphic>
-                                                </Menu>
-                                                <Menu fx:id="steamCustomMapsDeleteMenu" mnemonicParsing="false">
-                                                    <graphic>
-                                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                                            <image>
-                                                                <Image url="@../images/delete.png" />
-                                                            </image>
-                                                            <cursor>
-                                                                <Cursor fx:constant="HAND" />
-                                                            </cursor>
-                                                        </ImageView>
-                                                    </graphic>
                                                 </Menu>
                                                 <Menu fx:id="steamCustomMapsImportMenu" mnemonicParsing="false">
                                                     <graphic>
@@ -139,7 +115,7 @@
                                     </HBox>
                                 </graphic>
                                 <content>
-                                    <FlowPane fx:id="steamCustomMaps" minHeight="400.0">
+                                    <FlowPane fx:id="steamCustomMaps" hgap="20.0" minHeight="400.0" vgap="20.0">
                                         <cursor>
                                             <Cursor fx:constant="DEFAULT" />
                                         </cursor>
@@ -164,7 +140,7 @@
                                     <HBox.margin>
                                        <Insets left="-46.0" />
                                     </HBox.margin></Label>
-                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="379.0">
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="296.0">
                                                 <menus>
                                                     <Menu fx:id="steamOfficialMapsImportMenu" mnemonicParsing="false">
                                                         <graphic>
@@ -278,30 +254,6 @@
                                                             <MenuItem fx:id="epicCustomMapsWorkshop" mnemonicParsing="false" text="By Steam's Workshop" />
                                                         </items>
                                                     </Menu>
-                                                    <Menu fx:id="epicCustomMapsEditMenu" mnemonicParsing="false">
-                                                        <graphic>
-                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                                                <image>
-                                                                    <Image url="@../images/edit.png" />
-                                                                </image>
-                                                                <cursor>
-                                                                    <Cursor fx:constant="HAND" />
-                                                                </cursor>
-                                                            </ImageView>
-                                                        </graphic>
-                                                    </Menu>
-                                                    <Menu fx:id="epicCustomMapsDeleteMenu" mnemonicParsing="false">
-                                                        <graphic>
-                                                            <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                                                <image>
-                                                                    <Image url="@../images/delete.png" />
-                                                                </image>
-                                                                <cursor>
-                                                                    <Cursor fx:constant="HAND" />
-                                                                </cursor>
-                                                            </ImageView>
-                                                        </graphic>
-                                                    </Menu>
                                                     <Menu fx:id="epicCustomMapsImportMenu" mnemonicParsing="false">
                                                         <graphic>
                                                             <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
@@ -397,7 +349,7 @@
                                                 <HBox.margin>
                                                     <Insets left="-46.0" />
                                                 </HBox.margin></Label>
-                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="379.0">
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="296.0">
                                                 <menus>
                                                     <Menu fx:id="epicOfficialMapsImportMenu" mnemonicParsing="false">
                                                         <graphic>
