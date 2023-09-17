@@ -155,7 +155,7 @@
 }
 
 #mapVbox:hover .label {
-    -fx-text-fill: #cdca9c;
+    -fx-text-fill: gold;
 }
 
 #mapVbox .label {
@@ -178,11 +178,6 @@
 
 #mapVbox .text-area {
     -fx-background-color: transparent;
-}
-
-#mapVbox .label, #mapVbox .text-area .content {
-    -fx-background-color: #37603a;
-    -fx-border-radius: 10px;
 }
 
 #mapVbox .text-area .content {

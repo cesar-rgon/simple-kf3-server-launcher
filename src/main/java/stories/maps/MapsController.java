@@ -140,10 +140,48 @@ public class MapsController implements Initializable {
                 34567890L
         );
 
+        MapDto mapDto4 = new MapDto(
+                "Fourth map",
+                "https://wiki.killingfloor2.com/images/a/a6/KF2_Map_Airship.png",
+                LocalDate.of(2018,6,12),
+                LocalDateTime.now(),
+                "Lockhart is back, and it seems his problems are never ending. Last time you saw him, you had helped him launch away to his airship. Now, having followed him, you find the sky a most dangerous place, and not just because you need to help keep the Queen Victoria running!",
+                false,
+                "KF-Airship",
+                true,
+                null
+        );
+
+        MapDto mapDto5 = new MapDto(
+                "Fith map",
+                "https://wiki.killingfloor2.com/images/2/2d/KF2_Map_DieSector.png",
+                LocalDate.of(2017,12,12),
+                LocalDateTime.now(),
+                "This arena was created for the Patriarch to test out his latest and greatest creations, and you’ve somehow found yourself right in the middle of it. It is here that he intends to endlessly subject you to the horde until you succumb. And yes, we do mean endlessly, but only if you can survive of course.",
+                true,
+                "KF-DieSector",
+                true,
+                null
+        );
+
+        MapDto mapDto6 = new MapDto(
+                "Sixth map",
+                "https://wiki.killingfloor2.com/images/b/b5/KF2_Map_MoonBase_Preview.png",
+                LocalDate.of(2021,6,22),
+                LocalDateTime.now(),
+                "Takes place on a secret Horzine research outpost on the Moon which you arrived into via the Steam Powered Rocket. Features low gravity across the map.\n",
+                false,
+                "KF-MoonBase",
+                true,
+                null
+        );
 
         steamCustomMaps.getChildren().add(createMapBox(mapDto1));
         steamCustomMaps.getChildren().add(createMapBox(mapDto2));
         steamCustomMaps.getChildren().add(createMapBox(mapDto3));
+        steamOfficialMaps.getChildren().add(createMapBox(mapDto4));
+        steamOfficialMaps.getChildren().add(createMapBox(mapDto5));
+        steamOfficialMaps.getChildren().add(createMapBox(mapDto6));
     }
 
     private VBox createMapBox(MapDto mapDto) {
@@ -186,25 +224,30 @@ public class MapsController implements Initializable {
         Button informationButton = new Button();
         informationButton.setGraphic(informationIcon);
 
-        ImageView editMapIcon = new ImageView(
-                new Image(getClass().getClassLoader().getResourceAsStream("images/edit.png"))
-        );
-        editMapIcon.setPreserveRatio(true);
-        editMapIcon.setFitWidth(32);
+        HBox actionsHbox = null;
+        if (!mapDto.isOfficial()) {
+            ImageView editMapIcon = new ImageView(
+                    new Image(getClass().getClassLoader().getResourceAsStream("images/edit.png"))
+            );
+            editMapIcon.setPreserveRatio(true);
+            editMapIcon.setFitWidth(32);
 
-        Button editMapButton = new Button();
-        editMapButton.setGraphic(editMapIcon);
+            Button editMapButton = new Button();
+            editMapButton.setGraphic(editMapIcon);
 
-        ImageView deteteMapIcon = new ImageView(
-                new Image(getClass().getClassLoader().getResourceAsStream("images/delete.png"))
-        );
-        deteteMapIcon.setPreserveRatio(true);
-        deteteMapIcon.setFitWidth(32);
+            ImageView deteteMapIcon = new ImageView(
+                    new Image(getClass().getClassLoader().getResourceAsStream("images/delete.png"))
+            );
+            deteteMapIcon.setPreserveRatio(true);
+            deteteMapIcon.setFitWidth(32);
 
-        Button deteteMapButton = new Button();
-        deteteMapButton.setGraphic(deteteMapIcon);
+            Button deteteMapButton = new Button();
+            deteteMapButton.setGraphic(deteteMapIcon);
 
-        HBox actionsHbox = new HBox(runServerButton, editMapButton, deteteMapButton, informationButton);
+            actionsHbox = new HBox(runServerButton, editMapButton, deteteMapButton, informationButton);
+        } else {
+            actionsHbox = new HBox(runServerButton, informationButton);
+        }
         actionsHbox.setPadding(new Insets(0,0,5,0));
         actionsHbox.setAlignment(Pos.CENTER);
         actionsHbox.setSpacing(20);
@@ -213,9 +256,6 @@ public class MapsController implements Initializable {
         mapName.setMaxWidth(mapImage.getFitWidth());
         mapName.setId("mapName");
 
-        Label idWorkshop = new Label("id Workshop: " + mapDto.getIdWorkShop());
-        idWorkshop.setMaxWidth(mapImage.getFitWidth());
-
         Label mapReleaseDate = new Label("Release date: " + mapDto.getReleaseDate());
         mapReleaseDate.setMaxWidth(mapImage.getFitWidth());
 
@@ -223,8 +263,18 @@ public class MapsController implements Initializable {
         mapImportedDate.setMaxWidth(mapImage.getFitWidth());
         mapImportedDate.setId("mapImportedDate");
 
-        VBox labelVbox = new VBox(mapName, idWorkshop, mapReleaseDate, mapImportedDate);
+        VBox labelVbox = null;
+        if (!mapDto.isOfficial()) {
+            Label idWorkshop = new Label("id Workshop: " + mapDto.getIdWorkShop());
+            idWorkshop.setMaxWidth(mapImage.getFitWidth());
+            labelVbox = new VBox(mapName, idWorkshop, mapReleaseDate, mapImportedDate);
+            labelVbox.setStyle("-fx-background-color: #37603a;");
+        } else {
+            labelVbox = new VBox(mapName, mapReleaseDate, mapImportedDate);
+            labelVbox.setStyle("-fx-background-color: #8c4242;");
+        }
         labelVbox.setId("labelVbox");
+
 
         TextArea mapDescription = new TextArea("Description: " + mapDto.getMapDescription());
         mapDescription.setWrapText(true);
