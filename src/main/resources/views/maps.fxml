@@ -18,16 +18,16 @@
                             <panes>
                                 <TitledPane fx:id="steamCustomMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
                                 <graphic>
-                                    <HBox alignment="CENTER" spacing="75.0">
+                                    <HBox alignment="CENTER" spacing="60.0">
                                         <StackPane>
                                             <Circle fill="#57965c" radius="14" />
-                                            <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0"/>
+                                            <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
                                         </StackPane>
                                         <Label alignment="CENTER" prefHeight="63.0" prefWidth="88.0" text="Steam Custom Maps Mods" textAlignment="CENTER" wrapText="true">
                                     <HBox.margin>
                                        <Insets left="-46.0" />
                                     </HBox.margin></Label>
-                                        <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="270.0">
+                                        <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="216.0">
                                             <menus>
                                                 <Menu fx:id="steamCustomMapsAddMenu" mnemonicParsing="false">
                                                     <graphic>
@@ -111,7 +111,7 @@
                                                 </Slider>
                                             </children>
                                         </VBox>
-
+                                        <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true" />
                                     </HBox>
                                 </graphic>
                                 <content>
@@ -128,7 +128,7 @@
 
                                 <TitledPane fx:id="steamOfficialMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
                                     <graphic>
-                                        <HBox alignment="CENTER" spacing="50.0">
+                                        <HBox alignment="CENTER" spacing="60.0">
                                             <StackPane>
                                                 <Circle fill="#c94f4f" radius="14" />
                                                 <Text fx:id="steamOfficialMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
@@ -138,9 +138,9 @@
                                             </StackPane>
                                             <Label prefHeight="63.0" prefWidth="78.0" text="Steam Official Maps" textAlignment="CENTER" wrapText="true">
                                     <HBox.margin>
-                                       <Insets left="-46.0" />
+                                       <Insets left="-66.0" />
                                     </HBox.margin></Label>
-                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="296.0">
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="216.0">
                                                 <menus>
                                                     <Menu fx:id="steamOfficialMapsImportMenu" mnemonicParsing="false">
                                                         <graphic>
@@ -175,7 +175,7 @@
                                                     </Menu>
                                                 </menus>
                                     <HBox.margin>
-                                       <Insets left="36.0" />
+                                       <Insets left="9.0" />
                                     </HBox.margin>
                                             </MenuBar>
                                             <VBox>
@@ -210,11 +210,15 @@
                                                         </VBox.margin>
                                                     </Slider>
                                                 </children>
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
                                             </VBox>
+                                            <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true" />
                                         </HBox>
                                     </graphic>
                                     <content>
-                                        <FlowPane fx:id="steamOfficialMaps" hgap="20.0" minHeight="400.0" vgap="20.0" >
+                                        <FlowPane fx:id="steamOfficialMaps" hgap="20.0" minHeight="400.0" vgap="20.0">
                                             <cursor>
                                                 <Cursor fx:constant="DEFAULT" />
                                             </cursor>
@@ -227,7 +231,7 @@
 
                                 <TitledPane fx:id="epicCustomMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
                                     <graphic>
-                                        <HBox alignment="CENTER" spacing="75.0">
+                                        <HBox alignment="CENTER" spacing="60.0">
                                             <StackPane>
                                                 <Circle fill="#57965c" radius="14" />
                                                 <Text fx:id="epicCustomMapsCounter" fill="#e8e8e8" text="0" textAlignment="CENTER" wrappingWidth="23.0" />
@@ -236,7 +240,7 @@
                                                 <HBox.margin>
                                                     <Insets left="-46.0" />
                                                 </HBox.margin></Label>
-                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="270.0">
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="216.0">
                                                 <menus>
                                                     <Menu fx:id="epicCustomMapsAddMenu" mnemonicParsing="false">
                                                         <graphic>
@@ -320,7 +324,7 @@
                                                     </Slider>
                                                 </children>
                                             </VBox>
-
+                                            <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true" />
                                         </HBox>
                                     </graphic>
                                     <content>
@@ -337,7 +341,7 @@
 
                                 <TitledPane fx:id="epicOfficialMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
                                     <graphic>
-                                        <HBox alignment="CENTER" spacing="50.0">
+                                        <HBox alignment="CENTER" spacing="60.0">
                                             <StackPane>
                                                 <Circle fill="#c94f4f" radius="14" />
                                                 <Text fx:id="epicOfficialMapsCounter" fill="#e8e8e8" text="0" textAlignment="CENTER" wrappingWidth="23.0" />
@@ -347,9 +351,9 @@
                                             </StackPane>
                                             <Label prefHeight="63.0" prefWidth="78.0" text="Epic Games Official Maps" textAlignment="CENTER" wrapText="true">
                                                 <HBox.margin>
-                                                    <Insets left="-46.0" />
+                                                    <Insets left="-66.0" />
                                                 </HBox.margin></Label>
-                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="296.0">
+                                            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="216.0">
                                                 <menus>
                                                     <Menu fx:id="epicOfficialMapsImportMenu" mnemonicParsing="false">
                                                         <graphic>
@@ -384,7 +388,7 @@
                                                     </Menu>
                                                 </menus>
                                                 <HBox.margin>
-                                                    <Insets left="36.0" />
+                                                    <Insets left="9.0" />
                                                 </HBox.margin>
                                             </MenuBar>
                                             <VBox>
@@ -419,7 +423,11 @@
                                                         </VBox.margin>
                                                     </Slider>
                                                 </children>
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
                                             </VBox>
+                                            <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true"/>
                                         </HBox>
                                     </graphic>
                                     <content>

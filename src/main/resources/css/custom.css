@@ -184,3 +184,14 @@
     -fx-background-color: #242323;
 }
 
+#selectedMap, #selectedMap .combo-box {
+    -fx-background-color: transparent;
+}
+
+#selectedMap .combo-box-popup .list-view .list-cell {
+    -fx-background-color: #575757;
+}
+
+#selectedMap > .arrow-button > .arrow {
+    -fx-background-color: #e8e8e8;
+}
