@@ -95,7 +95,8 @@ public class HomeController implements Initializable {
                         protected void updateItem(MapDto mapDto, boolean empty) {
                             super.updateItem(mapDto, empty);
                             if (mapDto != null) {
-                                setGraphic(Utils.createMapBox(mapDto,false));
+                                double screenWidth = Session.getInstance().getPrimaryStage().getWidth();
+                                setGraphic(Utils.createMapBox(mapDto,false, (screenWidth - 60) / 376 ));
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                             }
                         }
@@ -110,7 +111,8 @@ public class HomeController implements Initializable {
                 protected void updateItem(MapDto mapDto, boolean empty) {
                     super.updateItem(mapDto, empty);
                     if (mapDto != null) {
-                        setGraphic(Utils.createMapBox(mapDto,false));
+                        double screenWidth = Session.getInstance().getPrimaryStage().getWidth();
+                        setGraphic(Utils.createMapBox(mapDto,false, (screenWidth - 175) / 376));
                         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                     }
                 }
@@ -201,4 +203,5 @@ public class HomeController implements Initializable {
     private void selectMapOnShowing() {
         progressIndicator.setVisible(false);
     }
+
  }

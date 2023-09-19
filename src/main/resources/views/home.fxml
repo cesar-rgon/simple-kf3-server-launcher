@@ -44,7 +44,7 @@
                                     <Label fx:id="selectedMapLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="60.6" layoutY="34.6" nodeOrientation="LEFT_TO_RIGHT" prefHeight="235.0" prefWidth="599.0" text="Selected Map" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
                                         <graphic>
                                             <StackPane alignment="CENTER">
-                                                <ComboBox id="selectedMap" fx:id="selectedMap" onMousePressed="#selectMapOnMousePressed" onShowing="#selectMapOnShowing" prefHeight="235.0" prefWidth="390.0">
+                                                <ComboBox id="selectedMap" fx:id="selectedMap" onMousePressed="#selectMapOnMousePressed" onShowing="#selectMapOnShowing" prefHeight="230.0" prefWidth="390.0">
                                                     <cursor>
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>

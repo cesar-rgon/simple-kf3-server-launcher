@@ -186,13 +186,28 @@
 #selectedMap .combo-box-popup .list-view .list-cell {
     -fx-background-color: #575757;
     -fx-cursor: hand;
+    -fx-alignment: center;
 }
 
 #selectedMap > .arrow-button > .arrow {
     -fx-background-color: #e8e8e8;
 }
 
+#mapVbox .button {
+    -fx-effect: dropshadow(three-pass-box, #0d0d0d, 10, 0.3, 5, 5);
+}
+
 #mapVbox .button:hover {
     -fx-cursor: hand;
     -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
 }
+
+.scroll-pane {
+    -fx-background-color: red;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: #575757;
+    -fx-border-color: transparent;
+}
+

@@ -7,12 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import org.apache.commons.lang3.StringUtils;
+import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
+import start.MainApplication;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -134,16 +137,19 @@ public class Utils {
         Tooltip.install(node, tooltip);
     }
 
-    public static VBox createMapBox(MapDto mapDto, boolean showExtended) {
+    public static VBox createMapBox(MapDto mapDto, boolean showExtended, double columns) {
         // Image
         ImageView mapImage = new ImageView(
                 new Image(mapDto.getUrlPhoto())
         );
         mapImage.setPreserveRatio(false);
-        mapImage.setFitWidth(340);
-        mapImage.setFitHeight(170);
 
-        // Map name
+        double screenWidth = Session.getInstance().getPrimaryStage().getWidth();
+
+        mapImage.setFitWidth((screenWidth - (36 * columns) - 175) / columns);
+        mapImage.setFitHeight(mapImage.getFitWidth() / 2);
+
+        // Map namel
         Label mapName = new Label(mapDto.getMapName());
         mapName.setMaxWidth(mapImage.getFitWidth());
         mapName.setId("mapName");
@@ -196,8 +202,6 @@ public class Utils {
             labelVbox.setStyle("-fx-padding: 5 0 0 0; -fx-background-color: #8c4242;");
         }
 
-        VBox mapVbox = new VBox(mapImage, labelVbox);
-
         if (showExtended) {
             // Actions
             ImageView runServerIcon = new ImageView(
@@ -218,7 +222,7 @@ public class Utils {
             Button informationButton = new Button();
             informationButton.setGraphic(informationIcon);
 
-            HBox actionsHbox = null;
+            FlowPane actionsHbox = null;
             if (!mapDto.isOfficial()) {
                 ImageView editMapIcon = new ImageView(
                         new Image(Utils.class.getClassLoader().getResourceAsStream("images/edit.png"))
@@ -238,17 +242,19 @@ public class Utils {
                 Button deteteMapButton = new Button();
                 deteteMapButton.setGraphic(deteteMapIcon);
 
-                actionsHbox = new HBox(runServerButton, editMapButton, deteteMapButton, informationButton);
+                actionsHbox = new FlowPane(runServerButton, editMapButton, deteteMapButton, informationButton);
             } else {
-                actionsHbox = new HBox(runServerButton, informationButton);
+                actionsHbox = new FlowPane(runServerButton, informationButton);
             }
             actionsHbox.setPadding(new Insets(0,0,5,0));
             actionsHbox.setAlignment(Pos.CENTER);
-            actionsHbox.setSpacing(20);
-            mapVbox.getChildren().add(actionsHbox);
+            //actionsHbox.setSpacing((mapImage.getFitWidth() - 128) / 5);
+            labelVbox.getChildren().add(actionsHbox);
         }
+
+        VBox mapVbox = new VBox(mapImage, labelVbox);
         mapVbox.setId("mapVbox");
-        mapVbox.setMaxWidth(340);
+        mapVbox.setMaxWidth(mapImage.getFitWidth());
         mapVbox.setSpacing(10);
 
         return mapVbox;

@@ -1,10 +1,13 @@
 package stories.maps;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -16,6 +19,7 @@ import pojos.ExampleMaps;
 import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
+import start.MainApplication;
 import utils.Utils;
 
 import java.net.URL;
@@ -34,7 +38,8 @@ public class MapsController implements Initializable {
     @FXML private FlowPane steamOfficialMaps;
     @FXML private FlowPane epicCustomMaps;
     @FXML private FlowPane epicOfficialMaps;
-    @FXML ProgressIndicator progressIndicator;
+    @FXML private ProgressIndicator progressIndicator;
+    @FXML private Slider steamCustomColumnSlider;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,14 +47,25 @@ public class MapsController implements Initializable {
             @Override
             protected List<VBox> call() throws Exception {
                 ExampleMaps exampleMaps = new ExampleMaps();
-                List<VBox> kf3MapBoxList = new ArrayList<VBox>();
-                kf3MapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true));
-                kf3MapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true));
-                kf3MapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true));
-                kf3MapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true));
-                kf3MapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true));
-                kf3MapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true));
-                return kf3MapBoxList;
+                List<VBox> mapBoxList = new ArrayList<VBox>();
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, steamCustomColumnSlider.getValue()));
+
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, steamCustomColumnSlider.getValue()));
+                return mapBoxList;
             }
         };
 
@@ -68,14 +84,13 @@ public class MapsController implements Initializable {
                 Utils.errorDialog(e.getMessage(), e);
             }
 
-            List<VBox> kf3MapBoxList = task.getValue();
-            steamCustomMaps.getChildren().add(kf3MapBoxList.get(0));
-            steamCustomMaps.getChildren().add(kf3MapBoxList.get(1));
-            steamCustomMaps.getChildren().add(kf3MapBoxList.get(2));
-            steamOfficialMaps.getChildren().add(kf3MapBoxList.get(3));
-            steamOfficialMaps.getChildren().add(kf3MapBoxList.get(4));
-            steamOfficialMaps.getChildren().add(kf3MapBoxList.get(5));
-
+            List<VBox> mapBoxList = task.getValue();
+            for (int i=0; i<8; i++ ) {
+                steamCustomMaps.getChildren().add(mapBoxList.get(i));
+            }
+            for (int i=8; i<16; i++ ) {
+                steamOfficialMaps.getChildren().add(mapBoxList.get(i));
+            }
             progressIndicator.setVisible(false);
         });
         task.setOnFailed(wse -> {
@@ -84,6 +99,13 @@ public class MapsController implements Initializable {
 
         Thread thread = new Thread(task);
         thread.start();
+
+        Session.getInstance().getPrimaryStage().widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+                steamCustomColumnSliderOnMouseClicked();
+            }
+        });
     }
 
     @FXML
@@ -91,4 +113,41 @@ public class MapsController implements Initializable {
         Utils.setNextNodeBackground(mapsStackPane);
     }
 
+    @FXML
+    private void steamCustomColumnSliderOnMouseClicked() {
+        progressIndicator.setVisible(true);
+
+        Task<List<VBox>> task = new Task<List<VBox>>() {
+            @Override
+            protected List<VBox> call() throws Exception {
+                ExampleMaps exampleMaps = new ExampleMaps();
+                List<VBox> mapBoxList = new ArrayList<VBox>();
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, steamCustomColumnSlider.getValue()));
+                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, steamCustomColumnSlider.getValue()));
+                return mapBoxList;
+            }
+        };
+
+        task.setOnSucceeded(wse -> {
+            List<VBox> mapBoxList = task.getValue();
+            steamCustomMaps.getChildren().clear();
+            for (int i=0; i<8; i++ ) {
+                steamCustomMaps.getChildren().add(mapBoxList.get(i));
+            }
+            progressIndicator.setVisible(false);
+        });
+
+        task.setOnFailed(wse -> {
+            progressIndicator.setVisible(false);
+        });
+
+        Thread thread = new Thread(task);
+        thread.start();
+    }
 }
