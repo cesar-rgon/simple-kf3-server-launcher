@@ -1,11 +1,14 @@
 package utils;
 
+import dtos.MapDto;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import org.apache.commons.lang3.StringUtils;
 import services.PropertyService;
@@ -129,4 +132,124 @@ public class Utils {
         tooltip.setShowDuration(Duration.seconds(tooltipDuration));
         Tooltip.install(node, tooltip);
     }
+
+    public static VBox createMapBox(MapDto mapDto, boolean showExtended) {
+        // Image
+        ImageView mapImage = new ImageView(
+                new Image(mapDto.getUrlPhoto())
+        );
+        mapImage.setPreserveRatio(false);
+        mapImage.setFitWidth(340);
+        mapImage.setFitHeight(170);
+
+        // Map name
+        Label mapName = new Label(mapDto.getMapName());
+        mapName.setMaxWidth(mapImage.getFitWidth());
+        mapName.setId("mapName");
+        if (!mapDto.isOfficial()) {
+            mapName.setStyle("-fx-background-color: #37603a;");
+        } else {
+            mapName.setStyle("-fx-background-color: #8c4242;");
+        }
+
+        VBox labelVbox = new VBox(mapName);
+        labelVbox.setAlignment(Pos.CENTER);
+
+        if (showExtended) {
+            Label downloadedLabel = null;
+            if (mapDto.isDownloaded()) {
+                downloadedLabel = new Label("DOWNLOADED");
+                downloadedLabel.setStyle("-fx-text-fill: #e8e8e8; -fx-padding: 5; -fx-border-color: #e8e8e8; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#7e7d00;");
+            } else {
+                downloadedLabel = new Label("NOT DOWNLOADED");
+                downloadedLabel.setStyle("-fx-text-fill: #e8e8e8; -fx-padding: 5; -fx-border-color: #e8e8e8; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#6e2828;");
+            }
+            labelVbox.getChildren().add(downloadedLabel);
+        }
+
+        if (showExtended) {
+            Label mapReleaseDate = new Label("Release date: " + mapDto.getReleaseDate());
+            mapReleaseDate.setMaxWidth(mapImage.getFitWidth());
+
+            Label mapImportedDate = new Label("Imported date: " + mapDto.getImportedDate());
+            mapImportedDate.setMaxWidth(mapImage.getFitWidth());
+            mapImportedDate.setId("mapImportedDate");
+
+            if (!mapDto.isOfficial()) {
+                Label idWorkshop = new Label("id Workshop: " + mapDto.getIdWorkShop());
+                idWorkshop.setMaxWidth(mapImage.getFitWidth());
+                idWorkshop.setStyle("-fx-padding: 10 0 0 0;");
+                labelVbox.getChildren().add(idWorkshop);
+            } else {
+                mapReleaseDate.setStyle("-fx-padding: 10 0 0 0;");
+            }
+            labelVbox.setId("labelVbox");
+            labelVbox.getChildren().add(mapReleaseDate);
+            labelVbox.getChildren().add(mapImportedDate);
+        }
+
+        if (!mapDto.isOfficial()) {
+            labelVbox.setStyle("-fx-padding: 5 0 0 0; -fx-background-color: #37603a;");
+        } else {
+            labelVbox.setStyle("-fx-padding: 5 0 0 0; -fx-background-color: #8c4242;");
+        }
+
+        VBox mapVbox = new VBox(mapImage, labelVbox);
+
+        if (showExtended) {
+            // Actions
+            ImageView runServerIcon = new ImageView(
+                    new Image(Utils.class.getClassLoader().getResourceAsStream("images/run.png"))
+            );
+            runServerIcon.setPreserveRatio(true);
+            runServerIcon.setFitWidth(32);
+
+            Button runServerButton = new Button();
+            runServerButton.setGraphic(runServerIcon);
+
+            ImageView informationIcon = new ImageView(
+                    new Image(Utils.class.getClassLoader().getResourceAsStream("images/information.png"))
+            );
+            informationIcon.setPreserveRatio(true);
+            informationIcon.setFitWidth(32);
+
+            Button informationButton = new Button();
+            informationButton.setGraphic(informationIcon);
+
+            HBox actionsHbox = null;
+            if (!mapDto.isOfficial()) {
+                ImageView editMapIcon = new ImageView(
+                        new Image(Utils.class.getClassLoader().getResourceAsStream("images/edit.png"))
+                );
+                editMapIcon.setPreserveRatio(true);
+                editMapIcon.setFitWidth(32);
+
+                Button editMapButton = new Button();
+                editMapButton.setGraphic(editMapIcon);
+
+                ImageView deteteMapIcon = new ImageView(
+                        new Image(Utils.class.getClassLoader().getResourceAsStream("images/delete.png"))
+                );
+                deteteMapIcon.setPreserveRatio(true);
+                deteteMapIcon.setFitWidth(32);
+
+                Button deteteMapButton = new Button();
+                deteteMapButton.setGraphic(deteteMapIcon);
+
+                actionsHbox = new HBox(runServerButton, editMapButton, deteteMapButton, informationButton);
+            } else {
+                actionsHbox = new HBox(runServerButton, informationButton);
+            }
+            actionsHbox.setPadding(new Insets(0,0,5,0));
+            actionsHbox.setAlignment(Pos.CENTER);
+            actionsHbox.setSpacing(20);
+            mapVbox.getChildren().add(actionsHbox);
+        }
+        mapVbox.setId("mapVbox");
+        mapVbox.setMaxWidth(340);
+        mapVbox.setSpacing(10);
+
+        return mapVbox;
+    }
+
 }

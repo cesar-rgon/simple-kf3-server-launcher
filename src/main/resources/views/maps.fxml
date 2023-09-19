@@ -111,7 +111,6 @@
                                                 </Slider>
                                             </children>
                                         </VBox>
-                                        <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true" />
                                     </HBox>
                                 </graphic>
                                 <content>
@@ -214,7 +213,6 @@
                                        <Insets />
                                     </HBox.margin>
                                             </VBox>
-                                            <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true" />
                                         </HBox>
                                     </graphic>
                                     <content>
@@ -324,7 +322,6 @@
                                                     </Slider>
                                                 </children>
                                             </VBox>
-                                            <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true" />
                                         </HBox>
                                     </graphic>
                                     <content>
@@ -427,7 +424,6 @@
                                        <Insets />
                                     </HBox.margin>
                                             </VBox>
-                                            <CheckBox prefWidth="120.0" text="Show descriptions" wrapText="true"/>
                                         </HBox>
                                     </graphic>
                                     <content>
@@ -452,6 +448,7 @@
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor>
                 </AnchorPane>
+                <ProgressIndicator fx:id="progressIndicator" maxHeight="150.0" maxWidth="150.0" />
             </children>
          <cursor>
             <Cursor fx:constant="CROSSHAIR" />

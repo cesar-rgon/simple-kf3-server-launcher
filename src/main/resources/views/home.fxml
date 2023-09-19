@@ -41,18 +41,19 @@
                                         </cursor>
                                     </Button>
 
-                                    <Label fx:id="selectedMapLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="60.6" layoutY="34.6" nodeOrientation="LEFT_TO_RIGHT" prefHeight="300.0" prefWidth="599.0" text="Selected Map" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
+                                    <Label fx:id="selectedMapLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="60.6" layoutY="34.6" nodeOrientation="LEFT_TO_RIGHT" prefHeight="235.0" prefWidth="599.0" text="Selected Map" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
                                         <graphic>
-                                            <ComboBox id="selectedMap" fx:id="selectedMap" prefHeight="295.0" prefWidth="390.0">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor></ComboBox>
+                                            <ComboBox id="selectedMap" fx:id="selectedMap" onMousePressed="#selectMapOnMousePressed" onShowing="#selectMapOnShowing" prefHeight="235.0" prefWidth="390.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                            </ComboBox>
                                         </graphic>
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Label>
-                                    <Button fx:id="setupGameTypesButton" onMouseClicked="#setupGameTypesOnMouseClicked" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="322.0">
+                                    <Button fx:id="setupGameTypesButton" onMouseClicked="#setupGameTypesOnMouseClicked" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="262.0">
                                         <graphic>
                                             <ImageView fitHeight="32.0" preserveRatio="true">
                                                 <image>
@@ -64,7 +65,7 @@
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
                                     </Button>
-                                    <Label fx:id="gameTypeLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="23.6" layoutY="249.6" prefHeight="43.0" prefWidth="314.0" text="Game Type" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="320.0">
+                                    <Label fx:id="gameTypeLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="23.6" layoutY="249.6" prefHeight="43.0" prefWidth="314.0" text="Game Type" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="260.0">
                                         <graphic>
                                             <ComboBox prefHeight="25.0" prefWidth="200.0">
                                              <cursor>
@@ -74,7 +75,7 @@
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor></Label>
-                                    <Button fx:id="setupDifficultiesButton" onMouseClicked="#setupDifficultiesOnMouseClicked" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="367.0">
+                                    <Button fx:id="setupDifficultiesButton" onMouseClicked="#setupDifficultiesOnMouseClicked" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="307.0">
                                         <graphic>
                                             <ImageView fitHeight="32.0" layoutX="325.0" layoutY="280.0" preserveRatio="true">
                                                 <image>
@@ -86,7 +87,7 @@
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
                                     </Button>
-                                    <Label fx:id="difficultyLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="14.6" layoutY="284.6" prefHeight="43.0" prefWidth="315.0" text="Difficulty" AnchorPane.leftAnchor="-6.0" AnchorPane.topAnchor="365.0">
+                                    <Label fx:id="difficultyLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="14.6" layoutY="284.6" prefHeight="43.0" prefWidth="315.0" text="Difficulty" AnchorPane.leftAnchor="-6.0" AnchorPane.topAnchor="305.0">
                                         <graphic>
                                             <ComboBox prefHeight="25.0" prefWidth="200.0">
                                              <cursor>
@@ -96,7 +97,7 @@
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor></Label>
-                                    <Button fx:id="setupLengths" onMouseClicked="#setupLengthsOnMouseClicked" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="412.0">
+                                    <Button fx:id="setupLengths" onMouseClicked="#setupLengthsOnMouseClicked" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="352.0">
                                         <graphic>
                                             <ImageView fitHeight="32.0" layoutX="325.0" layoutY="325.0" preserveRatio="true">
                                                 <image>
@@ -108,7 +109,7 @@
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
                                     </Button>
-                                    <Label fx:id="lengthLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="17.6" layoutY="329.6" prefHeight="43.0" prefWidth="312.0" text="Length" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="410.0">
+                                    <Label fx:id="lengthLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="17.6" layoutY="329.6" prefHeight="43.0" prefWidth="312.0" text="Length" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="350.0">
                                         <graphic>
                                             <ComboBox prefHeight="25.0" prefWidth="200.0">
                                              <cursor>
@@ -118,7 +119,7 @@
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor></Label>
-                                    <Label fx:id="serverNameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Name" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="320.0">
+                                    <Label fx:id="serverNameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Name" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="260.0">
                                         <graphic>
                                             <TextField fx:id="serverName" prefWidth="200.0">
                                              <cursor>
@@ -128,7 +129,7 @@
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor></Label>
-                                    <Label fx:id="serverPasswordLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Password" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="365.0">
+                                    <Label fx:id="serverPasswordLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutY="52.0" prefHeight="43.0" prefWidth="350.0" text="Server Password" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="305.0">
                                         <graphic>
                                             <PasswordField fx:id="serverPassword" prefWidth="200.0">
                                              <cursor>
@@ -418,6 +419,7 @@
                </cursor>
 
             </AnchorPane>
+            <ProgressIndicator fx:id="progressIndicator" maxHeight="150.0" maxWidth="150.0" visible="false" />
          </children>
          <cursor>
             <Cursor fx:constant="CROSSHAIR" />

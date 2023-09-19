@@ -13,7 +13,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.util.Callback;
-import nodes.Kf3MapBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pojos.ExampleMaps;
@@ -44,6 +43,7 @@ public class HomeController implements Initializable {
     @FXML private Button setupLengths;
     @FXML private GridPane logoGridPane;
     @FXML private GridPane combosGridPane;
+    @FXML ProgressIndicator progressIndicator;
 
     public HomeController() {
         super();
@@ -76,7 +76,7 @@ public class HomeController implements Initializable {
             }
 
             ComboBox<MapDto> mapSelect = (ComboBox<MapDto>)selectedMapLabel.getGraphic();
-            mapSelect.setVisibleRowCount((int) Math.round(Screen.getPrimary().getBounds().getHeight() / 241) - 1);
+            mapSelect.setVisibleRowCount((int) Math.round(Screen.getPrimary().getBounds().getHeight() / 197) - 1);
 
             ExampleMaps exampleMaps = new ExampleMaps();
             mapSelect.getItems().add(exampleMaps.getMapDto1());
@@ -90,13 +90,12 @@ public class HomeController implements Initializable {
             mapSelect.setCellFactory(new Callback<ListView<MapDto>, ListCell<MapDto>>() {
                 @Override
                 public ListCell<MapDto> call(ListView<MapDto> mapDtoListView) {
-
                     ListCell<MapDto> listCell = new ListCell<MapDto>() {
                         @Override
                         protected void updateItem(MapDto mapDto, boolean empty) {
                             super.updateItem(mapDto, empty);
                             if (mapDto != null) {
-                                setGraphic(new Kf3MapBox(mapDto,false,false,false).getMapBox());
+                                setGraphic(Utils.createMapBox(mapDto,false));
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                             }
                         }
@@ -111,7 +110,7 @@ public class HomeController implements Initializable {
                 protected void updateItem(MapDto mapDto, boolean empty) {
                     super.updateItem(mapDto, empty);
                     if (mapDto != null) {
-                        setGraphic(new Kf3MapBox(mapDto, false, false,false).getMapBox());
+                        setGraphic(Utils.createMapBox(mapDto,false));
                         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                     }
                 }
@@ -191,5 +190,15 @@ public class HomeController implements Initializable {
             logger.error(e.getMessage(), e);
             Utils.errorDialog(e.getMessage(), e);
         }
+    }
+
+    @FXML
+    private void selectMapOnMousePressed() {
+        progressIndicator.setVisible(true);
+    }
+
+    @FXML
+    private void selectMapOnShowing() {
+        progressIndicator.setVisible(false);
     }
  }

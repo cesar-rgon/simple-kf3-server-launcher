@@ -150,12 +150,7 @@
 }
 
 #mapVbox:hover {
-    -fx-cursor: hand;
     -fx-border-color: gold;
-}
-
-#mapVbox:hover .label {
-    -fx-text-fill: gold;
 }
 
 #mapVbox .label {
@@ -163,12 +158,12 @@
     -fx-alignment: center;
 }
 
-#mapVbox #mapName {
-    -fx-padding: 10 0 10 0;
-}
-
 #mapVbox #mapImportedDate {
     -fx-padding: 0 0 10 0;
+}
+
+#mapName {
+    -fx-padding: 0 0 5 0;
 }
 
 #mapName .text {
