@@ -28,9 +28,9 @@
                         <content>
                             <AnchorPane prefHeight="340.0" prefWidth="810.0">
                                 <children>
-                                    <Button fx:id="setupMapsButton" onMouseClicked="#setupMapsOnMouseClicked" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="127.0">
+                                    <Button fx:id="setupMapsButton" onMouseClicked="#setupMapsOnMouseClicked" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="97.0">
                                         <graphic>
-                                            <ImageView fitHeight="48.0" layoutX="616.0" layoutY="99.0" preserveRatio="true">
+                                            <ImageView fitHeight="48.0" layoutX="616.0" layoutY="82.0" preserveRatio="true">
                                                 <image>
                                                     <Image url="@../images/maps.png" />
                                                 </image>
@@ -41,13 +41,19 @@
                                         </cursor>
                                     </Button>
 
-                                    <Label fx:id="selectedMapLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="60.6" layoutY="34.6" nodeOrientation="LEFT_TO_RIGHT" prefHeight="235.0" prefWidth="599.0" text="Selected Map" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
+                                    <Label fx:id="selectedMapLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="60.6" layoutY="34.6" nodeOrientation="LEFT_TO_RIGHT" prefHeight="235.0" prefWidth="599.0" text="Selected Map" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
                                         <graphic>
-                                            <ComboBox id="selectedMap" fx:id="selectedMap" onMousePressed="#selectMapOnMousePressed" onShowing="#selectMapOnShowing" prefHeight="235.0" prefWidth="390.0">
-                                                <cursor>
-                                                    <Cursor fx:constant="HAND" />
-                                                </cursor>
-                                            </ComboBox>
+                                            <StackPane alignment="CENTER">
+                                                <ComboBox id="selectedMap" fx:id="selectedMap" onMousePressed="#selectMapOnMousePressed" onShowing="#selectMapOnShowing" prefHeight="235.0" prefWidth="390.0">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND" />
+                                                    </cursor>
+                                                </ComboBox>
+                                                <ProgressIndicator fx:id="progressIndicator" maxHeight="150.0" maxWidth="150.0" visible="false">
+                                                <StackPane.margin>
+                                                   <Insets bottom="40.0" />
+                                                </StackPane.margin></ProgressIndicator>
+                                            </StackPane>
                                         </graphic>
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
@@ -419,7 +425,6 @@
                </cursor>
 
             </AnchorPane>
-            <ProgressIndicator fx:id="progressIndicator" maxHeight="150.0" maxWidth="150.0" visible="false" />
          </children>
          <cursor>
             <Cursor fx:constant="CROSSHAIR" />

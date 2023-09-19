@@ -21,6 +21,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -159,7 +160,7 @@ public class Utils {
             Label downloadedLabel = null;
             if (mapDto.isDownloaded()) {
                 downloadedLabel = new Label("DOWNLOADED");
-                downloadedLabel.setStyle("-fx-text-fill: #e8e8e8; -fx-padding: 5; -fx-border-color: #e8e8e8; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#7e7d00;");
+                downloadedLabel.setStyle("-fx-text-fill: gold; -fx-padding: 5; -fx-border-color: gold; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#28392a;");
             } else {
                 downloadedLabel = new Label("NOT DOWNLOADED");
                 downloadedLabel.setStyle("-fx-text-fill: #e8e8e8; -fx-padding: 5; -fx-border-color: #e8e8e8; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#6e2828;");
@@ -171,7 +172,8 @@ public class Utils {
             Label mapReleaseDate = new Label("Release date: " + mapDto.getReleaseDate());
             mapReleaseDate.setMaxWidth(mapImage.getFitWidth());
 
-            Label mapImportedDate = new Label("Imported date: " + mapDto.getImportedDate());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            Label mapImportedDate = new Label("Imported date: " + mapDto.getImportedDate().format(formatter));
             mapImportedDate.setMaxWidth(mapImage.getFitWidth());
             mapImportedDate.setId("mapImportedDate");
 

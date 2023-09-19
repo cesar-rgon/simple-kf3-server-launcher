@@ -75,7 +75,7 @@ public class HomeController implements Initializable {
                 Session.getInstance().getMusicPlayer().setAutoPlay(true);
             }
 
-            ComboBox<MapDto> mapSelect = (ComboBox<MapDto>)selectedMapLabel.getGraphic();
+            ComboBox<MapDto> mapSelect = (ComboBox<MapDto>)((StackPane)selectedMapLabel.getGraphic()).getChildren().get(0);
             mapSelect.setVisibleRowCount((int) Math.round(Screen.getPrimary().getBounds().getHeight() / 197) - 1);
 
             ExampleMaps exampleMaps = new ExampleMaps();

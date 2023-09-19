@@ -185,8 +185,14 @@
 
 #selectedMap .combo-box-popup .list-view .list-cell {
     -fx-background-color: #575757;
+    -fx-cursor: hand;
 }
 
 #selectedMap > .arrow-button > .arrow {
     -fx-background-color: #e8e8e8;
+}
+
+#mapVbox .button:hover {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
 }
