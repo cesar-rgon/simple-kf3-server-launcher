@@ -8,14 +8,12 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import org.apache.commons.lang3.StringUtils;
 import pojos.Session;
 import services.PropertyService;
 import services.PropertyServiceImpl;
-import start.MainApplication;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -23,7 +21,6 @@ import java.io.StringWriter;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
@@ -146,7 +143,7 @@ public class Utils {
 
         double screenWidth = Session.getInstance().getPrimaryStage().getWidth();
 
-        mapImage.setFitWidth((screenWidth - (36 * columns) - 175) / columns);
+        mapImage.setFitWidth((screenWidth - (36 * columns) - 190) / columns);
         mapImage.setFitHeight(mapImage.getFitWidth() / 2);
 
         // Map namel

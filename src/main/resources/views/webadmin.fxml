@@ -5,18 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.*?>
 
-<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.webadmin.WebAdminController">
-    <content>
-        <StackPane alignment="CENTER" VBox.vgrow="ALWAYS" style="-fx-background-color: black;">
-            <AnchorPane VBox.vgrow="ALWAYS">
-                <children>
-                    <WebView fx:id="webAdmin" maxHeight="-1.0" maxWidth="-1.0" minHeight="700.0" minWidth="950.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                </children>
-                <VBox.margin>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                </VBox.margin>
-            </AnchorPane>
-            <ProgressIndicator fx:id="progressIndicator" minHeight="150.0" minWidth="150.0" />
-        </StackPane>
-    </content>
+<fx:root fx:id="webadminStackPane" alignment="CENTER" stylesheets="@../css/custom.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.webadmin.WebAdminController">
+    <children>
+        <AnchorPane VBox.vgrow="ALWAYS">
+            <children>
+                <WebView fx:id="webAdmin" maxHeight="-1.0" maxWidth="-1.0" minHeight="700.0" minWidth="950.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+            <VBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </VBox.margin>
+        </AnchorPane>
+        <ProgressIndicator fx:id="progressIndicator" minHeight="150.0" minWidth="150.0" />
+    </children>
 </fx:root>

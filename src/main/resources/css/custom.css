@@ -127,6 +127,10 @@
     -fx-opacity: 0.8;
 }
 
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
 .table-view .label {
     -fx-text-fill: #575757;
 }
@@ -200,10 +204,6 @@
 #mapVbox .button:hover {
     -fx-cursor: hand;
     -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
-}
-
-.scroll-pane {
-    -fx-background-color: red;
 }
 
 .scroll-bar:vertical {

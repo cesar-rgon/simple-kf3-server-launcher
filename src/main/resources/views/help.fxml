@@ -7,208 +7,201 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.*?>
 
-<fx:root id="centerPane" fx:id="mapsContent" fitToHeight="true" fitToWidth="true" prefHeight="700.0" prefWidth="950" stylesheets="@../css/custom.css" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.help.HelpController">
-    <content>
-        <StackPane fx:id="helpStackPane" alignment="CENTER" onMouseClicked="#helpStackPaneOnMouseClicked" style="-fx-background-color: black;">
+<fx:root fx:id="helpStackPane" alignment="CENTER" onMouseClicked="#helpStackPaneOnMouseClicked" stylesheets="@../css/custom.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.help.HelpController">
+    <children>
+        <AnchorPane>
             <children>
-                <AnchorPane>
-                    <children>
-                        <Accordion fx:id="accordion" layoutY="27.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-                            <panes>
-                                <TitledPane fx:id="github" animated="false" text="Github Project">
-                                    <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/github.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
-                                    </graphic>
-                                    <content>
-                                        <StackPane minHeight="700.0">
-                                            <children>
-                                                <AnchorPane VBox.vgrow="ALWAYS">
-                                                    <children>
-                                                        <WebView fx:id="githubWebPage" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                    </VBox.margin>
-                                                </AnchorPane>
-                                                <ProgressIndicator fx:id="progressIndicatorGithub" minHeight="150.0" minWidth="150.0" />
-                                            </children>
-                                        </StackPane>
-                                    </content>
+                <Accordion fx:id="accordion" layoutY="27.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                    <panes>
+                        <TitledPane fx:id="github" animated="false" text="Github Project">
+                            <graphic>
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                    <image>
+                                        <Image url="@../images/github.png" />
+                                    </image>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
-                                </TitledPane>
-
-                                <TitledPane fx:id="documentation" animated="false" text="Documentation">
-                                    <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/documentation.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
-                                    </graphic>
-                                    <content>
-                                        <StackPane minHeight="700.0">
+                                </ImageView>
+                            </graphic>
+                            <content>
+                                <StackPane minHeight="700.0">
+                                    <children>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
                                             <children>
-                                                <AnchorPane VBox.vgrow="ALWAYS">
-                                                    <children>
-                                                        <WebView fx:id="documentationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                    </VBox.margin>
-                                                </AnchorPane>
-                                                <ProgressIndicator fx:id="progressIndicatorDocumentation" minHeight="150.0" minWidth="150.0" />
-                                            </children>
-                                        </StackPane>
-                                    </content>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                </TitledPane>
-
-                                <TitledPane fx:id="releases" animated="false" text="Published Releases">
-                                    <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/package.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
-                                    </graphic>
-                                    <content>
-                                        <StackPane minHeight="700.0">
-                                            <children>
-                                                <AnchorPane VBox.vgrow="ALWAYS">
-                                                    <children>
-                                                        <WebView fx:id="releasesWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                    </VBox.margin>
-                                                </AnchorPane>
-                                                <ProgressIndicator fx:id="progressIndicatorReleases" minHeight="150.0" minWidth="150.0" />
-                                            </children>
-                                        </StackPane>
-                                    </content>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                </TitledPane>
-
-                                <TitledPane fx:id="updates" animated="true" text="Check for Updates">
-                                    <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/updates.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
-                                    </graphic>
-                                    <content>
-                                        <Label prefHeight="100.0" text="No updates available at this moment" textAlignment="CENTER" wrapText="true" />
-                                    </content>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                </TitledPane>
-
-                                <TitledPane fx:id="about" animated="true" text="About">
-                                    <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/about.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
-                                    </graphic>
-                                    <content>
-                                        <VBox alignment="TOP_CENTER" prefHeight="122.0" prefWidth="902.0" VBox.vgrow="ALWAYS">
-                                            <children>
-                                                <ImageView fitHeight="100.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                                    <image>
-                                                        <Image url="@../images/logo.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <Label minHeight="71.0" prefHeight="71.0" prefWidth="888.0" text="Draft application for the future game Killing Floor 3 to easily customize and launch a Killing Floor 3 Server through a visual interface instead of editing batch files or server's config files. It is under development and will be downloable only for testing purpose." wrapText="true" />
-                                                <Label fx:id="versionLabel" minHeight="28.0" prefHeight="28.0" prefWidth="271.0" text="Application version: " textAlignment="CENTER" wrapText="true" />
-                                                <Label contentDisplay="RIGHT" graphicTextGap="3.0" minHeight="28.0" prefHeight="28.0" prefWidth="182.0" text="Developed by " textAlignment="CENTER" wrapText="true">
-                                                    <graphic>
-                                                        <Hyperlink fx:id="aboutLink" text="cesar-rgon">https://www.google.es</Hyperlink>
-                                                    </graphic>
-                                                </Label>
+                                                <WebView fx:id="githubWebPage" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                                             </children>
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                             </VBox.margin>
-                                        </VBox>
-                                    </content>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                </TitledPane>
-
-                                <TitledPane fx:id="donation" animated="false" text="Donation">
-                                    <graphic>
-                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
-                                            <image>
-                                                <Image url="@../images/donation.png" />
-                                            </image>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </ImageView>
-                                    </graphic>
-                                    <content>
-                                        <StackPane minHeight="700.0">
-                                            <children>
-                                                <AnchorPane VBox.vgrow="ALWAYS">
-                                                    <children>
-                                                        <WebView fx:id="donationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                    </VBox.margin>
-                                                </AnchorPane>
-                                                <ProgressIndicator fx:id="progressIndicatorDonation" minHeight="150.0" minWidth="150.0" />
-                                            </children>
-                                        </StackPane>
-                                    </content>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                </TitledPane>
-                            </panes>
+                                        </AnchorPane>
+                                        <ProgressIndicator fx:id="progressIndicatorGithub" minHeight="150.0" minWidth="150.0" />
+                                    </children>
+                                </StackPane>
+                            </content>
                             <cursor>
-                                <Cursor fx:constant="CROSSHAIR" />
+                                <Cursor fx:constant="HAND" />
                             </cursor>
-                        </Accordion>
+                        </TitledPane>
 
-                    </children>
+                        <TitledPane fx:id="documentation" animated="false" text="Documentation">
+                            <graphic>
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                    <image>
+                                        <Image url="@../images/documentation.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </graphic>
+                            <content>
+                                <StackPane minHeight="700.0">
+                                    <children>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="documentationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </AnchorPane>
+                                        <ProgressIndicator fx:id="progressIndicatorDocumentation" minHeight="150.0" minWidth="150.0" />
+                                    </children>
+                                </StackPane>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                        <TitledPane fx:id="releases" animated="false" text="Published Releases">
+                            <graphic>
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                    <image>
+                                        <Image url="@../images/package.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </graphic>
+                            <content>
+                                <StackPane minHeight="700.0">
+                                    <children>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="releasesWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </AnchorPane>
+                                        <ProgressIndicator fx:id="progressIndicatorReleases" minHeight="150.0" minWidth="150.0" />
+                                    </children>
+                                </StackPane>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                        <TitledPane fx:id="updates" animated="true" text="Check for Updates">
+                            <graphic>
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                    <image>
+                                        <Image url="@../images/updates.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </graphic>
+                            <content>
+                                <Label prefHeight="100.0" text="No updates available at this moment" textAlignment="CENTER" wrapText="true" />
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                        <TitledPane fx:id="about" animated="true" text="About">
+                            <graphic>
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                    <image>
+                                        <Image url="@../images/about.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </graphic>
+                            <content>
+                                <VBox alignment="TOP_CENTER" prefHeight="122.0" prefWidth="902.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <ImageView fitHeight="100.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                            <image>
+                                                <Image url="@../images/logo.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label minHeight="71.0" prefHeight="71.0" prefWidth="888.0" text="Draft application for the future game Killing Floor 3 to easily customize and launch a Killing Floor 3 Server through a visual interface instead of editing batch files or server's config files. It is under development and will be downloable only for testing purpose." wrapText="true" />
+                                        <Label fx:id="versionLabel" minHeight="28.0" prefHeight="28.0" prefWidth="271.0" text="Application version: " textAlignment="CENTER" wrapText="true" />
+                                        <Label contentDisplay="RIGHT" graphicTextGap="3.0" minHeight="28.0" prefHeight="28.0" prefWidth="182.0" text="Developed by " textAlignment="CENTER" wrapText="true">
+                                            <graphic>
+                                                <Hyperlink fx:id="aboutLink" text="cesar-rgon">https://www.google.es</Hyperlink>
+                                            </graphic>
+                                        </Label>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                </VBox>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                        <TitledPane fx:id="donation" animated="false" text="Donation">
+                            <graphic>
+                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                    <image>
+                                        <Image url="@../images/donation.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </graphic>
+                            <content>
+                                <StackPane minHeight="700.0">
+                                    <children>
+                                        <AnchorPane VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="donationWebPage" minHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </AnchorPane>
+                                        <ProgressIndicator fx:id="progressIndicatorDonation" minHeight="150.0" minWidth="150.0" />
+                                    </children>
+                                </StackPane>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+                    </panes>
                     <cursor>
                         <Cursor fx:constant="CROSSHAIR" />
                     </cursor>
-                </AnchorPane>
+                </Accordion>
+
             </children>
             <cursor>
                 <Cursor fx:constant="CROSSHAIR" />
             </cursor>
-        </StackPane>
-    </content>
+        </AnchorPane>
+    </children>
 </fx:root>

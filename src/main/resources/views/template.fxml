@@ -108,6 +108,6 @@
             </children>
         </VBox>
 
-        <ScrollPane fx:id="content" />
+        <StackPane fx:id="content" SplitPane.resizableWithParent="false" />
      </items>
 </SplitPane>

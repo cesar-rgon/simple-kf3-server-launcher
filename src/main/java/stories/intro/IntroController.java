@@ -53,9 +53,7 @@ public class IntroController implements Initializable {
 
     private void loadHomeContent() {
         try {
-            VBox templateContent = (VBox)((ScrollPane)Session.getInstance().getTemplate().getNamespace().get("content")).getContent();
             ((Button) Session.getInstance().getTemplate().getNamespace().get("menuHome")).setDisable(true);
-            templateContent.getChildren().clear();
             FXMLLoader content = new FXMLLoader(getClass().getResource("/views/home.fxml"));
             content.setRoot(Session.getInstance().getTemplate().getNamespace().get("content"));
             content.load();

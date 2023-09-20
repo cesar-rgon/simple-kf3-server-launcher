@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -44,6 +45,7 @@ public class HomeController implements Initializable {
     @FXML private GridPane logoGridPane;
     @FXML private GridPane combosGridPane;
     @FXML ProgressIndicator progressIndicator;
+    @FXML ScrollPane homeScrollPane;
 
     public HomeController() {
         super();
@@ -53,7 +55,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Utils.setNodeBackground(homeStackPane);
+            Utils.setNodeBackground(homeScrollPane);
             logoGridPane.getStyleClass().add("gridPane");
             combosGridPane.getStyleClass().add("gridPane");
             accordion.setExpandedPane(basic);
@@ -127,7 +129,7 @@ public class HomeController implements Initializable {
     @FXML
     private void homeStackPaneOnMouseClicked() throws Exception {
         if (!combosGridPane.isHover() && !logoGridPane.isHover()) {
-            Utils.setNextNodeBackground(homeStackPane);
+            Utils.setNextNodeBackground(homeScrollPane);
         }
     }
 

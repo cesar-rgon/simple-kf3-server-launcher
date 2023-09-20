@@ -6,6 +6,7 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
@@ -30,11 +31,12 @@ public class InstallController implements Initializable {
     @FXML private StackPane installStackPane;
     @FXML private TextField steamPathTextField;
     @FXML private TextField epicPathTextField;
+    @FXML private AnchorPane installAnchorPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Utils.setNodeBackground(installStackPane);
+            Utils.setNodeBackground(installAnchorPane);
             accordion.setExpandedPane(steam);
 
             PropertyService propertyService = new PropertyServiceImpl();
@@ -51,7 +53,7 @@ public class InstallController implements Initializable {
 
     @FXML
     private void installStackPaneOnMouseClicked() throws Exception {
-        Utils.setNextNodeBackground(installStackPane);
+        Utils.setNextNodeBackground(installAnchorPane);
     }
 
     @FXML
