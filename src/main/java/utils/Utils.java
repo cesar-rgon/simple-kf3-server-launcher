@@ -218,6 +218,7 @@ public class Utils {
 
             Button informationButton = new Button();
             informationButton.setGraphic(informationIcon);
+            informationButton.setStyle("-fx-padding: 0 10 0 0");
 
             FlowPane actionsHbox = null;
             if (!mapDto.isOfficial()) {
@@ -238,14 +239,14 @@ public class Utils {
 
                 Button deteteMapButton = new Button();
                 deteteMapButton.setGraphic(deteteMapIcon);
+                CheckBox selected = new CheckBox();
 
-                actionsHbox = new FlowPane(runServerButton, editMapButton, deteteMapButton, informationButton);
+                actionsHbox = new FlowPane(runServerButton, editMapButton, deteteMapButton, informationButton, selected);
             } else {
                 actionsHbox = new FlowPane(runServerButton, informationButton);
             }
             actionsHbox.setPadding(new Insets(0,0,5,0));
             actionsHbox.setAlignment(Pos.CENTER);
-            //actionsHbox.setSpacing((mapImage.getFitWidth() - 128) / 5);
             labelVbox.getChildren().add(actionsHbox);
         }
 

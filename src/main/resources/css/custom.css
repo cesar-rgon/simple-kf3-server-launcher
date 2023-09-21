@@ -119,7 +119,7 @@
 }
 
 .slider .thumb{
-    -fx-background-color: #575757;
+    -fx-background-color: #e8e8e8;
 }
 
 .slider .axis {
@@ -201,8 +201,35 @@
     -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
 }
 
-.scroll-bar:vertical {
+.check-box {
     -fx-background-color: #575757;
+    -fx-border-color: #e8e8e8;
+    -fx-border-width:2px;
+    -fx-padding: 3px;
+    -fx-cursor: hand;
+ }
+
+.check-box:selected {
+    -fx-background-color: gold;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #575757;
+    -fx-padding: 8px;
+}
+
+.check-box:selected .box {
+    -fx-background-color: gold;
+    -fx-padding: 2px;
+}
+
+.check-box .box {
+    -fx-background-color: #575757;
+    -fx-padding: 3px;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: rgba(91, 91, 91, 0.7);
     -fx-border-color: transparent;
 }
 
@@ -242,13 +269,17 @@
 }
 
 .tab-pane .tab-header-area .tab-header-background {
-    -fx-background-color: transparent;
+    -fx-background-color: transparent
 }
 
 .tab-pane .tab-content-area {
     -fx-border-color: #e8e8e8;
     -fx-border-width:3px;
     -fx-border-radius: 10px;
+}
+
+.tab-pane .tab {
+    -fx-background-color: rgba(91, 91, 91, 0.7);
 }
 
 .hbox {

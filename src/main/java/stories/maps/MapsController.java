@@ -40,6 +40,8 @@ public class MapsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
+            mapsTabPane.setMinHeight(Session.getInstance().getPrimaryStage().getHeight() - 180);
+            mapsTabPane.setMaxHeight(Session.getInstance().getPrimaryStage().getHeight() - 180);
             Utils.setNodeBackground(mapsAnchorPane);
             menuHbox.getStyleClass().add("hbox");
             PropertyService propertyService = new PropertyServiceImpl();
@@ -88,7 +90,6 @@ public class MapsController implements Initializable {
                 steamOfficialMaps.getChildren().add(mapBoxList.get(i));
             }
 
-            mapsTabPane.setMaxHeight(getMaxTabPaneHeight());
             progressIndicator.setVisible(false);
         });
         task.setOnFailed(wse -> {
@@ -106,19 +107,7 @@ public class MapsController implements Initializable {
         });
     }
 
-    private double getMaxTabPaneHeight() {
-        double rows = Math.ceil(steamCustomMaps.getChildren().size() / columnSlider.getValue());
-        double imageHeight = ((ImageView)((VBox)steamCustomMaps.getChildren().get(0)).getChildren().get(0)).getFitHeight();
-        double estimatedHeight = 90 + (rows * (imageHeight + 330));
-
-        if (estimatedHeight > (Session.getInstance().getPrimaryStage().getHeight() - 150)) {
-            return Session.getInstance().getPrimaryStage().getHeight() - 150;
-        } else {
-            return estimatedHeight;
-        }
-    }
-
-    @FXML
+     @FXML
     private void mapsStackPaneOnMouseClicked() throws Exception {
         Utils.setNextNodeBackground(mapsAnchorPane);
     }
@@ -165,7 +154,6 @@ public class MapsController implements Initializable {
             for (int i=8; i<16; i++ ) {
                 steamOfficialMaps.getChildren().add(mapBoxList.get(i));
             }
-            mapsTabPane.setMaxHeight(getMaxTabPaneHeight());
             progressIndicator.setVisible(false);
         });
 
