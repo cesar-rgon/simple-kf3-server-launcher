@@ -250,7 +250,7 @@
     -fx-cursor: hand;
 }
 
-.tab:selected {
+.tab-pane .tab:selected {
     -fx-background-color: #37603a;
     -fx-cursor: hand;
 }

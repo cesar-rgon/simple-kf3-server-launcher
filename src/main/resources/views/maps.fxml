@@ -16,11 +16,11 @@
                     <children>
                         <TabPane fx:id="mapsTabPane" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" tabClosingPolicy="UNAVAILABLE">
                             <tabs>
-                                <Tab text="Steam Custom Maps">
+                                <Tab fx:id="steamCustomMapsTab" text="Steam Custom Maps">
                                     <graphic>
                                         <HBox spacing="10.0">
                                             <children>
-                                                <CheckBox />
+                                                <CheckBox fx:id="selectAllSteamCustomMapsCheckBox" onMouseClicked="#selectAllSteamCustomMapsOnMouseClicked"/>
                                                 <StackPane>
                                                     <children>
                                                         <Circle fill="#57965c" radius="14" />
@@ -34,7 +34,7 @@
                                     <content>
                                         <ScrollPane fx:id="steamCustomScrollPane" fitToHeight="true" fitToWidth="true" minHeight="100" vbarPolicy="AS_NEEDED">
                                             <content>
-                                                <FlowPane fx:id="steamCustomMaps" hgap="20.0" vgap="20.0">
+                                                <FlowPane fx:id="steamCustomMapsFlowPane" hgap="20.0" vgap="20.0">
                                                     <padding>
                                                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                                     </padding>
@@ -48,23 +48,17 @@
                                 </Tab>
                                 <Tab text="Steam Official Maps">
                                     <graphic>
-                                        <HBox spacing="10.0">
+                                        <StackPane>
                                             <children>
-                                                <CheckBox />
-                                                <StackPane>
-                                                    <children>
-                                                        <Circle fill="#c94f4f" radius="14" />
-                                                        <Text fx:id="steamOfficialMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
-                                                    </children>
-                                                </StackPane>
+                                                <Circle fill="#c94f4f" radius="14" />
+                                                <Text fx:id="steamOfficialMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
                                             </children>
-                                        </HBox>
-
+                                        </StackPane>
                                     </graphic>
                                     <content>
                                         <ScrollPane fx:id="steamOfficialScrollPane" fitToHeight="true" fitToWidth="true" minHeight="100" vbarPolicy="AS_NEEDED">
                                             <content>
-                                                <FlowPane fx:id="steamOfficialMaps" hgap="20.0" vgap="20.0">
+                                                <FlowPane fx:id="steamOfficialMapsFlowPane" hgap="20.0" vgap="20.0">
                                                     <padding>
                                                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                                     </padding>
@@ -80,7 +74,7 @@
                                     <graphic>
                                         <HBox spacing="10.0">
                                             <children>
-                                                <CheckBox />
+                                                <CheckBox fx:id="selectAllEpicCustomMapsCheckBox" onMouseClicked="#selectAllEpicCustomMapsOnMouseClicked" />
                                                 <StackPane>
                                                     <children>
                                                         <Circle fill="#57965c" radius="14" />
@@ -96,17 +90,12 @@
                                 </Tab>
                                 <Tab text="Epic Official Maps">
                                     <graphic>
-                                        <HBox spacing="10.0">
+                                        <StackPane>
                                             <children>
-                                                <CheckBox />
-                                                <StackPane>
-                                                    <children>
-                                                        <Circle fill="#c94f4f" radius="14" />
-                                                        <Text fx:id="epicOfficialMapsCounter" fill="#e8e8e8" text="0" textAlignment="CENTER" wrappingWidth="23.0" />
-                                                    </children>
-                                                </StackPane>
+                                                <Circle fill="#c94f4f" radius="14" />
+                                                <Text fx:id="epicOfficialMapsCounter" fill="#e8e8e8" text="0" textAlignment="CENTER" wrappingWidth="23.0" />
                                             </children>
-                                        </HBox>
+                                        </StackPane>
                                     </graphic>
                                     <content>
 
@@ -213,7 +202,7 @@
 
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <TextField>
+                                        <TextField fx:id="searchTextField">
                                             <VBox.margin>
                                                 <Insets top="5.0" />
                                             </VBox.margin>

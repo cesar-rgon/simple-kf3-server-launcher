@@ -157,6 +157,7 @@ public class Utils {
         }
 
         VBox labelVbox = new VBox(mapName);
+        labelVbox.setId("labelVbox");
         labelVbox.setAlignment(Pos.CENTER);
 
         if (showExtended) {
@@ -188,7 +189,6 @@ public class Utils {
             } else {
                 mapReleaseDate.setStyle("-fx-padding: 10 0 0 0;");
             }
-            labelVbox.setId("labelVbox");
             labelVbox.getChildren().add(mapReleaseDate);
             labelVbox.getChildren().add(mapImportedDate);
         }
@@ -220,7 +220,7 @@ public class Utils {
             informationButton.setGraphic(informationIcon);
             informationButton.setStyle("-fx-padding: 0 10 0 0");
 
-            FlowPane actionsHbox = null;
+            FlowPane actionsFlowPane = null;
             if (!mapDto.isOfficial()) {
                 ImageView editMapIcon = new ImageView(
                         new Image(Utils.class.getClassLoader().getResourceAsStream("images/edit.png"))
@@ -240,14 +240,16 @@ public class Utils {
                 Button deteteMapButton = new Button();
                 deteteMapButton.setGraphic(deteteMapIcon);
                 CheckBox selected = new CheckBox();
+                selected.setId("selected");
 
-                actionsHbox = new FlowPane(runServerButton, editMapButton, deteteMapButton, informationButton, selected);
+                actionsFlowPane = new FlowPane(runServerButton, editMapButton, deteteMapButton, informationButton, selected);
             } else {
-                actionsHbox = new FlowPane(runServerButton, informationButton);
+                actionsFlowPane = new FlowPane(runServerButton, informationButton);
             }
-            actionsHbox.setPadding(new Insets(0,0,5,0));
-            actionsHbox.setAlignment(Pos.CENTER);
-            labelVbox.getChildren().add(actionsHbox);
+            actionsFlowPane.setId("actionsFlowPane");
+            actionsFlowPane.setPadding(new Insets(0,0,5,0));
+            actionsFlowPane.setAlignment(Pos.CENTER);
+            labelVbox.getChildren().add(actionsFlowPane);
         }
 
         VBox mapVbox = new VBox(mapImage, labelVbox);
