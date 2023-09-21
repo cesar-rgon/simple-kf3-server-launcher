@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root fx:id="mapsStackPane" alignment="CENTER" onMouseClicked="#mapsStackPaneOnMouseClicked" stylesheets="@../css/custom.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stories.maps.MapsController">
+    <children>
+        <AnchorPane fx:id="mapsAnchorPane" minHeight="700.0">
+            <children>
+                <Accordion fx:id="accordion" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+                    <panes>
+                        <TitledPane fx:id="steamCustomMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="60.0">
+                                    <StackPane>
+                                        <Circle fill="#57965c" radius="14" />
+                                        <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
+                                    </StackPane>
+                                    <Label alignment="CENTER" prefHeight="63.0" prefWidth="88.0" text="Steam Custom Maps Mods" textAlignment="CENTER" wrapText="true">
+                                        <HBox.margin>
+                                            <Insets left="-46.0" />
+                                        </HBox.margin></Label>
+                                    <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="216.0">
+                                        <menus>
+                                            <Menu fx:id="steamCustomMapsAddMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/add.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                                <items>
+                                                    <MenuItem fx:id="steamCustomMapsIdUrl" mnemonicParsing="false" text="By ID/URL" />
+                                                    <MenuItem fx:id="steamCustomMapsWorkshop" mnemonicParsing="false" text="By Steam's Workshop" />
+                                                </items>
+                                            </Menu>
+                                            <Menu fx:id="steamCustomMapsImportMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/import.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Menu>
+                                            <Menu fx:id="steamCustomMapsOrderMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/order.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                                <items>
+                                                    <MenuItem fx:id="orderSteamCustomMapsByAlias" mnemonicParsing="false" text="Order maps by alias" />
+                                                    <MenuItem fx:id="orderSteamCustomMapsByName" mnemonicParsing="false" text="Order maps by name" />
+                                                    <MenuItem fx:id="orderSteamCustomMapsByReleaseDate" mnemonicParsing="false" text="Order maps by release date" />
+                                                    <MenuItem fx:id="orderSteamCustomMapsByImportedDate" mnemonicParsing="false" text="Order maps by imported date" />
+                                                    <MenuItem fx:id="orderSteamCustomMapsByDownload" mnemonicParsing="false" text="Order maps by download" />
+                                                </items>
+                                            </Menu>
+                                        </menus>
+                                    </MenuBar>
+                                    <VBox>
+                                        <children>
+                                            <HBox>
+                                                <children>
+                                                    <TextField>
+                                                        <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                        </VBox.margin>
+                                                    </TextField>
+                                                    <ImageView fitHeight="26.0" pickOnBounds="true" preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../images/search.png" />
+                                                        </image>
+                                                        <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                        </HBox.margin>
+                                                    </ImageView>
+                                                </children>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </HBox>
+
+                                            <Slider fx:id="steamCustomColumnSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" onMouseClicked="#steamCustomColumnSliderOnMouseClicked" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </Slider>
+                                        </children>
+                                    </VBox>
+                                </HBox>
+                            </graphic>
+                            <content>
+                                <ScrollPane fx:id="steamCustomScrollPane" fitToHeight="true" fitToWidth="true" minHeight="100" vbarPolicy="ALWAYS">
+                                    <content>
+                                        <FlowPane fx:id="steamCustomMaps" hgap="20.0" vgap="20.0">
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor>
+                                        </FlowPane>
+                                    </content>
+                                </ScrollPane>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                        <TitledPane fx:id="steamOfficialMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="60.0">
+                                    <StackPane>
+                                        <Circle fill="#c94f4f" radius="14" />
+                                        <Text fx:id="steamOfficialMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
+                                        <HBox.margin>
+                                            <Insets right="23.0" />
+                                        </HBox.margin>
+                                    </StackPane>
+                                    <Label prefHeight="63.0" prefWidth="78.0" text="Steam Official Maps" textAlignment="CENTER" wrapText="true">
+                                        <HBox.margin>
+                                            <Insets left="-66.0" />
+                                        </HBox.margin></Label>
+                                    <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="216.0">
+                                        <menus>
+                                            <Menu fx:id="steamOfficialMapsImportMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/import.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Menu>
+                                            <Menu fx:id="steamOfficialMapsOrderMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/order.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                                <items>
+                                                    <MenuItem fx:id="orderSteamOfficialMapsByAlias" mnemonicParsing="false" text="Order maps by alias" />
+                                                    <MenuItem fx:id="orderSteamOfficialMapsByName" mnemonicParsing="false" text="Order maps by name" />
+                                                    <MenuItem fx:id="orderSteamOfficialMapsByReleaseDate" mnemonicParsing="false" text="Order maps by release date" />
+                                                    <MenuItem fx:id="orderSteamOfficialMapsByImportedDate" mnemonicParsing="false" text="Order maps by imported date" />
+                                                    <MenuItem fx:id="orderSteamOfficialMapsByDownload" mnemonicParsing="false" text="Order maps by download" />
+                                                </items>
+                                            </Menu>
+                                        </menus>
+                                        <HBox.margin>
+                                            <Insets left="9.0" />
+                                        </HBox.margin>
+                                    </MenuBar>
+                                    <VBox>
+                                        <children>
+                                            <HBox>
+                                                <children>
+                                                    <TextField>
+                                                        <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                        </VBox.margin>
+                                                    </TextField>
+                                                    <ImageView fitHeight="26.0" pickOnBounds="true" preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../images/search.png" />
+                                                        </image>
+                                                        <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                        </HBox.margin>
+                                                    </ImageView>
+                                                </children>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </HBox>
+                                            <Slider fx:id="steamOfficialColumnSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" onMouseClicked="#steamOfficialColumnSliderOnMouseClicked" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </Slider>
+                                        </children>
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </VBox>
+                                </HBox>
+                            </graphic>
+                            <content>
+                                <ScrollPane fx:id="steamOfficialScrollPane" fitToHeight="true" fitToWidth="true" minHeight="100" vbarPolicy="ALWAYS">
+                                <content>
+                                    <FlowPane fx:id="steamOfficialMaps" hgap="20.0" vgap="20.0">
+                                        <padding>
+                                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                        </padding>
+                                        <cursor>
+                                            <Cursor fx:constant="DEFAULT" />
+                                        </cursor>
+                                    </FlowPane>
+                                </content>
+                                </ScrollPane>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                        <TitledPane fx:id="epicCustomMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="60.0">
+                                    <StackPane>
+                                        <Circle fill="#57965c" radius="14" />
+                                        <Text fx:id="epicCustomMapsCounter" fill="#e8e8e8" text="0" textAlignment="CENTER" wrappingWidth="23.0" />
+                                    </StackPane>
+                                    <Label alignment="CENTER" prefHeight="63.0" prefWidth="88.0" text="Epic Games Custom Maps Mods" textAlignment="CENTER" wrapText="true">
+                                        <HBox.margin>
+                                            <Insets left="-46.0" />
+                                        </HBox.margin></Label>
+                                    <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="216.0">
+                                        <menus>
+                                            <Menu fx:id="epicCustomMapsAddMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/add.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                                <items>
+                                                    <MenuItem fx:id="epicCustomMapsIdUrl" mnemonicParsing="false" text="By ID/URL" />
+                                                    <MenuItem fx:id="epicCustomMapsWorkshop" mnemonicParsing="false" text="By Steam's Workshop" />
+                                                </items>
+                                            </Menu>
+                                            <Menu fx:id="epicCustomMapsImportMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/import.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Menu>
+                                            <Menu fx:id="epicCustomMapsOrderMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/order.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                                <items>
+                                                    <MenuItem fx:id="orderEpicCustomMapsByAlias" mnemonicParsing="false" text="Order maps by alias" />
+                                                    <MenuItem fx:id="orderEpicCustomMapsByName" mnemonicParsing="false" text="Order maps by name" />
+                                                    <MenuItem fx:id="orderEpicCustomMapsByReleaseDate" mnemonicParsing="false" text="Order maps by release date" />
+                                                    <MenuItem fx:id="orderEpicCustomMapsByImportedDate" mnemonicParsing="false" text="Order maps by imported date" />
+                                                    <MenuItem fx:id="orderEpicCustomMapsByDownload" mnemonicParsing="false" text="Order maps by download" />
+                                                </items>
+                                            </Menu>
+                                        </menus>
+                                    </MenuBar>
+                                    <VBox>
+                                        <children>
+                                            <HBox>
+                                                <children>
+                                                    <TextField>
+                                                        <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                        </VBox.margin>
+                                                    </TextField>
+                                                    <ImageView fitHeight="26.0" pickOnBounds="true" preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../images/search.png" />
+                                                        </image>
+                                                        <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                        </HBox.margin>
+                                                    </ImageView>
+                                                </children>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </HBox>
+
+                                            <Slider blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </Slider>
+                                        </children>
+                                    </VBox>
+                                </HBox>
+                            </graphic>
+                            <content>
+                                <FlowPane fx:id="epicCustomMaps" hgap="20.0" minHeight="400.0" vgap="20.0">
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT" />
+                                    </cursor>
+                                </FlowPane>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                        <TitledPane fx:id="epicOfficialMapsTitledPane" animated="true" contentDisplay="RIGHT" graphicTextGap="50.0">
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="60.0">
+                                    <StackPane>
+                                        <Circle fill="#c94f4f" radius="14" />
+                                        <Text fx:id="epicOfficialMapsCounter" fill="#e8e8e8" text="0" textAlignment="CENTER" wrappingWidth="23.0" />
+                                        <HBox.margin>
+                                            <Insets right="23.0" />
+                                        </HBox.margin>
+                                    </StackPane>
+                                    <Label prefHeight="63.0" prefWidth="78.0" text="Epic Games Official Maps" textAlignment="CENTER" wrapText="true">
+                                        <HBox.margin>
+                                            <Insets left="-66.0" />
+                                        </HBox.margin></Label>
+                                    <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="216.0">
+                                        <menus>
+                                            <Menu fx:id="epicOfficialMapsImportMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/import.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Menu>
+                                            <Menu fx:id="epicOfficialMapsOrderMenu" mnemonicParsing="false">
+                                                <graphic>
+                                                    <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="80.0">
+                                                        <image>
+                                                            <Image url="@../images/order.png" />
+                                                        </image>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </ImageView>
+                                                </graphic>
+                                                <items>
+                                                    <MenuItem fx:id="orderEpicOfficialMapsByAlias" mnemonicParsing="false" text="Order maps by alias" />
+                                                    <MenuItem fx:id="orderEpicOfficialMapsByName" mnemonicParsing="false" text="Order maps by name" />
+                                                    <MenuItem fx:id="orderEpicOfficialMapsByReleaseDate" mnemonicParsing="false" text="Order maps by release date" />
+                                                    <MenuItem fx:id="orderEpicOfficialMapsByImportedDate" mnemonicParsing="false" text="Order maps by imported date" />
+                                                    <MenuItem fx:id="orderEpicOfficialMapsByDownload" mnemonicParsing="false" text="Order maps by download" />
+                                                </items>
+                                            </Menu>
+                                        </menus>
+                                        <HBox.margin>
+                                            <Insets left="9.0" />
+                                        </HBox.margin>
+                                    </MenuBar>
+                                    <VBox>
+                                        <children>
+                                            <HBox>
+                                                <children>
+                                                    <TextField>
+                                                        <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                        </VBox.margin>
+                                                    </TextField>
+                                                    <ImageView fitHeight="26.0" pickOnBounds="true" preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../images/search.png" />
+                                                        </image>
+                                                        <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                        </HBox.margin>
+                                                    </ImageView>
+                                                </children>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </HBox>
+
+                                            <Slider blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="2.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0">
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </Slider>
+                                        </children>
+                                        <HBox.margin>
+                                            <Insets />
+                                        </HBox.margin>
+                                    </VBox>
+                                </HBox>
+                            </graphic>
+                            <content>
+                                <FlowPane fx:id="epicOfficialMaps" hgap="20.0" minHeight="400.0" vgap="20.0">
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT" />
+                                    </cursor>
+                                </FlowPane>
+                            </content>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </TitledPane>
+
+                    </panes>
+                    <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                    </cursor>
+                </Accordion>
+            </children>
+       <cursor>
+          <Cursor fx:constant="CROSSHAIR" />
+       </cursor>
+        </AnchorPane>
+        <ProgressIndicator fx:id="progressIndicator" maxHeight="150.0" maxWidth="150.0" />
+    </children>
+    <cursor>
+    <Cursor fx:constant="CROSSHAIR" />
+    </cursor>
+</fx:root>

@@ -122,13 +122,8 @@
     -fx-background-color: #575757;
 }
 
-.table-view {
-    -fx-background-color: #575757;
-    -fx-opacity: 0.8;
-}
-
-.scroll-pane > .viewport {
-    -fx-background-color: transparent;
+.slider .axis {
+    -fx-tick-label-fill: #e8e8e8;
 }
 
 .table-view .label {
@@ -211,3 +206,55 @@
     -fx-border-color: transparent;
 }
 
+.tab-pane {
+  -fx-tab-min-height:40px;
+  -fx-tab-max-height:40px;
+}
+
+.tab {
+    -fx-font-family: "KillingFont";
+    -fx-text-base-color: #e8e8e8;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.tab:hover {
+    -fx-effect: dropshadow(three-pass-box, gold, 20, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+.tab:selected {
+    -fx-background-color: #37603a;
+    -fx-cursor: hand;
+}
+
+.table-view {
+    -fx-background-color: #575757;
+    -fx-opacity: 0.8;
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: rgba(91, 91, 91, 0.7);
+}
+
+.scroll-pane, .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-content-area {
+    -fx-border-color: #e8e8e8;
+    -fx-border-width:3px;
+    -fx-border-radius: 10px;
+}
+
+.hbox {
+    -fx-border-color: #e8e8e8;
+    -fx-border-width:3px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10 10 10 10;
+    -fx-background-color: rgba(91, 91, 91, 0.7);
+}
