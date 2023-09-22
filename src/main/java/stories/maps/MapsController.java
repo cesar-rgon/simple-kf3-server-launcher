@@ -1,21 +1,21 @@
 package stories.maps;
 
+import dtos.MapDto;
 import enums.EnumSortedMapsCriteria;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.Event;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -87,7 +87,9 @@ public class MapsController implements Initializable {
         Session.getInstance().getPrimaryStage().widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-                columnSliderOnMouseClicked();
+                if (!newSceneWidth.equals(oldSceneWidth)) {
+                    columnSliderOnMouseClicked();
+                }
             }
         });
     }
@@ -107,25 +109,33 @@ public class MapsController implements Initializable {
             protected Void call() throws Exception {
                 ExampleMaps exampleMaps = new ExampleMaps();
 
-                customMapBoxList = new ArrayList<VBox>();
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, columnSlider.getValue()));
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, columnSlider.getValue()));
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
-                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
+                if (customMapBoxList == null) {
+                    customMapBoxList = new ArrayList<VBox>();
+                } else if (!customMapBoxList.isEmpty()) {
+                    customMapBoxList.clear();
+                }
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto3(), columnSlider.getValue()));
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto3(), columnSlider.getValue()));
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
+                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
 
-                officialMapBoxList = new ArrayList<VBox>();
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, columnSlider.getValue()));
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, columnSlider.getValue()));
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
-                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
+                if (officialMapBoxList == null) {
+                    officialMapBoxList = new ArrayList<VBox>();
+                } else if (!officialMapBoxList.isEmpty()) {
+                    officialMapBoxList.clear();
+                }
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto6(), columnSlider.getValue()));
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto6(), columnSlider.getValue()));
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
+                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
 
                 return null;
             }
@@ -511,4 +521,143 @@ public class MapsController implements Initializable {
             }
         }
     }
+
+
+    public VBox createExtendedMapBox(MapDto mapDto, double columns) {
+        // Image
+        ImageView mapImage = new ImageView(
+                new Image(mapDto.getUrlPhoto())
+        );
+        mapImage.setPreserveRatio(false);
+
+        double screenWidth = Session.getInstance().getPrimaryStage().getWidth();
+
+        mapImage.setFitWidth((screenWidth - (36 * columns) - 190) / columns);
+        mapImage.setFitHeight(mapImage.getFitWidth() / 2);
+
+        // Map namel
+        Label mapName = new Label(mapDto.getMapName());
+        mapName.setMaxWidth(mapImage.getFitWidth());
+        mapName.setId("mapName");
+        if (!mapDto.isOfficial()) {
+            mapName.setStyle("-fx-background-color: #37603a;");
+        } else {
+            mapName.setStyle("-fx-background-color: #8c4242;");
+        }
+
+        VBox labelVbox = new VBox(mapName);
+        labelVbox.setId("labelVbox");
+        labelVbox.setAlignment(Pos.CENTER);
+
+        if (!mapDto.isOfficial()) {
+            Label downloadedLabel = null;
+            if (mapDto.isDownloaded()) {
+                downloadedLabel = new Label("DOWNLOADED");
+                downloadedLabel.setStyle("-fx-text-fill: gold; -fx-padding: 5; -fx-border-color: gold; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#28392a;");
+            } else {
+                downloadedLabel = new Label("NOT DOWNLOADED");
+                downloadedLabel.setStyle("-fx-text-fill: #e8e8e8; -fx-padding: 5; -fx-border-color: #e8e8e8; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#6e2828;");
+            }
+            downloadedLabel.setId("downloadedLabel");
+            labelVbox.getChildren().add(downloadedLabel);
+        }
+
+        Label mapReleaseDate = new Label("Release date: " + mapDto.getReleaseDate());
+        mapReleaseDate.setId("mapReleaseDate");
+        mapReleaseDate.setMaxWidth(mapImage.getFitWidth());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        Label mapImportedDate = new Label("Imported date: " + mapDto.getImportedDate().format(formatter));
+        mapImportedDate.setMaxWidth(mapImage.getFitWidth());
+        mapImportedDate.setId("mapImportedDate");
+
+        if (!mapDto.isOfficial()) {
+            Label idWorkshop = new Label("id Workshop: " + mapDto.getIdWorkShop());
+            idWorkshop.setId("idWorkshop");
+            idWorkshop.setMaxWidth(mapImage.getFitWidth());
+            idWorkshop.setStyle("-fx-padding: 10 0 0 0;");
+            labelVbox.getChildren().add(idWorkshop);
+        } else {
+            mapReleaseDate.setStyle("-fx-padding: 10 0 0 0;");
+        }
+        labelVbox.getChildren().add(mapReleaseDate);
+        labelVbox.getChildren().add(mapImportedDate);
+
+        if (!mapDto.isOfficial()) {
+            labelVbox.setStyle("-fx-padding: 5 0 0 0; -fx-background-color: #37603a;");
+        } else {
+            labelVbox.setStyle("-fx-padding: 5 0 0 0; -fx-background-color: #8c4242;");
+        }
+
+
+        // Actions
+        ImageView runServerIcon = new ImageView(
+                new Image(Utils.class.getClassLoader().getResourceAsStream("images/run.png"))
+        );
+        runServerIcon.setPreserveRatio(true);
+        runServerIcon.setFitWidth(32);
+
+        Button runServerButton = new Button();
+        runServerButton.setGraphic(runServerIcon);
+
+        ImageView informationIcon = new ImageView(
+                new Image(Utils.class.getClassLoader().getResourceAsStream("images/information.png"))
+        );
+        informationIcon.setPreserveRatio(true);
+        informationIcon.setFitWidth(32);
+
+        Button informationButton = new Button();
+        informationButton.setGraphic(informationIcon);
+        informationButton.setStyle("-fx-padding: 0 10 0 0");
+
+        VBox mapVbox = new VBox(mapImage, labelVbox);
+        FlowPane actionsFlowPane = null;
+        if (!mapDto.isOfficial()) {
+            ImageView editMapIcon = new ImageView(
+                    new Image(Utils.class.getClassLoader().getResourceAsStream("images/edit.png"))
+            );
+            editMapIcon.setPreserveRatio(true);
+            editMapIcon.setFitWidth(32);
+
+            Button editMapButton = new Button();
+            editMapButton.setGraphic(editMapIcon);
+
+            ImageView deteteMapIcon = new ImageView(
+                    new Image(Utils.class.getClassLoader().getResourceAsStream("images/delete.png"))
+            );
+            deteteMapIcon.setPreserveRatio(true);
+            deteteMapIcon.setFitWidth(32);
+
+            Button deteteMapButton = new Button();
+            deteteMapButton.setGraphic(deteteMapIcon);
+            deteteMapButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    String question = "Are you sure that you want to delete selected map / mod?";
+                    Optional<ButtonType> result = Utils.questionDialog(question, mapDto.getMapName());
+                    if (result.isPresent() && result.get().equals(ButtonType.OK)) {
+                        customMapBoxList.remove(mapVbox);
+                        steamCustomMapsFlowPane.getChildren().remove(mapVbox);
+                    }
+                }
+            });
+
+            CheckBox selected = new CheckBox();
+            selected.setId("selected");
+            actionsFlowPane = new FlowPane(runServerButton, editMapButton, deteteMapButton, informationButton, selected);
+        } else {
+            actionsFlowPane = new FlowPane(runServerButton, informationButton);
+        }
+        actionsFlowPane.setId("actionsFlowPane");
+        actionsFlowPane.setPadding(new Insets(0,0,5,0));
+        actionsFlowPane.setAlignment(Pos.CENTER);
+        labelVbox.getChildren().add(actionsFlowPane);
+
+        mapVbox.setId("mapVbox");
+        mapVbox.setMaxWidth(mapImage.getFitWidth());
+        mapVbox.setSpacing(10);
+
+        return mapVbox;
+    }
+
 }

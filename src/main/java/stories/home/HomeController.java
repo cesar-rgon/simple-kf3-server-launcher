@@ -98,7 +98,7 @@ public class HomeController implements Initializable {
                             super.updateItem(mapDto, empty);
                             if (mapDto != null) {
                                 double screenWidth = Session.getInstance().getPrimaryStage().getWidth();
-                                setGraphic(Utils.createMapBox(mapDto,false, (screenWidth - 60) / 376 ));
+                                setGraphic(Utils.createReducedMapBox(mapDto));
                                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                             }
                         }
@@ -114,7 +114,7 @@ public class HomeController implements Initializable {
                     super.updateItem(mapDto, empty);
                     if (mapDto != null) {
                         double screenWidth = Session.getInstance().getPrimaryStage().getWidth();
-                        setGraphic(Utils.createMapBox(mapDto,false, (screenWidth - 175) / 376));
+                        setGraphic(Utils.createReducedMapBox(mapDto));
                         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                     }
                 }
