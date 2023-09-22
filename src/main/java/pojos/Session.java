@@ -1,5 +1,6 @@
 package pojos;
 
+import enums.EnumSortedMapsCriteria;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -12,10 +13,12 @@ public class Session {
     private MediaPlayer musicPlayer;
     private MediaPlayer videoPlayer;
     private String setupType;
+    private EnumSortedMapsCriteria sortedMapsCriteria;
 
 
     private Session() {
         super();
+        sortedMapsCriteria = EnumSortedMapsCriteria.NAME_DESC;
     }
 
     public static Session getInstance() {
@@ -63,5 +66,13 @@ public class Session {
 
     public void setSetupType(String setupType) {
         this.setupType = setupType;
+    }
+
+    public EnumSortedMapsCriteria getSortedMapsCriteria() {
+        return sortedMapsCriteria;
+    }
+
+    public void setSortedMapsCriteria(EnumSortedMapsCriteria sortedMapsCriteria) {
+        this.sortedMapsCriteria = sortedMapsCriteria;
     }
 }

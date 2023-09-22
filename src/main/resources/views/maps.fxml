@@ -128,21 +128,25 @@
                                     </cursor>
                                 </Button>
 
-                                <MenuBar maxHeight="45.0" maxWidth="215.0" nodeOrientation="LEFT_TO_RIGHT">
+                                <MenuBar nodeOrientation="LEFT_TO_RIGHT">
                                     <menus>
                                         <Menu fx:id="mapsAddMenu" mnemonicParsing="false">
                                             <graphic>
-                                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../images/add.png" />
-                                                    </image>
-                                                    <cursor>
-                                                        <Cursor fx:constant="HAND" />
-                                                    </cursor>
-                                                    <viewport>
-                                                        <Rectangle2D />
-                                                    </viewport>
-                                                </ImageView>
+                                                <Button>
+                                                    <graphic>
+                                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/add.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                            <viewport>
+                                                                <Rectangle2D />
+                                                            </viewport>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
                                             </graphic>
                                             <items>
                                                 <MenuItem fx:id="mapsIdUrl" mnemonicParsing="false" text="By ID/URL" />
@@ -151,63 +155,75 @@
                                         </Menu>
                                         <Menu fx:id="mapsEditMenu" mnemonicParsing="false">
                                             <graphic>
-                                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../images/edit.png" />
-                                                    </image>
-                                                    <cursor>
-                                                        <Cursor fx:constant="HAND" />
-                                                    </cursor>
-                                                    <viewport>
-                                                        <Rectangle2D />
-                                                    </viewport>
-                                                </ImageView>
+                                                <Button>
+                                                    <graphic>
+                                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/edit.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                            <viewport>
+                                                                <Rectangle2D />
+                                                            </viewport>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
                                             </graphic>
                                         </Menu>
                                         <Menu fx:id="mapsDeleteMenu" mnemonicParsing="false">
                                             <graphic>
-                                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../images/delete.png" />
-                                                    </image>
-                                                    <cursor>
-                                                        <Cursor fx:constant="HAND" />
-                                                    </cursor>
-                                                    <viewport>
-                                                        <Rectangle2D />
-                                                    </viewport>
-                                                </ImageView>
+                                                <Button onMouseClicked="#mapsDeleteMenuOnAction">
+                                                    <graphic>
+                                                        <ImageView fitHeight="48.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/delete.png" />
+                                                            </image>
+                                                            <viewport>
+                                                                <Rectangle2D />
+                                                            </viewport>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
                                             </graphic>
                                         </Menu>
                                         <Menu fx:id="mapsImportMenu" mnemonicParsing="false">
                                             <graphic>
-                                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../images/import.png" />
-                                                    </image>
-                                                    <cursor>
-                                                        <Cursor fx:constant="HAND" />
-                                                    </cursor>
-                                                </ImageView>
+                                                <Button>
+                                                    <graphic>
+                                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/import.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
                                             </graphic>
                                         </Menu>
                                         <Menu fx:id="mapsOrderMenu" mnemonicParsing="false">
                                             <graphic>
-                                                <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../images/order.png" />
-                                                    </image>
-                                                    <cursor>
-                                                        <Cursor fx:constant="HAND" />
-                                                    </cursor>
-                                                </ImageView>
+                                                <Button>
+                                                    <graphic>
+                                                        <ImageView fitHeight="48.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/order.png" />
+                                                            </image>
+                                                            <cursor>
+                                                                <Cursor fx:constant="HAND" />
+                                                            </cursor>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
                                             </graphic>
                                             <items>
-                                                <MenuItem fx:id="orderMapsByAlias" mnemonicParsing="false" text="Order maps by alias" />
-                                                <MenuItem fx:id="orderMapsByName" mnemonicParsing="false" text="Order maps by name" />
-                                                <MenuItem fx:id="orderMapsByReleaseDate" mnemonicParsing="false" text="Order maps by release date" />
-                                                <MenuItem fx:id="orderMapsByImportedDate" mnemonicParsing="false" text="Order maps by imported date" />
-                                                <MenuItem fx:id="orderMapsByDownload" mnemonicParsing="false" text="Order maps by download" />
+                                                <MenuItem fx:id="orderMapsByName" mnemonicParsing="false" onAction="#orderMapsByNameOnAction" text="Order maps by name" />
+                                                <MenuItem fx:id="orderMapsByReleaseDate" mnemonicParsing="false" onAction="#orderMapsByReleaseDateOnAction" text="Order maps by release date" />
+                                                <MenuItem fx:id="orderMapsByImportedDate" mnemonicParsing="false" onAction="#orderMapsByImportedDateOnAction" text="Order maps by imported date" />
+                                                <MenuItem fx:id="orderMapsByDownloadState" mnemonicParsing="false" onAction="#orderMapsByDownloadStateOnAction" text="Order maps by download state" />
                                             </items>
                                         </Menu>
                                     </menus>

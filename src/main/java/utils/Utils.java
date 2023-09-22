@@ -263,4 +263,41 @@ public class Utils {
         return mapVbox;
     }
 
+    public static void warningDialog(String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        try {
+            PropertyService propertyService = new PropertyServiceImpl();
+            String applicationTitle = propertyService.getProperty("properties/config.properties", "prop.config.applicationTitle");
+            alert.setTitle(applicationTitle);
+        } catch (Exception ex) {
+            alert.setTitle("");
+        }
+        alert.setHeaderText(header);
+
+        TextArea area = new TextArea(content);
+        area.setWrapText(true);
+        area.setEditable(false);
+        alert.getDialogPane().setContent(area);
+        alert.setResizable(true);
+        alert.showAndWait();
+    }
+
+    public static Optional<ButtonType> questionDialog(String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        try {
+            PropertyService propertyService = new PropertyServiceImpl();
+            String applicationTitle = propertyService.getProperty("properties/config.properties", "prop.config.applicationTitle");
+            alert.setTitle(applicationTitle);
+        } catch (Exception ex) {
+            alert.setTitle("");
+        }
+        alert.setHeaderText(header);
+
+        TextArea area = new TextArea(content);
+        area.setWrapText(true);
+        area.setEditable(false);
+        alert.getDialogPane().setContent(area);
+        alert.setResizable(true);
+        return alert.showAndWait();
+    }
 }

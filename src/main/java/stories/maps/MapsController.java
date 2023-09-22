@@ -1,11 +1,13 @@
 package stories.maps;
 
+import enums.EnumSortedMapsCriteria;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -28,6 +30,9 @@ import services.PropertyServiceImpl;
 import utils.Utils;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +55,11 @@ public class MapsController implements Initializable {
     @FXML private Tab steamCustomMapsTab;
     @FXML private TextField searchMapsTextField;
     @FXML private VBox mapsVBox;
+    @FXML private MenuItem orderMapsByName;
+    @FXML private MenuItem orderMapsByReleaseDate;
+    @FXML private MenuItem orderMapsByImportedDate;
+    @FXML private MenuItem orderMapsByDownloadState;
+
 
     private List<VBox> customMapBoxList;
     private List<VBox> officialMapBoxList;
@@ -62,6 +72,7 @@ public class MapsController implements Initializable {
             mapsTabPane.setMaxHeight(Session.getInstance().getPrimaryStage().getHeight() - 180);
             Utils.setNodeBackground(mapsAnchorPane);
             menuHbox.getStyleClass().add("hbox");
+
             PropertyService propertyService = new PropertyServiceImpl();
             boolean playMusicOnStartup = Boolean.parseBoolean(propertyService.getProperty("properties/config.properties", "prop.config.playMusicOnStartup"));
             if (playMusicOnStartup && !Session.getInstance().getMusicPlayer().isAutoPlay()) {
@@ -115,20 +126,13 @@ public class MapsController implements Initializable {
                 officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, columnSlider.getValue()));
                 officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
                 officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
+
                 return null;
             }
         };
 
         task.setOnSucceeded(wse -> {
-            steamCustomMapsFlowPane.getChildren().clear();
-            for (VBox customMapBox: customMapBoxList) {
-                steamCustomMapsFlowPane.getChildren().add(customMapBox);
-            }
-
-            steamOfficialMapsFlowPane.getChildren().clear();
-            for (VBox officialMapBox: officialMapBoxList) {
-                steamOfficialMapsFlowPane.getChildren().add(officialMapBox);
-            }
+            orderMapsByNameOnAction();
 
             // To force to refresh the screen
             mapsTabPane.setMinHeight(Session.getInstance().getPrimaryStage().getHeight() - 180);
@@ -255,6 +259,256 @@ public class MapsController implements Initializable {
         if (Pos.CENTER_LEFT.equals(mapsVBox.getAlignment())) {
             mapsVBox.setAlignment(Pos.CENTER);
             return;
+        }
+    }
+
+
+    @FXML
+    private void orderMapsByNameOnAction() {
+
+        if (EnumSortedMapsCriteria.NAME_DESC.equals(Session.getInstance().getSortedMapsCriteria())) {
+            customMapBoxList = customMapBoxList.stream().sorted((vbox1, vbox2) -> {
+                Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                return mapName1.getText().compareTo(mapName2.getText());
+            }).collect(Collectors.toList());
+
+            officialMapBoxList = officialMapBoxList.stream().sorted((vbox1, vbox2) -> {
+                Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                return mapName1.getText().compareTo(mapName2.getText());
+            }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.NAME_ASC);
+        } else {
+            customMapBoxList = customMapBoxList.stream().sorted((vbox1, vbox2) -> {
+                Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                return mapName2.getText().compareTo(mapName1.getText());
+            }).collect(Collectors.toList());
+
+            officialMapBoxList = officialMapBoxList.stream().sorted((vbox1, vbox2) -> {
+                Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                Label mapName2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                return mapName2.getText().compareTo(mapName1.getText());
+            }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.NAME_DESC);
+        }
+
+        steamCustomMapsFlowPane.getChildren().clear();
+        steamCustomMapsFlowPane.getChildren().addAll(customMapBoxList);
+        steamOfficialMapsFlowPane.getChildren().clear();
+        steamOfficialMapsFlowPane.getChildren().addAll(officialMapBoxList);
+
+    }
+
+    @FXML
+    private void orderMapsByReleaseDateOnAction() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        if (EnumSortedMapsCriteria.RELEASE_DATE_DESC.equals(Session.getInstance().getSortedMapsCriteria())) {
+            customMapBoxList = customMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText1 = mapReleaseDateLabel1.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate1 = LocalDate.parse(mapReleaseDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText2 = mapReleaseDateLabel2.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate2 = LocalDate.parse(mapReleaseDateText2, formatter);
+                        return mapReleaseDate1.compareTo(mapReleaseDate2);
+                    }).collect(Collectors.toList());
+
+            officialMapBoxList = officialMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText1 = mapReleaseDateLabel1.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate1 = LocalDate.parse(mapReleaseDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText2 = mapReleaseDateLabel2.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate2 = LocalDate.parse(mapReleaseDateText2, formatter);
+                        return mapReleaseDate1.compareTo(mapReleaseDate2);
+                    }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.RELEASE_DATE_ASC);
+        } else {
+
+            customMapBoxList = customMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText1 = mapReleaseDateLabel1.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate1 = LocalDate.parse(mapReleaseDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText2 = mapReleaseDateLabel2.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate2 = LocalDate.parse(mapReleaseDateText2, formatter);
+                        return mapReleaseDate2.compareTo(mapReleaseDate1);
+                    }).collect(Collectors.toList());
+
+            officialMapBoxList = officialMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText1 = mapReleaseDateLabel1.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate1 = LocalDate.parse(mapReleaseDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapReleaseDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapReleaseDateText2 = mapReleaseDateLabel2.getText().replace("Release date: ", "");
+                        LocalDate mapReleaseDate2 = LocalDate.parse(mapReleaseDateText2, formatter);
+                        return mapReleaseDate2.compareTo(mapReleaseDate1);
+                    }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.RELEASE_DATE_DESC);
+        }
+
+        steamCustomMapsFlowPane.getChildren().clear();
+        steamCustomMapsFlowPane.getChildren().addAll(customMapBoxList);
+        steamOfficialMapsFlowPane.getChildren().clear();
+        steamOfficialMapsFlowPane.getChildren().addAll(officialMapBoxList);
+    }
+
+    @FXML
+    private void orderMapsByImportedDateOnAction() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        if (EnumSortedMapsCriteria.IMPORTED_DATE_DESC.equals(Session.getInstance().getSortedMapsCriteria())) {
+            customMapBoxList = customMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText1 = mapImportedDateLabel1.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate1 = LocalDateTime.parse(mapImportedDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText2 = mapImportedDateLabel2.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate2 = LocalDateTime.parse(mapImportedDateText2, formatter);
+                        return mapImportedDate1.compareTo(mapImportedDate2);
+                    }).collect(Collectors.toList());
+
+            officialMapBoxList = officialMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText1 = mapImportedDateLabel1.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate1 = LocalDateTime.parse(mapImportedDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText2 = mapImportedDateLabel2.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate2 = LocalDateTime.parse(mapImportedDateText2, formatter);
+                        return mapImportedDate1.compareTo(mapImportedDate2);
+                    }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.IMPORTED_DATE_ASC);
+
+        } else {
+
+            customMapBoxList = customMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText1 = mapImportedDateLabel1.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate1 = LocalDateTime.parse(mapImportedDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText2 = mapImportedDateLabel2.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate2 = LocalDateTime.parse(mapImportedDateText2, formatter);
+                        return mapImportedDate2.compareTo(mapImportedDate1);
+                    }).collect(Collectors.toList());
+
+            officialMapBoxList = officialMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText1 = mapImportedDateLabel1.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate1 = LocalDateTime.parse(mapImportedDateText1, formatter);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label mapImportedDateLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                        String mapImportedDateText2 = mapImportedDateLabel2.getText().replace("Imported date: ", "");
+                        LocalDateTime mapImportedDate2 = LocalDateTime.parse(mapImportedDateText2, formatter);
+                        return mapImportedDate2.compareTo(mapImportedDate1);
+                    }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.IMPORTED_DATE_DESC);
+        }
+
+        steamCustomMapsFlowPane.getChildren().clear();
+        steamCustomMapsFlowPane.getChildren().addAll(customMapBoxList);
+        steamOfficialMapsFlowPane.getChildren().clear();
+        steamOfficialMapsFlowPane.getChildren().addAll(officialMapBoxList);
+    }
+
+    @FXML
+    private void orderMapsByDownloadStateOnAction() {
+
+        if (EnumSortedMapsCriteria.DOWNLOAD_DESC.equals(Session.getInstance().getSortedMapsCriteria())) {
+            customMapBoxList = customMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label downloadedLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "downloadedLabel".equals(label.getId())).findFirst().orElseGet(null);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label downloadedLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "downloadedLabel".equals(label.getId())).findFirst().orElseGet(null);
+                        return downloadedLabel1.getText().compareTo(downloadedLabel2.getText());
+                    }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.DOWNLOAD_ASC);
+        } else {
+
+            customMapBoxList = customMapBoxList.stream()
+                    .sorted((vbox1, vbox2) -> {
+                        Node labelVbox1 = vbox1.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label downloadedLabel1 = (Label)((VBox)labelVbox1).getChildren().stream().filter(label -> "downloadedLabel".equals(label.getId())).findFirst().orElseGet(null);
+                        Node labelVbox2 = vbox2.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);
+                        Label downloadedLabel2 = (Label)((VBox)labelVbox2).getChildren().stream().filter(label -> "downloadedLabel".equals(label.getId())).findFirst().orElseGet(null);
+                        return downloadedLabel2.getText().compareTo(downloadedLabel1.getText());
+                    }).collect(Collectors.toList());
+
+            Session.getInstance().setSortedMapsCriteria(EnumSortedMapsCriteria.DOWNLOAD_DESC);
+        }
+
+        steamCustomMapsFlowPane.getChildren().clear();
+        steamCustomMapsFlowPane.getChildren().addAll(customMapBoxList);
+    }
+
+    @FXML
+    private void mapsDeleteMenuOnAction() {
+        List<VBox> selectedCustomMapBoxList = customMapBoxList.stream().filter(vbox -> {
+            Node labelVbox = vbox.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);;
+            Node actionsFlowPane = ((VBox)labelVbox).getChildren().stream().filter(label -> "actionsFlowPane".equals(label.getId())).findFirst().orElseGet(null);
+            CheckBox selected = (CheckBox)((FlowPane)actionsFlowPane).getChildren().stream().filter(label -> "selected".equals(label.getId())).findFirst().orElseGet(null);
+            return selected.isSelected();
+        }).collect(Collectors.toList());
+
+        if (selectedCustomMapBoxList.isEmpty()) {
+            logger.warn("No selected maps/mods to delete. You must select at least one item to be deleted");
+            String headerText = "No selected maps/mods";
+            String contentText = "You must select at least one item to do the operation";
+            Utils.warningDialog(headerText, contentText);
+        } else {
+            StringBuffer message = new StringBuffer();
+            selectedCustomMapBoxList.forEach(vbox -> {
+                Node labelVbox = vbox.getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);;
+                Label mapName = (Label)((VBox)labelVbox).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                message.append(mapName.getText() + "\n");
+            });
+            String question = "Are you sure that you want to delete next maps/mods?";
+            Optional<ButtonType> result = Utils.questionDialog(question, message.toString());
+            if (result.isPresent() && result.get().equals(ButtonType.OK)) {
+                customMapBoxList.removeAll(selectedCustomMapBoxList);
+                steamCustomMapsFlowPane.getChildren().removeAll(selectedCustomMapBoxList);
+            }
         }
     }
 }
