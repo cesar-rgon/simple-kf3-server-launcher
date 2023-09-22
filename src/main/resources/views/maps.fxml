@@ -12,19 +12,19 @@
     <children>
         <AnchorPane fx:id="mapsAnchorPane" minHeight="700.0">
             <children>
-                <VBox fx:id="steamCustomVBox" alignment="CENTER" spacing="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                <VBox fx:id="mapsVBox" alignment="CENTER" spacing="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <children>
-                        <TabPane fx:id="mapsTabPane" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane fx:id="mapsTabPane" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                             <tabs>
                                 <Tab fx:id="steamCustomMapsTab" text="Steam Custom Maps">
                                     <graphic>
                                         <HBox spacing="10.0">
                                             <children>
-                                                <CheckBox fx:id="selectAllSteamCustomMapsCheckBox" onMouseClicked="#selectAllSteamCustomMapsOnMouseClicked"/>
+                                                <CheckBox fx:id="selectAllSteamCustomMapsCheckBox" onMouseClicked="#selectAllSteamCustomMapsOnMouseClicked" />
                                                 <StackPane>
                                                     <children>
                                                         <Circle fill="#57965c" radius="14" />
-                                                        <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
+                                                        <Text fx:id="steamCustomMapsCounter" fill="#e8e8e8" text="8" textAlignment="CENTER" wrappingWidth="23.0" />
                                                     </children>
                                                 </StackPane>
                                             </children>
@@ -51,7 +51,7 @@
                                         <StackPane>
                                             <children>
                                                 <Circle fill="#c94f4f" radius="14" />
-                                                <Text fx:id="steamOfficialMapsCounter" fill="#e8e8e8" text="3" textAlignment="CENTER" wrappingWidth="23.0" />
+                                                <Text fx:id="steamOfficialMapsCounter" fill="#e8e8e8" text="8" textAlignment="CENTER" wrappingWidth="23.0" />
                                             </children>
                                         </StackPane>
                                     </graphic>
@@ -107,8 +107,27 @@
                             </cursor>
                         </TabPane>
 
-                        <HBox fx:id="menuHbox" alignment="CENTER" maxWidth="740" spacing="30.0">
+                        <HBox fx:id="menuHbox" alignment="CENTER" maxWidth="850" spacing="30.0">
                             <children>
+                                <Button fx:id="moveMenuVertical" mnemonicParsing="false" onMouseClicked="#moveMenuVerticalOnMouseClicked">
+                                    <graphic>
+                                        <ImageView fitHeight="28.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/move-vertical.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <viewport>
+                                                <Rectangle2D />
+                                            </viewport>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Button>
+
                                 <MenuBar maxHeight="45.0" maxWidth="215.0" nodeOrientation="LEFT_TO_RIGHT">
                                     <menus>
                                         <Menu fx:id="mapsAddMenu" mnemonicParsing="false">
@@ -232,6 +251,25 @@
                                         <Insets right="10.0" top="18.0" />
                                     </padding>
                                 </Slider>
+
+                                <Button fx:id="moveHorizontalVertical" mnemonicParsing="false" onMouseClicked="#moveMenuHorizontalOnMouseClicked">
+                                    <graphic>
+                                        <ImageView fitHeight="10.0" layoutX="405.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/move-horizontal.png" />
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <viewport>
+                                                <Rectangle2D />
+                                            </viewport>
+                                        </ImageView>
+                                    </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
                             </children>
                         </HBox>
                     </children>

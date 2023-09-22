@@ -2,11 +2,13 @@ package stories.maps;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -47,6 +49,7 @@ public class MapsController implements Initializable {
     @FXML private CheckBox selectAllEpicCustomMapsCheckBox;
     @FXML private Tab steamCustomMapsTab;
     @FXML private TextField searchMapsTextField;
+    @FXML private VBox mapsVBox;
 
     private List<VBox> customMapBoxList;
     private List<VBox> officialMapBoxList;
@@ -221,7 +224,37 @@ public class MapsController implements Initializable {
         }).collect(Collectors.toList());
 
         steamOfficialMapsFlowPane.getChildren().clear();
-        steamOfficialMapsFlowPane.getChildren().addAll(filteredSteamCustomMapBoxList);
+        steamOfficialMapsFlowPane.getChildren().addAll(filteredSteamOfficialMapBoxList);
     }
 
+    @FXML
+    private void moveMenuVerticalOnMouseClicked() {
+        List<Node> mapsVBoxBackup = new ArrayList<>(mapsVBox.getChildren());
+        mapsVBox.getChildren().clear();
+        if (mapsVBoxBackup.get(0).getId().equals("mapsTabPane")) {
+            mapsVBox.getChildren().add(mapsVBoxBackup.stream().filter(n -> n.getId().equals("menuHbox")).findFirst().orElseGet(null));
+            mapsVBox.getChildren().add(mapsVBoxBackup.stream().filter(n -> n.getId().equals("mapsTabPane")).findFirst().orElseGet(null));
+        } else {
+            mapsVBox.getChildren().add(mapsVBoxBackup.stream().filter(n -> n.getId().equals("mapsTabPane")).findFirst().orElseGet(null));
+            mapsVBox.getChildren().add(mapsVBoxBackup.stream().filter(n -> n.getId().equals("menuHbox")).findFirst().orElseGet(null));
+        }
+    }
+
+    @FXML
+    private void moveMenuHorizontalOnMouseClicked() {
+        if (Pos.CENTER.equals(mapsVBox.getAlignment())) {
+            mapsVBox.setAlignment(Pos.CENTER_RIGHT);
+            return;
+        }
+
+        if (Pos.CENTER_RIGHT.equals(mapsVBox.getAlignment())) {
+            mapsVBox.setAlignment(Pos.CENTER_LEFT);
+            return;
+        }
+
+        if (Pos.CENTER_LEFT.equals(mapsVBox.getAlignment())) {
+            mapsVBox.setAlignment(Pos.CENTER);
+            return;
+        }
+    }
 }

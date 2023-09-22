@@ -160,7 +160,7 @@ public class Utils {
         labelVbox.setId("labelVbox");
         labelVbox.setAlignment(Pos.CENTER);
 
-        if (showExtended) {
+        if (showExtended && !mapDto.isOfficial()) {
             Label downloadedLabel = null;
             if (mapDto.isDownloaded()) {
                 downloadedLabel = new Label("DOWNLOADED");
