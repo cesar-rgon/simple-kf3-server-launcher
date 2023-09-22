@@ -169,11 +169,13 @@ public class Utils {
                 downloadedLabel = new Label("NOT DOWNLOADED");
                 downloadedLabel.setStyle("-fx-text-fill: #e8e8e8; -fx-padding: 5; -fx-border-color: #e8e8e8; -fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color:#6e2828;");
             }
+            downloadedLabel.setId("downloadedLabel");
             labelVbox.getChildren().add(downloadedLabel);
         }
 
         if (showExtended) {
             Label mapReleaseDate = new Label("Release date: " + mapDto.getReleaseDate());
+            mapReleaseDate.setId("mapReleaseDate");
             mapReleaseDate.setMaxWidth(mapImage.getFitWidth());
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -183,6 +185,7 @@ public class Utils {
 
             if (!mapDto.isOfficial()) {
                 Label idWorkshop = new Label("id Workshop: " + mapDto.getIdWorkShop());
+                idWorkshop.setId("idWorkshop");
                 idWorkshop.setMaxWidth(mapImage.getFitWidth());
                 idWorkshop.setStyle("-fx-padding: 10 0 0 0;");
                 labelVbox.getChildren().add(idWorkshop);

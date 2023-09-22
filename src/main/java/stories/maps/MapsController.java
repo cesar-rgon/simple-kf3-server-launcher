@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pojos.ExampleMaps;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MapsController implements Initializable {
 
@@ -44,7 +46,10 @@ public class MapsController implements Initializable {
     @FXML private CheckBox selectAllSteamCustomMapsCheckBox;
     @FXML private CheckBox selectAllEpicCustomMapsCheckBox;
     @FXML private Tab steamCustomMapsTab;
-    @FXML private TextField searchTextField;
+    @FXML private TextField searchMapsTextField;
+
+    private List<VBox> customMapBoxList;
+    private List<VBox> officialMapBoxList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,43 +88,43 @@ public class MapsController implements Initializable {
     private void columnSliderOnMouseClicked() {
         progressIndicator.setVisible(true);
 
-        Task<List<VBox>> task = new Task<List<VBox>>() {
+        Task<Void> task = new Task<Void>() {
             @Override
-            protected List<VBox> call() throws Exception {
+            protected Void call() throws Exception {
                 ExampleMaps exampleMaps = new ExampleMaps();
-                List<VBox> mapBoxList = new ArrayList<VBox>();
 
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
+                customMapBoxList = new ArrayList<VBox>();
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, columnSlider.getValue()));
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto3(), true, columnSlider.getValue()));
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto1(), true, columnSlider.getValue()));
+                customMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto2(), true, columnSlider.getValue()));
 
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
-                mapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
-                return mapBoxList;
+                officialMapBoxList = new ArrayList<VBox>();
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, columnSlider.getValue()));
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto6(), true, columnSlider.getValue()));
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto4(), true, columnSlider.getValue()));
+                officialMapBoxList.add(Utils.createMapBox(exampleMaps.getMapDto5(), true, columnSlider.getValue()));
+                return null;
             }
         };
 
         task.setOnSucceeded(wse -> {
-            List<VBox> mapBoxList = task.getValue();
             steamCustomMapsFlowPane.getChildren().clear();
-            for (int i=0; i<8; i++ ) {
-                steamCustomMapsFlowPane.getChildren().add(mapBoxList.get(i));
+            for (VBox customMapBox: customMapBoxList) {
+                steamCustomMapsFlowPane.getChildren().add(customMapBox);
             }
 
             steamOfficialMapsFlowPane.getChildren().clear();
-            for (int i=8; i<16; i++ ) {
-                steamOfficialMapsFlowPane.getChildren().add(mapBoxList.get(i));
+            for (VBox officialMapBox: officialMapBoxList) {
+                steamOfficialMapsFlowPane.getChildren().add(officialMapBox);
             }
 
             // To force to refresh the screen
@@ -154,7 +159,69 @@ public class MapsController implements Initializable {
 
     @FXML
     private void selectAllEpicCustomMapsOnMouseClicked() {
+    }
 
+    @FXML
+    private void searchMapsOnKeyReleased() {
+        // Steam Custom Maps
+        List<Node> filteredSteamCustomMapBoxList = customMapBoxList.stream().filter(mapBoxNode -> {
+            try {
+                Node labelVbox = ((VBox)mapBoxNode).getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);;
+                Node mapName = ((VBox)labelVbox).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                Node downloadedLabel = ((VBox)labelVbox).getChildren().stream().filter(label -> "downloadedLabel".equals(label.getId())).findFirst().orElseGet(null);
+                Node mapReleaseDate = ((VBox)labelVbox).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                Node mapImportedDate = ((VBox)labelVbox).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+                Node idWorkshop = ((VBox)labelVbox).getChildren().stream().filter(label -> "idWorkshop".equals(label.getId())).findFirst().orElseGet(null);
+
+                String mapNameText = StringUtils.upperCase(((Label)mapName).getText());
+                String downloadedText = StringUtils.upperCase(((Label)downloadedLabel).getText());
+                String mapReleaseDateText = StringUtils.upperCase(((Label)mapReleaseDate).getText());
+                String mapImportedDateText = StringUtils.upperCase(((Label)mapImportedDate).getText());
+                String idWorkshopText = StringUtils.upperCase(((Label)idWorkshop).getText());
+
+                if (mapNameText.contains(StringUtils.upperCase(searchMapsTextField.getText())) ||
+                        downloadedText.contains(StringUtils.upperCase(searchMapsTextField.getText())) ||
+                        mapReleaseDateText.contains(StringUtils.upperCase(searchMapsTextField.getText())) ||
+                        mapImportedDateText.contains(StringUtils.upperCase(searchMapsTextField.getText())) ||
+                        idWorkshopText.contains(StringUtils.upperCase(searchMapsTextField.getText()))) {
+                    return true;
+                }
+                return false;
+            } catch (Exception e) {
+                logger.error(e.getMessage(), e);
+                return false;
+            }
+        }).collect(Collectors.toList());
+
+        steamCustomMapsFlowPane.getChildren().clear();
+        steamCustomMapsFlowPane.getChildren().addAll(filteredSteamCustomMapBoxList);
+
+        // Steam Official Maps
+        List<Node> filteredSteamOfficialMapBoxList = officialMapBoxList.stream().filter(mapBoxNode -> {
+            try {
+                Node labelVbox = ((VBox)mapBoxNode).getChildren().stream().filter(vBox -> "labelVbox".equals(vBox.getId())).findFirst().orElseGet(null);;
+                Node mapName = ((VBox)labelVbox).getChildren().stream().filter(label -> "mapName".equals(label.getId())).findFirst().orElseGet(null);
+                Node mapReleaseDate = ((VBox)labelVbox).getChildren().stream().filter(label -> "mapReleaseDate".equals(label.getId())).findFirst().orElseGet(null);
+                Node mapImportedDate = ((VBox)labelVbox).getChildren().stream().filter(label -> "mapImportedDate".equals(label.getId())).findFirst().orElseGet(null);
+
+                String mapNameText = StringUtils.upperCase(((Label)mapName).getText());
+                String mapReleaseDateText = StringUtils.upperCase(((Label)mapReleaseDate).getText());
+                String mapImportedDateText = StringUtils.upperCase(((Label)mapImportedDate).getText());
+
+                if (mapNameText.contains(StringUtils.upperCase(searchMapsTextField.getText())) ||
+                        mapReleaseDateText.contains(StringUtils.upperCase(searchMapsTextField.getText())) ||
+                        mapImportedDateText.contains(StringUtils.upperCase(searchMapsTextField.getText()))) {
+                    return true;
+                }
+                return false;
+            } catch (Exception e) {
+                logger.error(e.getMessage(), e);
+                return false;
+            }
+        }).collect(Collectors.toList());
+
+        steamOfficialMapsFlowPane.getChildren().clear();
+        steamOfficialMapsFlowPane.getChildren().addAll(filteredSteamCustomMapBoxList);
     }
 
 }

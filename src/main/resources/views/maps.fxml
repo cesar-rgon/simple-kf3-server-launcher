@@ -202,7 +202,7 @@
 
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <TextField fx:id="searchTextField">
+                                        <TextField fx:id="searchMapsTextField" onKeyReleased="#searchMapsOnKeyReleased">
                                             <VBox.margin>
                                                 <Insets top="5.0" />
                                             </VBox.margin>
