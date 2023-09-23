@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
@@ -43,11 +44,12 @@ public class HelpController implements Initializable {
     @FXML private ProgressIndicator progressIndicatorDocumentation;
     @FXML private ProgressIndicator progressIndicatorReleases;
     @FXML private ProgressIndicator progressIndicatorDonation;
+    @FXML private AnchorPane helpAnchorPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Utils.setNodeBackground(helpStackPane);
+            Utils.setNodeBackground(helpAnchorPane);
             accordion.setExpandedPane(github);
 
             PropertyService propertyService = new PropertyServiceImpl();
@@ -128,7 +130,7 @@ public class HelpController implements Initializable {
 
     @FXML
     private void helpStackPaneOnMouseClicked() throws Exception {
-        Utils.setNextNodeBackground(helpStackPane);
+        Utils.setNextNodeBackground(helpAnchorPane);
     }
 
     private void putBlackBackgroundColor(WebEngine webEngine) throws Exception {

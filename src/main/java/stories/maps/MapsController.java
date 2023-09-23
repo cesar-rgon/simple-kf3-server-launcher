@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pojos.ExampleMapBoxes;
 import pojos.ExampleMaps;
 import pojos.Session;
 import services.PropertyService;
@@ -104,44 +105,38 @@ public class MapsController implements Initializable {
     private void columnSliderOnMouseClicked() {
         progressIndicator.setVisible(true);
 
-        Task<Void> task = new Task<Void>() {
+        Task<ExampleMapBoxes> task = new Task<ExampleMapBoxes>() {
             @Override
-            protected Void call() throws Exception {
+            protected ExampleMapBoxes call() throws Exception {
                 ExampleMaps exampleMaps = new ExampleMaps();
+                ExampleMapBoxes exampleMapBoxes = new ExampleMapBoxes();
 
-                if (customMapBoxList == null) {
-                    customMapBoxList = new ArrayList<VBox>();
-                } else if (!customMapBoxList.isEmpty()) {
-                    customMapBoxList.clear();
-                }
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto3(), columnSlider.getValue()));
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto3(), columnSlider.getValue()));
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
-                customMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto3(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto3(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto1(), columnSlider.getValue()));
+                exampleMapBoxes.getCustomMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto2(), columnSlider.getValue()));
 
-                if (officialMapBoxList == null) {
-                    officialMapBoxList = new ArrayList<VBox>();
-                } else if (!officialMapBoxList.isEmpty()) {
-                    officialMapBoxList.clear();
-                }
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto6(), columnSlider.getValue()));
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto6(), columnSlider.getValue()));
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
-                officialMapBoxList.add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto6(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto6(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto4(), columnSlider.getValue()));
+                exampleMapBoxes.getOfficialMapBoxList().add(createExtendedMapBox(exampleMaps.getMapDto5(), columnSlider.getValue()));
 
-                return null;
+                return exampleMapBoxes;
             }
         };
 
         task.setOnSucceeded(wse -> {
+            ExampleMapBoxes exampleMapBoxes = task.getValue();
+            customMapBoxList = exampleMapBoxes.getCustomMapBoxList();
+            officialMapBoxList = exampleMapBoxes.getOfficialMapBoxList();
             orderMapsByNameOnAction();
 
             // To force to refresh the screen
